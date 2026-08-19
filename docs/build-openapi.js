@@ -2,7 +2,7 @@
 /**
  * OpenAPI (Swagger) 3.0.3 spec generator for the GALFI backend.
  *
- * Reads the endpoint catalogs in ./catalog/*.js and emits
+ * Reads each module's local swagger.js catalog and emits
  *   - docs/openapi.yaml   (human-readable spec, main deliverable)
  *
  * Usage:  node docs/build-openapi.js
@@ -12,26 +12,23 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 // Keep the catalog next to the code it documents in the generated output.  The
-// source catalogs stay here so the generator has one implementation of the
-// shared response/error conventions; every module receives a standalone,
-// importable swagger.yaml file.
-const nftEndpoints = require('./catalog/nft');
-const isSyncRoute = ({ path: apiPath }) => /^\/v1\/nft\/sync\/(planets|asteroids|ships|crews)$/.test(apiPath);
+// Each module owns its swagger.js entry point; the shared endpoint definitions
+// remain in docs/catalog so the master and module documents stay consistent.
 const catalogs = [
-  { tag: 'User', endpoints: require('./catalog/user'), output: '../app/user/swagger.yaml' },
-  { tag: 'NFT', endpoints: nftEndpoints.filter((endpoint) => !isSyncRoute(endpoint)), output: '../app/nft/swagger.yaml' },
-  { tag: 'Sync', endpoints: nftEndpoints.filter(isSyncRoute), output: '../app/sync/swagger.yaml' },
-  { tag: 'Admin', endpoints: require('./catalog/admin'), output: '../app/admin/adminlogin/swagger.yaml' },
-  { tag: 'CMS', endpoints: require('./catalog/cms'), output: '../app/admin/cms/swagger.yaml' },
-  { tag: 'Category', endpoints: require('./catalog/category'), output: '../app/category/swagger.yaml' },
-  { tag: 'Game', endpoints: require('./catalog/game'), output: '../app/game/swagger.yaml' },
-  { tag: 'Exchange', endpoints: require('./catalog/exchange'), output: '../app/exchange/swagger.yaml' },
-  { tag: 'Mission', endpoints: require('./catalog/mission'), output: '../app/missions/swagger.yaml' },
-  { tag: 'Shop', endpoints: require('./catalog/shop'), output: '../app/shop/swagger.yaml' },
-  { tag: 'Profession', endpoints: require('./catalog/profession'), output: '../app/profession/swagger.yaml' },
-  { tag: 'Promo', endpoints: require('./catalog/promo'), output: '../app/promotion/swagger.yaml' },
-  { tag: 'Conversion', endpoints: require('./catalog/conversion'), output: '../app/amountConvertion/swagger.yaml' },
-  { tag: 'Scripts (dev)', endpoints: require('./catalog/scripts'), output: '../app/scripts/swagger.yaml' },
+  require('../app/user/swagger'),
+  require('../app/nft/swagger'),
+  require('../app/sync/swagger'),
+  require('../app/admin/adminlogin/swagger'),
+  require('../app/admin/cms/swagger'),
+  require('../app/category/swagger'),
+  require('../app/game/swagger'),
+  require('../app/exchange/swagger'),
+  require('../app/missions/swagger'),
+  require('../app/shop/swagger'),
+  require('../app/profession/swagger'),
+  require('../app/promotion/swagger'),
+  require('../app/amountConvertion/swagger'),
+  require('../app/scripts/swagger'),
 ];
 
 const { AUTH, ENCRYPT } = require('./catalog/common');
