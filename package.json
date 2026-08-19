@@ -10,7 +10,8 @@
     "demo": "NODE_ENV=demo node babel_hook.js",
     "cleardb_demo": "NODE_ENV=demo node ./app/scripts/setupDb.js",
     "cleardb_stage": "NODE_ENV=stage node ./app/scripts/setupDb.js",
-    "cleardb_production": "NODE_ENV=production node ./app/scripts/setupDb.js"
+    "cleardb_production": "NODE_ENV=production node ./app/scripts/setupDb.js",
+    "docs": "node docs/build-openapi.js"
   },
   "author": "kamesh",
   "license": "ISC",
@@ -52,6 +53,7 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "js-yaml": "^5.3.0",
     "nodemon": "^3.1.0"
   }
 }
