@@ -1,0 +1,1137 @@
+/* 1 */
+{
+    "_id" : ObjectId("6683e6aabdadba956a039102"),
+    "CollectionName" : "GalfiCrew721",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721126262284",
+    "image_url" : "collectionprofile/1721126262284",
+    "banner_url" : "",
+    "opensea_url" : "https://testnets.opensea.io/collection/galficrew721",
+    "total_supply" : "4",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 1,
+            "_id" : ObjectId("66964d77560e4b9887403ede")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("66964d77560e4b9887403edf")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("66964d77560e4b9887403ee0")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 1,
+            "_id" : ObjectId("66964d77560e4b9887403ee1")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 1,
+            "_id" : ObjectId("66964d77560e4b9887403ee2")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 1,
+            "_id" : ObjectId("66964d77560e4b9887403ee3")
+        }
+    ],
+    "CollectionCoverImage" : "",
+    "CollectionSymbol" : "galficrew721",
+    "CollectionBio" : "",
+    "CollectionType" : "721",
+    "CollectionNetwork" : "sepolia",
+    "CollectionCreator" : "0x025c1667471685c323808647299e5dbf9d6adcc9",
+    "Category" : "galficrew721",
+    "CollectionContractAddress" : "0x5f84b12D9bd15693c73b55a4bD02B7268e85003e",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:37:43.234Z"),
+    "updatedAt" : ISODate("2024-07-16T10:37:43.234Z"),
+    "__v" : 0
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("667e91c21ea449904060390a"),
+    "CollectionName" : "galfiship",
+    "type" : ObjectId("667e5d095a8d56b6363e1b6a"),
+    "CollectionProfileImage" : "collectionprofile/1721126391649",
+    "image_url" : "collectionprofile/1721126391649",
+    "banner_url" : "",
+    "opensea_url" : "https://testnets.opensea.io/collection/galfiship",
+    "total_supply" : "9",
+    "softStakeReward" : [],
+    "CollectionCoverImage" : "",
+    "CollectionSymbol" : "galfiship",
+    "CollectionBio" : "",
+    "CollectionType" : "721",
+    "CollectionNetwork" : "sepolia",
+    "CollectionCreator" : "0x025c1667471685c323808647299e5dbf9d6adcc9",
+    "Category" : "galfiship",
+    "CollectionContractAddress" : "0x7ab30a030f01c70a14f0cffb7c25f0286f3226b0",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:39:52.659Z"),
+    "updatedAt" : ISODate("2024-07-16T10:39:52.659Z"),
+    "__v" : 0
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("667e91d91ea449904060390f"),
+    "CollectionName" : "PlanetCollection721",
+    "type" : ObjectId("667e5d095a8d56b6363e1b6a"),
+    "CollectionProfileImage" : "collectionprofile/1721126468254",
+    "image_url" : "collectionprofile/1721126468254",
+    "banner_url" : "",
+    "opensea_url" : "https://testnets.opensea.io/collection/planetcollection721",
+    "total_supply" : "24",
+    "softStakeReward" : [],
+    "CollectionCoverImage" : "",
+    "CollectionSymbol" : "planetcollection721",
+    "CollectionBio" : "",
+    "CollectionType" : "721",
+    "CollectionNetwork" : "sepolia",
+    "CollectionCreator" : "0x025c1667471685c323808647299e5dbf9d6adcc9",
+    "Category" : "planetcollection721",
+    "CollectionContractAddress" : "0xc008e38663044bcd63f823bc0dbf609ff9ff3c79",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:41:09.134Z"),
+    "updatedAt" : ISODate("2024-07-16T10:41:09.134Z"),
+    "__v" : 0
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("66964eb9560e4b9887403f08"),
+    "CollectionName" : "GalacticApes",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "",
+    "image_url" : "",
+    "banner_url" : "collectioncover/1721126574570",
+    "opensea_url" : "https://opensea.io/collection/galacticapes",
+    "total_supply" : "9178",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 1,
+            "_id" : ObjectId("66964eb9560e4b9887403f09")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("66964eb9560e4b9887403f0a")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("66964eb9560e4b9887403f0b")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 1,
+            "_id" : ObjectId("66964eb9560e4b9887403f0c")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 1,
+            "_id" : ObjectId("66964eb9560e4b9887403f0d")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 1,
+            "_id" : ObjectId("66964eb9560e4b9887403f0e")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721126574570",
+    "CollectionSymbol" : "galacticapes",
+    "CollectionBio" : "[Twitter](https://twitter.com/TheGalacticApes)    \n[GalacticMonkes](https://opensea.io/collection/galacticmonkes)    \n[GalacticApes Genesis](https://opensea.io/collection/galacticapesgenesis)",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0x4821acf3f9795bb903b6ddc95d7fe52fd0287572",
+    "Category" : "galacticapes",
+    "CollectionContractAddress" : "0x12d2d1bed91c24f878f37e66bd829ce7197e4d14",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 5,
+            "recipient" : "0x4821acf3f9795bb903b6ddc95d7fe52fd0287572",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:43:05.028Z"),
+    "updatedAt" : ISODate("2024-07-16T10:43:05.028Z"),
+    "__v" : 0
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("66964ebd560e4b9887403f1d"),
+    "CollectionName" : "GalacticApes",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721126568331",
+    "image_url" : "collectionprofile/1721126568331",
+    "banner_url" : "collectioncover/1721126568331",
+    "opensea_url" : "https://opensea.io/collection/galacticapes",
+    "total_supply" : "9178",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 1,
+            "_id" : ObjectId("66964ebd560e4b9887403f1e")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("66964ebd560e4b9887403f1f")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("66964ebd560e4b9887403f20")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 1,
+            "_id" : ObjectId("66964ebd560e4b9887403f21")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 1,
+            "_id" : ObjectId("66964ebd560e4b9887403f22")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 1,
+            "_id" : ObjectId("66964ebd560e4b9887403f23")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721126568331",
+    "CollectionSymbol" : "galacticapes",
+    "CollectionBio" : "[Twitter](https://twitter.com/TheGalacticApes)    \n[GalacticMonkes](https://opensea.io/collection/galacticmonkes)    \n[GalacticApes Genesis](https://opensea.io/collection/galacticapesgenesis)",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0x4821acf3f9795bb903b6ddc95d7fe52fd0287572",
+    "Category" : "galacticapes",
+    "CollectionContractAddress" : "0x12d2d1bed91c24f878f37e66bd829ce7197e4d14",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 5,
+            "recipient" : "0x4821acf3f9795bb903b6ddc95d7fe52fd0287572",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:43:09.666Z"),
+    "updatedAt" : ISODate("2024-07-16T10:43:09.666Z"),
+    "__v" : 0
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("66964f1a560e4b9887403f28"),
+    "CollectionName" : "GalacticMonkes",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721126681208",
+    "image_url" : "collectionprofile/1721126681208",
+    "banner_url" : "collectioncover/1721126681208",
+    "opensea_url" : "https://opensea.io/collection/galacticmonkes",
+    "total_supply" : "9149",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 2,
+            "_id" : ObjectId("66964f1a560e4b9887403f29")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("66964f1a560e4b9887403f2a")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("66964f1a560e4b9887403f2b")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("66964f1a560e4b9887403f2c")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721126681208",
+    "CollectionSymbol" : "galacticmonkes",
+    "CollectionBio" : "Now part of the @starwolvez ecosystem.\n\n[Twitter](https://twitter.com/TheGalacticApes)    \n[GalacticApes](https://opensea.io/collection/galacticapes)    \n[GalacticApes Genesis](https://opensea.io/collection/galacticapesgenesis)\n",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0x4821acf3f9795bb903b6ddc95d7fe52fd0287572",
+    "Category" : "galacticmonkes",
+    "CollectionContractAddress" : "0x7bb6413c939d9ecc62bdd60d6e23816b1ae9099f",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 5,
+            "recipient" : "0x4821acf3f9795bb903b6ddc95d7fe52fd0287572",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:44:42.731Z"),
+    "updatedAt" : ISODate("2024-07-16T10:44:42.731Z"),
+    "__v" : 0
+}
+
+/* 7 */
+{
+    "_id" : ObjectId("66964f5f560e4b9887403f48"),
+    "CollectionName" : "Star Wolves Genesis",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721126750203",
+    "image_url" : "collectionprofile/1721126750203",
+    "banner_url" : "collectioncover/1721126750203",
+    "opensea_url" : "https://opensea.io/collection/starwolves",
+    "total_supply" : "100",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 4,
+            "_id" : ObjectId("66964f5f560e4b9887403f49")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("66964f5f560e4b9887403f4a")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("66964f5f560e4b9887403f4b")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("66964f5f560e4b9887403f4c")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 1,
+            "_id" : ObjectId("66964f5f560e4b9887403f4d")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 1,
+            "_id" : ObjectId("66964f5f560e4b9887403f4e")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721126750203",
+    "CollectionSymbol" : "starwolves",
+    "CollectionBio" : "Live strategy, raiding and PVP game: [game.starwolvez.com](https://game.starwolvez.com)\n\nIt all started with 100 Genesis Wolvez…\n\nSee also: [Star Wolvez Generative](https://opensea.io/collection/starwolvez-generative)",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0x11768560cbf8de1a09e879e387668316a6b9b705",
+    "Category" : "starwolves",
+    "CollectionContractAddress" : "0x7ceb53ffca6d2919f4ccd789f2f164eda811d85d",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 4.9,
+            "recipient" : "0x11768560cbf8de1a09e879e387668316a6b9b705",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:45:51.866Z"),
+    "updatedAt" : ISODate("2024-07-16T10:45:51.866Z"),
+    "__v" : 0
+}
+
+/* 8 */
+{
+    "_id" : ObjectId("66965044560e4b9887403f70"),
+    "CollectionName" : "Star Wolvez Generative",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721126979136",
+    "image_url" : "collectionprofile/1721126979136",
+    "banner_url" : "collectioncover/1721126979136",
+    "opensea_url" : "https://opensea.io/collection/starwolvez-generative",
+    "total_supply" : "8880",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 2,
+            "_id" : ObjectId("66965044560e4b9887403f71")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("66965044560e4b9887403f72")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("66965044560e4b9887403f73")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("66965044560e4b9887403f74")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721126979136",
+    "CollectionSymbol" : "starwolvez-generative",
+    "CollectionBio" : "Live strategy, raiding and PVP game: [game.starwolvez.com](https://game.starwolvez.com)\n\n8880 Wolvez have ascended from Planet Earth to find a better life in the Infinite Beyond, and it all started with [100 Genesis Wolvez](https://opensea.io/collection/starwolves).\n\nWhere we’re going, the moon will just be a speck of dust.",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0x11768560cbf8de1a09e879e387668316a6b9b705",
+    "Category" : "starwolvez-generative",
+    "CollectionContractAddress" : "0xd098C59D5d4A1aC3909f6093D0cf565314eCD240",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 4.9,
+            "recipient" : "0x11768560cbf8de1a09e879e387668316a6b9b705",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:49:40.807Z"),
+    "updatedAt" : ISODate("2024-07-16T10:49:40.807Z"),
+    "__v" : 0
+}
+
+/* 9 */
+{
+    "_id" : ObjectId("669650a8560e4b9887403f9a"),
+    "CollectionName" : "DystoPunks",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721127079165",
+    "image_url" : "collectionprofile/1721127079165",
+    "banner_url" : "collectioncover/1721127079165",
+    "opensea_url" : "https://opensea.io/collection/dystopunks",
+    "total_supply" : "2077",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 2,
+            "_id" : ObjectId("669650a8560e4b9887403f9b")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("669650a8560e4b9887403f9c")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("669650a8560e4b9887403f9d")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("669650a8560e4b9887403f9e")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721127079165",
+    "CollectionSymbol" : "dystopunks",
+    "CollectionBio" : "Welcome to a tech-filled dystopian future. DystoPunks is a utility-focused cyberpunk-themed NFT project that allows holders to generate a utility-governance token called $CREDS and use it in the Dystolabs ecosystem.\n\nFor more information about the project please read the [Litepaper](https://litepaper.dystopunks.net/)",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0xb9b6856efd128294a912d584366448bc3d4ea979",
+    "Category" : "dystopunks",
+    "CollectionContractAddress" : "0xbea8123277142de42571f1fac045225a1d347977",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 5,
+            "recipient" : "0x41d01d47e7457817f46502837b5a898a763e60b0",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:51:20.665Z"),
+    "updatedAt" : ISODate("2024-07-16T10:51:20.665Z"),
+    "__v" : 0
+}
+
+/* 10 */
+{
+    "_id" : ObjectId("669651e9560e4b9887403fc8"),
+    "CollectionName" : "OS Shared Storefront Collection",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721127401147",
+    "image_url" : "collectionprofile/1721127401147",
+    "banner_url" : "",
+    "opensea_url" : "https://opensea.io/collection/os-shared-storefront-collection",
+    "total_supply" : "71",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 4,
+            "_id" : ObjectId("669651e9560e4b9887403fc9")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 2,
+            "_id" : ObjectId("669651e9560e4b9887403fca")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 2,
+            "_id" : ObjectId("669651e9560e4b9887403fcb")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("669651e9560e4b9887403fcc")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 1,
+            "_id" : ObjectId("669651e9560e4b9887403fcd")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 1,
+            "_id" : ObjectId("669651e9560e4b9887403fce")
+        }
+    ],
+    "CollectionCoverImage" : "",
+    "CollectionSymbol" : "os-shared-storefront-collection",
+    "CollectionBio" : "",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0xc669b5f25f03be2ac0323037cb57f49eb543657a",
+    "Category" : "os-shared-storefront-collection",
+    "CollectionContractAddress" : "0x495f947276749ce646f68ac8c248420045cb7b5e",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:56:41.850Z"),
+    "updatedAt" : ISODate("2024-07-16T10:56:41.850Z"),
+    "__v" : 0
+}
+
+/* 11 */
+{
+    "_id" : ObjectId("669652b7560e4b988740407b"),
+    "CollectionName" : "Space Yetis Official",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721127605267",
+    "image_url" : "collectionprofile/1721127605267",
+    "banner_url" : "collectioncover/1721127605267",
+    "opensea_url" : "https://opensea.io/collection/space-yetis-official",
+    "total_supply" : "3329",
+    "softStakeReward" : [ 
+        {
+            "label" : "TETRA",
+            "amount" : 0,
+            "_id" : ObjectId("669652b7560e4b988740407c")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 0,
+            "_id" : ObjectId("669652b7560e4b988740407d")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("669652b7560e4b988740407e")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("669652b7560e4b988740407f")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("669652b7560e4b9887404080")
+        }, 
+        {
+            "label" : "GALFI",
+            "amount" : 2,
+            "_id" : ObjectId("669652b7560e4b9887404081")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721127605267",
+    "CollectionSymbol" : "space-yetis-official",
+    "CollectionBio" : "Space Yetis are a 3333 genesis collection exploring the great unknown in the year 3022 after all human life has gone extinct. These beasts weren’t always superior and intelligent, they became who they are today from their precious Plasma in which they deeply commend. Their mission is to conquer all of the Plasma in the Galaxy!\n\nCyborg Yeti Official Collection: https://opensea.io/collection/cyborg-yetis\n\n",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0x52b5c577e53ef757f5a848e6e9f96235dded97d8",
+    "Category" : "space-yetis-official",
+    "CollectionContractAddress" : "0x33a39af0f83e9d46a055e6eebde3296d26d916f4",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 10,
+            "recipient" : "0x13c87cd8e76da38f422719842b123125da3fa072",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T11:00:07.828Z"),
+    "updatedAt" : ISODate("2024-07-16T11:00:07.828Z"),
+    "__v" : 0
+}
+
+/* 12 */
+{
+    "_id" : ObjectId("66965322560e4b98874040c3"),
+    "CollectionName" : "OS Shared Storefront Collection",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721127713450",
+    "image_url" : "collectionprofile/1721127713450",
+    "banner_url" : "",
+    "opensea_url" : "https://opensea.io/collection/os-shared-storefront-collection",
+    "total_supply" : "71",
+    "softStakeReward" : [ 
+        {
+            "label" : "TETRA",
+            "amount" : 0,
+            "_id" : ObjectId("66965322560e4b98874040c4")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 0,
+            "_id" : ObjectId("66965322560e4b98874040c5")
+        }, 
+        {
+            "label" : "GALFI",
+            "amount" : 3,
+            "_id" : ObjectId("66965322560e4b98874040c6")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("66965322560e4b98874040c7")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("66965322560e4b98874040c8")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("66965322560e4b98874040c9")
+        }
+    ],
+    "CollectionCoverImage" : "",
+    "CollectionSymbol" : "os-shared-storefront-collection",
+    "CollectionBio" : "",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0xc669b5f25f03be2ac0323037cb57f49eb543657a",
+    "Category" : "os-shared-storefront-collection",
+    "CollectionContractAddress" : "0x495f947276749Ce646f68AC8c248420045cb7b5e",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T11:01:54.110Z"),
+    "updatedAt" : ISODate("2024-07-16T11:01:54.110Z"),
+    "__v" : 0
+}
+
+/* 13 */
+{
+    "_id" : ObjectId("66965780560e4b9887404111"),
+    "CollectionName" : "Gorilla Nemesis",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721128831050",
+    "image_url" : "collectionprofile/1721128831050",
+    "banner_url" : "collectioncover/1721128831050",
+    "opensea_url" : "https://opensea.io/collection/gorillanemesis",
+    "total_supply" : "4997",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 2,
+            "_id" : ObjectId("66965780560e4b9887404112")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("66965780560e4b9887404113")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("66965780560e4b9887404114")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("66965780560e4b9887404115")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 0,
+            "_id" : ObjectId("66965780560e4b9887404116")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 0,
+            "_id" : ObjectId("66965780560e4b9887404117")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721128831050",
+    "CollectionSymbol" : "gorillanemesis",
+    "CollectionBio" : "MUTANT EXPLORERS VENTURING INTO CREATIVE HORIZONS.\n\n5,000 Mutant Gorillas, the results of mysterious experiments, roam the wasteland. Some ally with the Resistance and others become terrifying creatures. They are explorers, creators, and dreamers, constantly seeking new adventures. \n\nAll the collections by Genetix:\n[Gorilla Genesis](https://opensea.io/collection/gorillagenesis) | [Gorilla Nemesis](https://opensea.io/collection/gorillanemesis) | [Mutant Dragons](https://opensea.io/collection/mutant-dragons) | [Alien Kimeras](https://opensea.io/collection/alienkimeras) | [Bunker Beasts](https://opensea.io/collection/bunkerbeasts) | [Bunker Chronicles](https://opensea.io/collection/bunkerchronicles)",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0x227483a4ee6f178dc7acf8998bdb7d2548416f4f",
+    "Category" : "gorillanemesis",
+    "CollectionContractAddress" : "0x984EEA281Bf65638ac6ed30C4FF7977EA7fe0433",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 2.5,
+            "recipient" : "0xc47c3754e7aff78f89e7b4a94603803c13caf9fc",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T11:20:32.423Z"),
+    "updatedAt" : ISODate("2024-07-16T11:20:32.423Z"),
+    "__v" : 0
+}
+
+/* 14 */
+{
+    "_id" : ObjectId("669657c6560e4b9887404165"),
+    "CollectionName" : "Forgotten Runes Wizards Cult",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721128901040",
+    "image_url" : "collectionprofile/1721128901040",
+    "banner_url" : "collectioncover/1721128901040",
+    "opensea_url" : "https://opensea.io/collection/forgottenruneswizardscult",
+    "total_supply" : "9300",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 3,
+            "_id" : ObjectId("669657c6560e4b9887404166")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 2,
+            "_id" : ObjectId("669657c6560e4b9887404167")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 2,
+            "_id" : ObjectId("669657c6560e4b9887404168")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("669657c6560e4b9887404169")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 0,
+            "_id" : ObjectId("669657c6560e4b988740416a")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 0.5,
+            "_id" : ObjectId("669657c6560e4b988740416b")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721128901040",
+    "CollectionSymbol" : "forgottenruneswizardscult",
+    "CollectionBio" : "The Forgotten Runes Wizard's Cult is a collaborative legendarium. 10,000 unique Wizard NFTs, fully encoded on-chain. \r\n\r\n[Website](http://forgottenrunes.com) | [Discord](https://discord.gg/forgottenrunes) | [Twitter](https://twitter.com/forgottenrunes) | [Book of Lore](https://www.forgottenrunes.com/lore) | [Principles](https://www.forgottenrunes.com/posts/principles) | [Goodies](https://www.forgottenrunes.com/posts/goodies)\r\n\r\n[All Sister Collections](https://opensea.io/collection/forgottenrunes):\r\n\r\n[Sacred Flame](https://opensea.io/assets/0x31158181b4b91a423bfdc758fc3bf8735711f9c5/0) | [Forgotten Souls](https://opensea.io/collection/forgottensouls) | [Forgotten Ponies](https://opensea.io/collection/forgottenrunesponies)\r\n\r\nWizard NFT holders have not only the _image_, but the _character_ of that Wizard. Day by day, the Wizards in our collection come alive as our community builds lore, maps, stories, poems, art, and animation.\r\n\r\nJoin the Cult",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0xd584fe736e5aad97c437c579e884d15b17a54a51",
+    "Category" : "forgottenruneswizardscult",
+    "CollectionContractAddress" : "0x521f9c7505005cfa19a8e5786a9c3c9c9f5e6f42",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 2.5,
+            "recipient" : "0xc4fd73a45738291853a0937a31554f9a1dc42903",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T11:21:42.064Z"),
+    "updatedAt" : ISODate("2024-07-16T11:21:42.064Z"),
+    "__v" : 0
+}
+
+/* 15 */
+{
+    "_id" : ObjectId("669657fc560e4b98874041bf"),
+    "CollectionName" : "Save the Martians",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721128954880",
+    "image_url" : "collectionprofile/1721128954880",
+    "banner_url" : "collectioncover/1721128954880",
+    "opensea_url" : "https://opensea.io/collection/save-the-martians",
+    "total_supply" : "14041",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 2,
+            "_id" : ObjectId("669657fc560e4b98874041c0")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("669657fc560e4b98874041c1")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("669657fc560e4b98874041c2")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("669657fc560e4b98874041c3")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 0,
+            "_id" : ObjectId("669657fc560e4b98874041c4")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 0,
+            "_id" : ObjectId("669657fc560e4b98874041c5")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721128954880",
+    "CollectionSymbol" : "save-the-martians",
+    "CollectionBio" : "15,000 Martians are being forced off their home planet by Eamon Tusk’s ruthless gang of colonizing technocrats. Their only hope of survival is to travel back in time to 2021 and have themselves minted as NFTs on the blockchain by martian-loving humans.\n\nMerged collection: https://opensea.io/collection/save-the-martians-merged",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0xe69ccc059fe88d1e29dba68a2c4a12d72bc99ff4",
+    "Category" : "save-the-martians",
+    "CollectionContractAddress" : "0x4961db588dd962abb20927aa38fa33e5225b3be2",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 2.5,
+            "recipient" : "0xa19fd7af1c68b0c95e4610af827666b8d4003c30",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T11:22:36.153Z"),
+    "updatedAt" : ISODate("2024-07-16T11:22:36.153Z"),
+    "__v" : 0
+}
+
+/* 16 */
+{
+    "_id" : ObjectId("669658b1560e4b9887404228"),
+    "CollectionName" : "Neo Tokyo Citizens",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721129135856",
+    "image_url" : "collectionprofile/1721129135856",
+    "banner_url" : "collectioncover/1721129135856",
+    "opensea_url" : "https://opensea.io/collection/neotokyo-citizens",
+    "total_supply" : "1995",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 4,
+            "_id" : ObjectId("669658b1560e4b9887404229")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 2,
+            "_id" : ObjectId("669658b1560e4b988740422a")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 2,
+            "_id" : ObjectId("669658b1560e4b988740422b")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("669658b1560e4b988740422c")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 1,
+            "_id" : ObjectId("669658b1560e4b988740422d")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 1,
+            "_id" : ObjectId("669658b1560e4b988740422e")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721129135856",
+    "CollectionSymbol" : "neotokyo-citizens",
+    "CollectionBio" : "All Neo Tokyo NFTs must be traded on Magic Eden.\n\nUpload complete. Wake up, Citizen. The road ahead is long, so strap in. A new world awaits us.\n\nNeo Tokyo is a collection of builders, developers, founders, and investors all gathered in one exclusive area of web3. \n\nOur calling at Neo Tokyo is to prepare and be well positioned at the forefront of the metaverse revolution, once it inevitably arrives. https://neotokyo.codes",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0xd03390e536212210ee33e9295792cbc249d01778",
+    "Category" : "neotokyo-citizens",
+    "CollectionContractAddress" : "0xB9951B43802dCF3ef5b14567cb17adF367ed1c0F",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 5,
+            "recipient" : "0xdf9a7c4bad39cc914e204d1adab53da21e2fafaa",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T11:25:37.295Z"),
+    "updatedAt" : ISODate("2024-07-16T11:25:37.295Z"),
+    "__v" : 0
+}
+
+/* 17 */
+{
+    "_id" : ObjectId("669659a6560e4b988740428e"),
+    "CollectionName" : "CryptoPunks",
+    "type" : ObjectId("667e5d585a8d56b6363e1b6e"),
+    "CollectionProfileImage" : "collectionprofile/1721129381607",
+    "image_url" : "collectionprofile/1721129381607",
+    "banner_url" : "collectioncover/1721129381607",
+    "opensea_url" : "https://opensea.io/collection/cryptopunks",
+    "total_supply" : "9994",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 10,
+            "_id" : ObjectId("669659a6560e4b988740428f")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 2,
+            "_id" : ObjectId("669659a6560e4b9887404290")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 2,
+            "_id" : ObjectId("669659a6560e4b9887404291")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("669659a6560e4b9887404292")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 1,
+            "_id" : ObjectId("669659a6560e4b9887404293")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 1,
+            "_id" : ObjectId("669659a6560e4b9887404294")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721129381607",
+    "CollectionSymbol" : "cryptopunks",
+    "CollectionBio" : "CryptoPunks launched as a fixed set of 10,000 items in mid-2017 and became one of the inspirations for the ERC-721 standard. They have been featured in places like The New York Times, Christie’s of London, Art|Basel Miami, and The PBS NewsHour.",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0xc352b534e8b987e036a93539fd6897f53488e56a",
+    "Category" : "cryptopunks",
+    "CollectionContractAddress" : "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T11:29:42.723Z"),
+    "updatedAt" : ISODate("2024-07-16T11:29:42.723Z"),
+    "__v" : 0
+}
+
+/* 18 */
+{
+    "_id" : ObjectId("66965286560e4b9887404039"),
+    "CollectionName" : "LEG1ON",
+    "type" : ObjectId("667e5d095a8d56b6363e1b6a"),
+    "CollectionProfileImage" : "collectionprofile/1721127555436",
+    "image_url" : "collectionprofile/1721127555436",
+    "banner_url" : "collectioncover/1721127555436",
+    "opensea_url" : "https://opensea.io/collection/leg1on",
+    "total_supply" : "2077",
+    "softStakeReward" : [ 
+        {
+            "label" : "GALFI",
+            "amount" : 2,
+            "_id" : ObjectId("66965286560e4b988740403a")
+        }, 
+        {
+            "label" : "GFORE",
+            "amount" : 1,
+            "_id" : ObjectId("66965286560e4b988740403b")
+        }, 
+        {
+            "label" : "GFMNR",
+            "amount" : 1,
+            "_id" : ObjectId("66965286560e4b988740403c")
+        }, 
+        {
+            "label" : "HYPER",
+            "amount" : 0.01,
+            "_id" : ObjectId("66965286560e4b988740403d")
+        }, 
+        {
+            "label" : "TETRA",
+            "amount" : 0,
+            "_id" : ObjectId("66965286560e4b988740403e")
+        }, 
+        {
+            "label" : "AMRIT",
+            "amount" : 0,
+            "_id" : ObjectId("66965286560e4b988740403f")
+        }
+    ],
+    "CollectionCoverImage" : "collectioncover/1721127555436",
+    "CollectionSymbol" : "leg1on",
+    "CollectionBio" : "WE ARE LEG1ON : FOR THE PEOPLE!\r\n\r\nFor more information about the project please read the [Litepaper](https://litepaper.dystopunks.net/)",
+    "CollectionType" : "",
+    "CollectionNetwork" : "ethereum",
+    "CollectionCreator" : "0xb9b6856efd128294a912d584366448bc3d4ea979",
+    "Category" : "leg1on",
+    "CollectionContractAddress" : "0xa2b63e4c1ea4f494f6d63ac1c5a673c5bcc43b6c",
+    "status" : true,
+    "fees" : [ 
+        {
+            "fee" : 2.5,
+            "recipient" : "0x0000a26b00c1f0df003000390027140000faa719",
+            "required" : true
+        }, 
+        {
+            "fee" : 5,
+            "recipient" : "0x41d01d47e7457817f46502837b5a898a763e60b0",
+            "required" : false
+        }
+    ],
+    "Approved" : true,
+    "isActive" : true,
+    "createdAt" : ISODate("2024-07-16T10:59:18.439Z"),
+    "updatedAt" : ISODate("2024-07-16T10:59:18.439Z"),
+    "__v" : 0
+}

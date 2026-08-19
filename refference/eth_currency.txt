@@ -1,0 +1,651 @@
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2d7"),
+    "name" : "Minerals",
+    "label" : "GFMNR",
+    "value" : "GFMNR",
+    "decimal" : 18,
+    "address" : "0x993d2616934b47b2b349ca5d256870669a75915d",
+    "valueofGalfi" : { "$numberDecimal" : "1" },
+    "circulateCurrency" : { "$numberDecimal" : "654472854602.0" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.901+0000"),
+    "updatedAt" : ISODate("2024-11-05T12:03:46.684+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2d8"),
+    "name" : "Ore",
+    "label" : "GFORE",
+    "value" : "GFORE",
+    "decimal" : 18,
+    "address" : "0x5f5c07b95a2ac300cced7c770719f9d8f4b42ada",
+    "valueofGalfi" : { "$numberDecimal" : "2" },
+    "circulateCurrency" : { "$numberDecimal" : "654471797466.95000762939453034" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.903+0000"),
+    "updatedAt" : ISODate("2024-11-05T12:03:46.684+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2d9"),
+    "name" : "Hyper",
+    "label" : "HYPER",
+    "value" : "HYPER",
+    "decimal" : 18,
+    "address" : "0x11b6dca456ec0ad7b96afbd080c9e423376db285",
+    "valueofGalfi" : { "$numberDecimal" : "3" },
+    "circulateCurrency" : { "$numberDecimal" : "8067289298.6533333333227362" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.903+0000"),
+    "updatedAt" : ISODate("2024-11-05T00:01:07.165+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2da"),
+    "name" : "Amrita",
+    "label" : "AMRIT",
+    "value" : "AMRIT",
+    "decimal" : 18,
+    "address" : "0x749aba01588256758c0493761e74eefb432cf29c",
+    "valueofGalfi" : { "$numberDecimal" : "5" },
+    "circulateCurrency" : { "$numberDecimal" : "1550606797.609999942779541" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.904+0000"),
+    "updatedAt" : ISODate("2024-11-05T00:01:07.165+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2db"),
+    "name" : "Tetra",
+    "label" : "TETRA",
+    "value" : "TETRA",
+    "decimal" : 18,
+    "address" : "0x692a1dbc4af3025c39238a15f509d8579cc23eed",
+    "valueofGalfi" : { "$numberDecimal" : "6" },
+    "circulateCurrency" : { "$numberDecimal" : "1550409882.0" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.904+0000"),
+    "updatedAt" : ISODate("2024-11-05T00:01:07.165+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2dc"),
+    "name" : "Forces",
+    "label" : "GFRCE",
+    "value" : "GFRCE",
+    "decimal" : 18,
+    "address" : "0xaec02eec5d8e199c256a17ef8f502c912b9cb4f4",
+    "valueofGalfi" : { "$numberDecimal" : "7" },
+    "circulateCurrency" : { "$numberDecimal" : "144.85714285714286" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.904+0000"),
+    "updatedAt" : ISODate("2024-11-04T10:40:46.581+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2dd"),
+    "name" : "FOOD",
+    "label" : "GFOOD",
+    "value" : "GFOOD",
+    "decimal" : 18,
+    "address" : "0x4c0bbf423bbfb359c6e196cd1fc8c0c00e74d85c",
+    "valueofGalfi" : { "$numberDecimal" : "8" },
+    "circulateCurrency" : { "$numberDecimal" : "3102.5" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.905+0000"),
+    "updatedAt" : ISODate("2024-11-05T12:03:46.684+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2de"),
+    "name" : "Xenobiologicals",
+    "label" : "XENOS",
+    "value" : "XENOS",
+    "decimal" : 18,
+    "address" : "0xe218df8ea76cddb0f9bd988a64024b4ccf8d9fd0",
+    "valueofGalfi" : { "$numberDecimal" : "9" },
+    "circulateCurrency" : { "$numberDecimal" : "4" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.905+0000"),
+    "updatedAt" : ISODate("2024-11-04T12:09:55.904+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2df"),
+    "name" : "Components",
+    "label" : "GFCMP",
+    "value" : "GFCMP",
+    "decimal" : 18,
+    "address" : "0x8304cdcb017f9e439b381f63f50ce80e254b3d0f",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "104" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.905+0000"),
+    "updatedAt" : ISODate("2024-11-04T10:40:08.052+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2e0"),
+    "name" : "NRG",
+    "label" : "GFNRG",
+    "value" : "GFNRG",
+    "decimal" : 18,
+    "address" : "0x3baf08757b770e398977f647f9bb319cecd6bd7c",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "2385" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.906+0000"),
+    "updatedAt" : ISODate("2024-11-05T12:03:46.684+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2e1"),
+    "name" : "Exotics",
+    "label" : "GFEXO",
+    "value" : "GFEXO",
+    "decimal" : 18,
+    "address" : "0x93e75e2a6f33ea2078a27f7268a4efdab478bc38",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "22" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.906+0000"),
+    "updatedAt" : ISODate("2024-11-04T10:40:46.581+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2e2"),
+    "name" : "Alien Artifacts Common",
+    "label" : "GFAAC",
+    "value" : "GFAAC",
+    "decimal" : 18,
+    "address" : "0xfef764b7e6fb005db228ea242e5decbdc331c690",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "68.80000000000000100" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.906+0000"),
+    "updatedAt" : ISODate("2024-11-05T12:03:40.555+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2e3"),
+    "name" : "Alien Artifacts Ascendant",
+    "label" : "GFAAA",
+    "value" : "GFAAA",
+    "decimal" : 18,
+    "address" : "0xf5a7795001ec343172cdf52668ade8d6b285a11c",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "2.1" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.907+0000"),
+    "updatedAt" : ISODate("2024-10-29T07:21:20.244+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2e4"),
+    "name" : "Alien Artifacts Rare",
+    "label" : "no data need to create",
+    "value" : "GFAAR",
+    "decimal" : 18,
+    "address" : "0xf5a7795001ec343172cdf52668ade8d6b285a11c",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "1.0" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.907+0000"),
+    "updatedAt" : ISODate("2024-11-04T12:02:36.392+0000")
+}
+{
+    "_id" : ObjectId("669641c2b46da195ac122c97"),
+    "name" : "Galactic Finance",
+    "label" : "GALFI",
+    "value" : "GALFI",
+    "decimal" : 18,
+    "address" : "0x3C47a16A695c9372A441924A526B9e502968F5f6",
+    "valueofGalfi" : { "$numberDecimal" : "1" },
+    "circulateCurrency" : { "$numberDecimal" : "1307478813863.0" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : "2024-06-10T05:14:11.901+0000",
+    "updatedAt" : ISODate("2024-11-05T12:03:46.684+0000")
+}
+{
+    "_id" : ObjectId("66d59620ea84743da450762b"),
+    "name" : "ETH",
+    "label" : "ETH",
+    "value" : "ETH",
+    "decimal" : 18,
+    "address" : "0x000000000000000000000000000000000000dead",
+    "valueofGalfi" : { "$numberDecimal" : "5" },
+    "circulateCurrency" : { "$numberDecimal" : "1550510453.609999942779541" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.904+0000"),
+    "updatedAt" : ISODate("2024-09-02T04:12:23.353+0000")
+}
+{
+    "_id" : ObjectId("66d98dfbbfe85919d8884f37"),
+    "name" : "MATIC",
+    "label" : "MATIC",
+    "value" : "MATIC",
+    "decimal" : 18,
+    "address" : "0x000000000000000000000000000000000000dead",
+    "valueofGalfi" : { "$numberDecimal" : "0" },
+    "circulateCurrency" : { "$numberDecimal" : "0" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0
+}
+
+above is old contract created by kamesh
+--------------------------------------------------------------------------------
+---> eth changed the contract with veeramani
+
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2d7"),
+    "name" : "Minerals",
+    "label" : "GFMNR",
+    "value" : "GFMNR",
+    "decimal" : 18,
+    "address" : "0x4224ae0b79c7c35ce57f435bc145acf2d0e5d405",
+    "valueofGalfi" : { "$numberDecimal" : "1" },
+    "circulateCurrency" : { "$numberDecimal" : "654472854602.0" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.901+0000"),
+    "updatedAt" : ISODate("2024-11-05T12:03:46.684+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2d8"),
+    "name" : "Ore",
+    "label" : "GFORE",
+    "value" : "GFORE",
+    "decimal" : 18,
+    "address" : "0x9799a876ae2929c47e3f65cb3769d3098ec82066",
+    "valueofGalfi" : { "$numberDecimal" : "2" },
+    "circulateCurrency" : { "$numberDecimal" : "654471797466.95000762939453034" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.903+0000"),
+    "updatedAt" : ISODate("2024-11-05T12:03:46.684+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2d9"),
+    "name" : "Hyper",
+    "label" : "HYPER",
+    "value" : "HYPER",
+    "decimal" : 18,
+    "address" : "0xbdcf5110997d2676c92cb4fea929d25992cc9606",
+    "valueofGalfi" : { "$numberDecimal" : "3" },
+    "circulateCurrency" : { "$numberDecimal" : "8067289298.6533333333227362" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.903+0000"),
+    "updatedAt" : ISODate("2024-11-05T00:01:07.165+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2da"),
+    "name" : "Amrita",
+    "label" : "AMRIT",
+    "value" : "AMRIT",
+    "decimal" : 18,
+    "address" : "0x4f69ee55087197c9f2d790829186036e37771061",
+    "valueofGalfi" : { "$numberDecimal" : "5" },
+    "circulateCurrency" : { "$numberDecimal" : "1550606797.609999942779541" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.904+0000"),
+    "updatedAt" : ISODate("2024-11-05T00:01:07.165+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2db"),
+    "name" : "Tetra",
+    "label" : "TETRA",
+    "value" : "TETRA",
+    "decimal" : 18,
+    "address" : "0x984a428950a6bf74e822c9e58bb072115d326428",
+    "valueofGalfi" : { "$numberDecimal" : "6" },
+    "circulateCurrency" : { "$numberDecimal" : "1550409882.0" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.904+0000"),
+    "updatedAt" : ISODate("2024-11-05T00:01:07.165+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2dc"),
+    "name" : "Forces",
+    "label" : "GFRCE",
+    "value" : "GFRCE",
+    "decimal" : 18,
+    "address" : "0xcea1aff2dcf944609f0b4af9783d4e1d30e5200f",
+    "valueofGalfi" : { "$numberDecimal" : "7" },
+    "circulateCurrency" : { "$numberDecimal" : "144.85714285714286" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.904+0000"),
+    "updatedAt" : ISODate("2024-11-04T10:40:46.581+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2dd"),
+    "name" : "FOOD",
+    "label" : "GFOOD",
+    "value" : "GFOOD",
+    "decimal" : 18,
+    "address" : "0x66a480569ea6c11d24b8125a5954b554a5829d32",
+    "valueofGalfi" : { "$numberDecimal" : "8" },
+    "circulateCurrency" : { "$numberDecimal" : "3102.5" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.905+0000"),
+    "updatedAt" : ISODate("2024-11-05T12:03:46.684+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2de"),
+    "name" : "Xenobiologicals",
+    "label" : "XENOS",
+    "value" : "XENOS",
+    "decimal" : 18,
+    "address" : "0xdf2dd3125f92c3a4c9c3b116b63a90f1757a385e",
+    "valueofGalfi" : { "$numberDecimal" : "9" },
+    "circulateCurrency" : { "$numberDecimal" : "4" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.905+0000"),
+    "updatedAt" : ISODate("2024-11-04T12:09:55.904+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2df"),
+    "name" : "Components",
+    "label" : "GFCMP",
+    "value" : "GFCMP",
+    "decimal" : 18,
+    "address" : "0xedace6bd1f69230e6eb03c882aa55b33062d1ea0",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "104" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.905+0000"),
+    "updatedAt" : ISODate("2024-11-04T10:40:08.052+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2e0"),
+    "name" : "NRG",
+    "label" : "GFNRG",
+    "value" : "GFNRG",
+    "decimal" : 18,
+    "address" : "0x7382e3dcd1116ee8d6372a7b66a077ed9b281d9f",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "2385" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.906+0000"),
+    "updatedAt" : ISODate("2024-11-05T12:03:46.684+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2e1"),
+    "name" : "Exotics",
+    "label" : "GFEXO",
+    "value" : "GFEXO",
+    "decimal" : 18,
+    "address" : "0x5645ffce43b480bdda8ed57288a09e96d098d618",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "22" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.906+0000"),
+    "updatedAt" : ISODate("2024-11-04T10:40:46.581+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2e2"),
+    "name" : "Alien Artifacts Common",
+    "label" : "GFAAC",
+    "value" : "GFAAC",
+    "decimal" : 18,
+    "address" : "0x7b02c2e800a1d125483988963366522bf87a927e",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "68.80000000000000100" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.906+0000"),
+    "updatedAt" : ISODate("2024-11-05T12:03:40.555+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2e3"),
+    "name" : "Alien Artifacts Ascendant",
+    "label" : "GFAAA",
+    "value" : "GFAAA",
+    "decimal" : 18,
+    "address" : "0xacfe811ff3dd651993c7ebd6b7f9623ba0cc62cc",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "2.1" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.907+0000"),
+    "updatedAt" : ISODate("2024-10-29T07:21:20.244+0000")
+}
+{
+    "_id" : ObjectId("66668ba3f8c70fd7c0cfe2e4"),
+    "name" : "Alien Artifacts Rare",
+    "label" : "no data need to create",
+    "value" : "GFAAR",
+    "decimal" : 18,
+    "address" : "0xec43a1d13e5516f2a8223051cbd889fcb0b53c3d",
+    "valueofGalfi" : { "$numberDecimal" : "10" },
+    "circulateCurrency" : { "$numberDecimal" : "1.0" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.907+0000"),
+    "updatedAt" : ISODate("2024-11-04T12:02:36.392+0000")
+}
+{
+    "_id" : ObjectId("669641c2b46da195ac122c97"),
+    "name" : "Galactic Finance",
+    "label" : "GALFI",
+    "value" : "GALFI",
+    "decimal" : 18,
+    "address" : "0x11bfe96d08c5048975f6bd60da59354ea1e85add",
+    "valueofGalfi" : { "$numberDecimal" : "1" },
+    "circulateCurrency" : { "$numberDecimal" : "1307478813863.0" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : "2024-06-10T05:14:11.901+0000",
+    "updatedAt" : ISODate("2024-11-05T12:03:46.684+0000")
+}
+{
+    "_id" : ObjectId("66d59620ea84743da450762b"),
+    "name" : "ETH",
+    "label" : "ETH",
+    "value" : "ETH",
+    "decimal" : 18,
+    "address" : "0x000000000000000000000000000000000000dead",
+    "valueofGalfi" : { "$numberDecimal" : "5" },
+    "circulateCurrency" : { "$numberDecimal" : "1550510453.609999942779541" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0,
+    "createdAt" : ISODate("2024-06-10T05:14:11.904+0000"),
+    "updatedAt" : ISODate("2024-09-02T04:12:23.353+0000")
+}
+{
+    "_id" : ObjectId("66d98dfbbfe85919d8884f37"),
+    "name" : "MATIC",
+    "label" : "MATIC",
+    "value" : "MATIC",
+    "decimal" : 18,
+    "address" : "0x000000000000000000000000000000000000dead",
+    "valueofGalfi" : { "$numberDecimal" : "0" },
+    "circulateCurrency" : { "$numberDecimal" : "0" },
+    "convertions" : [
+
+    ],
+    "isActive" : false,
+    "isWithdraw" : false,
+    "isDeposit" : false,
+    "__v" : 0
+}
+
+ , "HYPER" , "AMRIT" , "TETRA"]
+
+[   "0xbdcf5110997d2676c92cb4fea929d25992cc9606" , "0x4f69ee55087197c9f2d790829186036e37771061" , "0x984a428950a6bf74e822c9e58bb072115d326428"]

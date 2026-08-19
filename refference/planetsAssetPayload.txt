@@ -1,0 +1,102 @@
+
+planet :
+common : 2500
+uncommon : 1500
+rare : 1000
+
+
+
+
+{
+    "from": 1,
+    "to": 1000,
+    "customPrefixName": "Rare Planet",
+    "description": "Rare planets represent the premium tier of the 5K collection — designed for advanced expansion, higher efficiency, and superior strategic potential. Land Build Slots: 20, Orbit Build Slots: 3, Lagrange Space Slots: 3, Sun (Megastructure) Slots: 2, GFMNR Slots: 2, GFORE Slots: 2, AMRITA Slots: 1, TETRA Slots: 1, Specialist Slots: 3. Rare planets provide the highest flexibility and resource potential, making them ideal for late-game progression and large-scale construction strategies.",
+    "collectionId": "667e91d91ea449904060390f",
+    "type": "planet",
+    "rarity": "rare",
+    "coinName": "usd",
+    "defaultNftPrice": 129 ,
+    "hexId" : 1
+}
+
+
+[
+  {
+    "from": 1,
+    "to": 2500,
+    "customPrefixName": "Common Planet",
+    "description": "Common planets are the foundational tier of the 5K planet collection. Each Common planet offers balanced opportunities for early-stage development and resource generation. Land Build Slots: 10, Orbit Build Slots: 1, Lagrange Space Slots: 1, Sun (Megastructure) Slots: 1, GFMNR Slots: 1, GFORE Slots: 1, AMRITA Slots: 0, TETRA Slots: 0, Specialist Slots: 3. Common planets serve as great starting points for players to begin constructing resource facilities and experimenting with planetary management.",
+    "collectionId": "667e91d91ea449904060390f",
+    "type": "planet",
+    "rarity": "common",
+    "coinName": "usd",
+    "defaultNftPrice": 78,
+    "hexId" : 2501
+
+  },
+  {
+    "from": 1,
+    "to": 1500,
+    "customPrefixName": "Uncommon Planet",
+    "description": "Uncommon planets introduce greater expansion capabilities and additional resource-building opportunities, offering a more strategic advantage for players. Land Build Slots: 15, Orbit Build Slots: 2, Lagrange Space Slots: 2, Sun (Megastructure) Slots: 1, GFMNR Slots: 1, GFORE Slots: 1, AMRITA Slots: 0, TETRA Slots: 1, Specialist Slots: 3. Uncommon planets allow for a stronger infrastructure, enabling players to scale their resource operations faster and build more complex systems.",
+    "collectionId": "667e91d91ea449904060390f",
+    "type": "planet",
+    "rarity": "uncommon",
+    "coinName": "usd",
+    "defaultNftPrice": 99,
+    "hexId" : 1001
+  },
+  {
+    "from": 1,
+    "to": 1000,
+    "customPrefixName": "Rare Planet",
+    "description": "Rare planets represent the premium tier of the 5K collection — designed for advanced expansion, higher efficiency, and superior strategic potential. Land Build Slots: 20, Orbit Build Slots: 3, Lagrange Space Slots: 3, Sun (Megastructure) Slots: 2, GFMNR Slots: 2, GFORE Slots: 2, AMRITA Slots: 1, TETRA Slots: 1, Specialist Slots: 3. Rare planets provide the highest flexibility and resource potential, making them ideal for late-game progression and large-scale construction strategies.",
+    "collectionId": "667e91d91ea449904060390f",
+    "type": "planet",
+    "rarity": "rare",
+    "coinName": "usd",
+    "defaultNftPrice": 129,
+    hexId : 1
+  }
+]
+
+[
+  {
+    "from": 1,
+    "to": 2500,
+    "customPrefixName": "Common Asteroid",
+  "description": "Common asteroids are entry-level mining bodies in the Asteroid collection — perfect for foundational resource extraction and basic orbital operations. Land Build Slots: 2, Orbit Build Slots: 1, Lagrange Space Slots: 1, Sun (Megastructure) Slots: 0, GFMNR Slots: 0, GFORE Slots: 1, AMRITA Slots: 0, TETRA Slots: 0, Specialist Slots: 3. Common asteroids are cost-effective starting points for resource gathering and early trade setups.",
+    "collectionId": "667e91d91ea449904060390f",
+    "type": "astroid",
+    "rarity": "common",
+    "coinName": "usd",
+    "defaultNftPrice": 19,
+    "hexId" : 5001
+
+  },
+  {
+    "from": 1,
+    "to": 1500,
+    "customPrefixName": "Uncommon Asteroid",
+  "description": "Uncommon asteroids represent upgraded mining hubs within the Asteroid collection — offering expanded development capabilities and stronger material yields. Land Build Slots: 4, Orbit Build Slots: 1, Lagrange Space Slots: 1, Sun (Megastructure) Slots: 0, GFMNR Slots: 0, GFORE Slots: 1, AMRITA Slots: 0, TETRA Slots: 0, Specialist Slots: 3. These asteroids balance affordability with improved efficiency for mid-level industrial operations.",
+    "collectionId": "667e91d91ea449904060390f",
+    "type": "astroid",
+    "rarity": "uncommon",
+    "coinName": "usd",
+    "defaultNftPrice": 35,
+    "hexId" : 7501
+  },
+  {
+    "from": 1,
+    "to": 1000,
+    "customPrefixName": "Rare Asteroid",
+    "description": "Rare asteroids stand as elite mining bodies of the Asteroid collection — equipped for advanced industrialization and resource optimization. Land Build Slots: 6, Orbit Build Slots: 1, Lagrange Space Slots: 1, Sun (Megastructure) Slots: 1, GFMNR Slots: 1, GFORE Slots: 1, AMRITA Slots: 0, TETRA Slots: 0, Specialist Slots: 3. Rare asteroids deliver the highest yield potential, making them essential for late-stage extraction and orbital construction networks.",
+    "collectionId": "667e91d91ea449904060390f",
+    "type": "astroid",
+    "rarity": "rare",
+    "coinName": "usd",
+    "defaultNftPrice": 48,
+    hexId : 9001
+  }
+]

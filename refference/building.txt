@@ -1,0 +1,107 @@
+{
+    "_id" : ObjectId("678a266fb0c5882057d148b1"),
+    "assetId" : ObjectId("66ced5b898aaa0f5ffff29f5"),
+    "level" : 2,
+    "asset_Name" : "Colony HQ",
+    "asset_Symbol" : "colonyhq",
+    "reward" : [
+        {
+            "label" : "GALFI",
+            "amount" : 0.75,
+            "_id" : ObjectId("66ced5b898aaa0f5ffff29f8")
+        },
+        {
+            "label" : "GFMNR",
+            "amount" : 1.5,
+            "_id" : ObjectId("66ced5b898aaa0f5ffff29f9")
+        },
+        {
+            "label" : "GFORE",
+            "amount" : 1.5,
+            "_id" : ObjectId("66ced5b898aaa0f5ffff29fa")
+        },
+        {
+            "label" : "GFNRG",
+            "amount" : 1.5,
+            "_id" : ObjectId("66ced5b898aaa0f5ffff29fb")
+        },
+        {
+            "label" : "GFOOD",
+            "amount" : 1.5,
+            "_id" : ObjectId("66ced5b898aaa0f5ffff29fc")
+        }
+    ],
+    "image_url" : "building/colonyHQ/2.png",
+    "image" : "building/colonyHQ/2.png",
+    "description" : null,
+    "specialConditions" : null,
+    "Blocks" : 0,
+    "cost" : [
+
+    ],
+    "AttackPoints" : 0,
+    "HullPoints" : 0,
+    "optionalCost" : [
+
+    ],
+    "dailyConsumption" : [
+
+    ],
+    "build_time_min" : 0,
+    "isActive" : true,
+    "__v" : 0
+}
+
+{
+    "_id" : ObjectId("678e34d6161d721bbc1ed8c4"),
+    "assetId" : ObjectId("66ced8c43b9b96ea563d230f"),
+    "level" : 3,
+    "asset_Name" : "Mineral Mine",
+    "asset_Symbol" : "mineralmine",
+    "reward" : [
+        {
+            "label" : "GFMNR",
+            "amount" : 11.25,
+            "_id" : ObjectId("66ced8c43b9b96ea563d2312")
+        }
+    ],
+    "image_url" : "building/Mineral_Mine/3.png",
+    "image" : "building/Mineral_Mine/3.png",
+    "description" : null,
+    "specialConditions" : "Must be built on mineral deposit",
+    "Blocks" : 0,
+    "cost" : [
+        {
+            "label" : "GFORE",
+            "amount" : 500,
+            "_id" : ObjectId("66ced8c43b9b96ea563d2313")
+        }
+    ],
+    "AttackPoints" : 0,
+    "HullPoints" : 0,
+    "optionalCost" : [
+        {
+            "label" : "GALFI",
+            "amount" : 100,
+            "_id" : ObjectId("66ced8c43b9b96ea563d2314")
+        }
+    ],
+    "dailyConsumption" : [
+        {
+            "label" : "GFNRG",
+            "amount" : 2.25,
+            "_id" : ObjectId("66ced8c43b9b96ea563d2315")
+        },
+        {
+            "label" : "GFOOD",
+            "amount" : 2.25,
+            "_id" : ObjectId("66ced8c43b9b96ea563d2316")
+        }
+    ],
+    "build_time_min" : 2,
+    "isActive" : true,
+    "__v" : 0
+}
+.................................................
+
+

@@ -1,0 +1,104 @@
+[
+  {
+    "address": "0x11Bfe96D08C5048975f6bd60Da59354ea1e85Add",
+    "token": "GALFI"
+  },
+  {
+    "address": "0x4224AE0B79C7C35cE57F435bc145AcF2D0E5d405",
+    "token": "GFMNR"
+  },
+  {
+    "address": "0x9799a876ae2929C47E3f65CB3769D3098Ec82066",
+    "token": "GFORE"
+  },
+  {
+    "address": "0x4F69Ee55087197C9f2D790829186036e37771061",
+    "token": "AMRIT"
+  },
+  {
+    "address": "0xbDCF5110997d2676c92CB4fEA929d25992cC9606",
+    "token": "HYPER"
+  },
+  {
+    "address": "0x984A428950A6bF74e822C9e58Bb072115d326428",
+    "token": "TETRA"
+  },
+  {
+    "address": "0xCEa1AFF2dCF944609F0B4af9783d4E1d30e5200F",
+    "token": "GFRCE"
+  },
+  {
+    "address": "0x66A480569ea6c11D24B8125a5954B554a5829d32",
+    "token": "GFOOD"
+  },
+  {
+    "address": "0xDf2dD3125f92C3a4c9c3B116B63a90f1757A385e",
+    "token": "XENOS"
+  },
+  {
+    "address": "0xedAcE6bd1f69230e6eb03c882AA55B33062D1Ea0",
+    "token": "GFCMP"
+  },
+  {
+    "address": "0x7382e3dCd1116eE8D6372a7b66A077eD9B281D9F",
+    "token": "GFNRG"
+  },
+  {
+    "address": "0x5645ffcE43b480bdDa8ed57288A09e96D098D618",
+    "token": "GFEXO"
+  },
+  {
+    "address": "0x7B02c2e800A1d125483988963366522bf87A927E",
+    "token": "GFAAC"
+  },
+  {
+    "address": "0xec43A1d13E5516F2a8223051cBd889FCB0b53C3D",
+    "token": "GFAAR"
+  },
+  {
+    "address": "0xAcfE811ff3dd651993c7EBd6B7F9623bA0CC62CC",
+    "token": "GFAAA"
+  }
+]
+
+
+
+
+[
+  "GALFI",
+  "GFMNR",
+  "GFORE",
+  "AMRIT",
+  "HYPER",
+  "TETRA",
+  "GFRCE",
+  "GFOOD",
+  "XENOS",
+  "GFCMP",
+  "GFNRG",
+  "GFEXO",
+  "GFAAC",
+  "GFAAR",
+  "GFAAA"
+]
+
+
+
+[
+  "0x11Bfe96D08C5048975f6bd60Da59354ea1e85Add",
+  "0x4224AE0B79C7C35cE57F435bc145AcF2D0E5d405",
+  "0x9799a876ae2929C47E3f65CB3769D3098Ec82066",
+  "0x4F69Ee55087197C9f2D790829186036e37771061",
+  "0xbDCF5110997d2676c92CB4fEA929d25992cC9606",
+  "0x984A428950A6bF74e822C9e58Bb072115d326428",
+  "0xCEa1AFF2dCF944609F0B4af9783d4E1d30e5200F",
+  "0x66A480569ea6c11D24B8125a5954B554a5829d32",
+  "0xDf2dD3125f92C3a4c9c3B116B63a90f1757A385e",
+  "0xedAcE6bd1f69230e6eb03c882AA55B33062D1Ea0",
+  "0x7382e3dCd1116eE8D6372a7b66A077eD9B281D9F",
+  "0x5645ffcE43b480bdDa8ed57288A09e96D098D618",
+  "0x7B02c2e800A1d125483988963366522bf87A927E",
+  "0xec43A1d13E5516F2a8223051cBd889FCB0b53C3D",
+  "0xAcfE811ff3dd651993c7EBd6B7F9623bA0CC62CC"
+]
+

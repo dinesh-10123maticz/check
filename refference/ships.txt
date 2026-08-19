@@ -1,0 +1,1447 @@
+
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea0664"
+  },
+  "shipName": "Small Fighter",
+  "description": "",
+  "image": "ships/small_fighter.png",
+  "image_url": "ships/small_fighter.png",
+  "nftSlots": 3,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 500
+    },
+    {
+      "label": "GFMNR",
+      "amount": 500
+    },
+    {
+      "label": "GFEXO",
+      "amount": 50
+    },
+    {
+      "label": "TETRA",
+      "amount": 50
+    },
+    {
+      "label": "GFCMP",
+      "amount": 100
+    },
+    {
+      "label": "GFAAC",
+      "amount": 3
+    },
+    {
+      "label": "GFAAR",
+      "amount": 1
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 10
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "combat",
+  "hullPoints": 5,
+  "attackPoints": 5,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+,
+
+//changes
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea0665"
+  },
+  "shipName": "Medium Fighter",
+  "description": "",
+  "image": "ships/medium_fighter_ship.png",
+  "image_url": "ships/medium_fighter_ship.png",
+  "nftSlots": 6,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 1500
+    },
+    {
+      "label": "GFMNR",
+      "amount": 1500
+    },
+    {
+      "label": "GFEXO",
+      "amount": 100
+    },
+    {
+      "label": "TETRA",
+      "amount": 100
+    },
+    {
+      "label": "GFCMP",
+      "amount": 500
+    },
+        {
+      "label": "GFAAC",
+      "amount": 15
+    },
+    {
+      "label": "GFAAR",
+      "amount": 5
+    },
+    {
+      "label": "GFAAA",
+      "amount": 1
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 20
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "combat",
+  "hullPoints": 10,
+  "attackPoints": 10,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+,
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea0666"
+  },
+  "shipName": "Large Fighter",
+  "description": "",
+  "image": "ships/large_fighter_ship.png",
+  "image_url": "ships/large_fighter_ship.png",
+  "nftSlots": 9,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 5000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 5000
+    },
+    {
+      "label": "GFEXO",
+      "amount": 500
+    },
+    {
+      "label": "TETRA",
+      "amount": 500
+    },
+    {
+      "label": "GFCMP",
+      "amount": 1500
+    },
+    {
+      "label": "GFAAC",
+      "amount": 30
+    },
+    {
+      "label": "GFAAR",
+      "amount": 10
+    },
+    {
+      "label": "GFAAA",
+      "amount": 5
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 40
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "combat",
+  "hullPoints": 20,
+  "attackPoints": 20,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea0667"
+  },
+  "shipName": "Capital Class Fighter",
+  "description": "",
+  "image": "ships/capital_class_fighter.png",
+  "image_url": "ships/capital_class_fighter.png",
+  "nftSlots": 20,
+  "extraReward": 4,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 15000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 15000
+    },
+        {
+      "label": "GFEXO",
+      "amount": 2000
+    },
+
+    {
+      "label": "TETRA",
+      "amount": 2000
+    },
+    {
+      "label": "GFCMP",
+      "amount": 10000
+    },
+    {
+      "label": "AMRIT",
+      "amount": 1000
+    },
+        {
+      "label": "GFAAC",
+      "amount": 75
+    },
+    {
+      "label": "GFAAR",
+      "amount": 25
+    },
+    {
+      "label": "GFAAA",
+      "amount": 10
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 200
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "+4 on combat missions",
+  "allowMission": "combat",
+  "hullPoints": 100,
+  "attackPoints": 100,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+},
+
+//changes
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea0668"
+  },
+  "shipName": "Small Explorer",
+  "description": "",
+  "image": "ships/small_explorer.png",
+  "image_url": "ships/small_explorer.png",
+  "nftSlots": 3,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 500
+    },
+    {
+      "label": "GFMNR",
+      "amount": 500
+    },
+      {
+      "label": "GFEXO",
+      "amount": 50
+    },
+    {
+      "label": "TETRA",
+      "amount": 50
+    },
+    {
+      "label": "GFCMP",
+      "amount": 100
+    },
+    {
+      "label": "GFAAC",
+      "amount": 3
+    },
+    {
+      "label": "GFAAR",
+      "amount": 1
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 5
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "explore",
+  "hullPoints": 5,
+  "attackPoints": 3,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea0669"
+  },
+  "shipName": "Medium Explorer",
+  "description": "",
+  "image": "ships/medium_explorer.png",
+  "image_url": "ships/medium_explorer.png",
+  "nftSlots": 6,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 1500
+    },
+    {
+      "label": "GFMNR",
+      "amount": 1500
+    },
+        {
+      "label": "GFEXO",
+      "amount": 100
+    },
+
+    {
+      "label": "TETRA",
+      "amount": 100
+    },
+    {
+      "label": "GFCMP",
+      "amount": 500
+    },
+           {
+      "label": "GFAAC",
+      "amount": 15
+    }
+    {
+      "label": "GFAAR",
+      "amount": 5
+    },
+    {
+      "label": "GFAAA",
+      "amount": 1
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 10
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "explore",
+  "hullPoints": 10,
+  "attackPoints": 6,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea066a"
+  },
+  "shipName": "Large Explorer",
+  "description": "",
+  "image": "ships/large_explorer.png",
+  "image_url": "ships/large_explorer.png",
+  "nftSlots": 9,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 5000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 5000
+    },
+       {
+      "label": "GFEXO",
+      "amount": 500
+    },
+    {
+      "label": "TETRA",
+      "amount": 500
+    },
+    {
+      "label": "GFCMP",
+      "amount": 1500
+    },
+        {
+      "label": "GFAAC",
+      "amount": 30
+    },
+    {
+      "label": "GFAAR",
+      "amount": 10
+    },
+    {
+      "label": "GFAAA",
+      "amount": 5
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 20
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "explore",
+  "hullPoints": 20,
+  "attackPoints": 9,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea066b"
+  },
+  "shipName": "Capital Class Explorer",
+  "description": "",
+  "image": "ships/capital_class_explorer.png",
+  "image_url": "ships/capital_class_explorer.png",
+  "nftSlots": 20,
+  "extraReward": 4,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 15000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 15000
+    },
+        {
+      "label": "GFEXO",
+      "amount": 2000
+    },
+    {
+      "label": "TETRA",
+      "amount": 2000
+    },
+    {
+      "label": "GFCMP",
+      "amount": 10000
+    },
+    {
+      "label": "AMRIT",
+      "amount": 1000
+    },
+        {
+      "label": "GFAAC",
+      "amount": 75
+    },
+    {
+      "label": "GFAAR",
+      "amount": 25
+    },
+    {
+      "label": "GFAAA",
+      "amount": 10
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 100
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "+4 on exploration missions",
+  "allowMission": "explore",
+  "hullPoints": 100,
+  "attackPoints": 40,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+//changes
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea066c"
+  },
+  "shipName": "Small Miner",
+  "description": "",
+  "image": "ships/small_miner.png",
+  "image_url": "ships/small_miner.png",
+  "nftSlots": 3,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 500
+    },
+    {
+      "label": "GFMNR",
+      "amount": 500
+    },
+        {
+      "label": "GFEXO",
+      "amount": 50
+    },
+    {
+      "label": "TETRA",
+      "amount": 50
+    },
+    {
+      "label": "GFCMP",
+      "amount": 100
+    },
+    {
+      "label": "GFAAC",
+      "amount": 3
+    },
+    {
+      "label": "GFAAR",
+      "amount": 1
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 5
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "mining",
+  "hullPoints": 5,
+  "attackPoints": 3,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+
+//changes
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea066d"
+  },
+  "shipName": "Medium Miner",
+  "description": "",
+  "image": "ships/medium_miner.png",
+  "image_url": "ships/medium_miner.png",
+  "nftSlots": 6,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 1500
+    },
+    {
+      "label": "GFMNR",
+      "amount": 1500
+    },
+        {
+      "label": "GFEXO",
+      "amount": 100
+    },
+    {
+      "label": "TETRA",
+      "amount": 100
+    },
+    {
+      "label": "GFCMP",
+      "amount": 500
+    },
+       {
+      "label": "GFAAC",
+      "amount": 15
+    }
+    {
+      "label": "GFAAR",
+      "amount": 5
+    },
+    {
+      "label": "GFAAA",
+      "amount": 1
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 10
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "mining",
+  "hullPoints": 10,
+  "attackPoints": 6,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+
+//changes
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea066e"
+  },
+  "shipName": "Large Miner",
+  "description": "",
+  "image": "ships/large_miner.png",
+  "image_url": "ships/large_miner.png",
+  "nftSlots": 9,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 5000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 5000
+    },
+       {
+      "label": "GFEXO",
+      "amount": 500
+    },
+    {
+      "label": "TETRA",
+      "amount": 500
+    },
+    {
+      "label": "GFCMP",
+      "amount": 1500
+    },
+      {
+      "label": "GFAAC",
+      "amount": 30
+    },
+    {
+      "label": "GFAAR",
+      "amount": 10
+    },
+    {
+      "label": "GFAAA",
+      "amount": 5
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 20
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "mining",
+  "hullPoints": 20,
+  "attackPoints": 9,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+//changes
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea066f"
+  },
+  "shipName": "Capital Class Miner",
+  "description": "",
+  "image": "ships/capital_class_miner.png",
+  "image_url": "ships/capital_class_miner.png",
+  "nftSlots": 20,
+  "extraReward": 4,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 15000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 15000
+    },
+        {
+      "label": "GFEXO",
+      "amount": 2000
+    },
+    {
+      "label": "TETRA",
+      "amount": 2000
+    },
+    {
+      "label": "GFCMP",
+      "amount": 10000
+    },
+    {
+      "label": "AMRIT",
+      "amount": 1000
+    },
+       {
+      "label": "GFAAC",
+      "amount": 75
+    },
+    {
+      "label": "GFAAR",
+      "amount": 25
+    },
+    {
+      "label": "GFAAA",
+      "amount": 10
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 100
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "+4 on mining missions",
+  "allowMission": "mining",
+  "hullPoints": 100,
+  "attackPoints": 40,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+//changes
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea0670"
+  },
+  "shipName": "Small Pleasure Yacht",
+  "description": "",
+  "image": "ships/small_pleasure_yacht.png",
+  "image_url": "ships/small_pleasure_yacht.png",
+  "nftSlots": 3,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 500
+    },
+    {
+      "label": "GFMNR",
+      "amount": 500
+    },
+            {
+      "label": "GFEXO",
+      "amount": 50
+    },
+    {
+      "label": "TETRA",
+      "amount": 50
+    },
+    {
+      "label": "GFCMP",
+      "amount": 100
+    },
+    {
+      "label": "GFAAC",
+      "amount": 3
+    },
+    {
+      "label": "GFAAR",
+      "amount": 1
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 5
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "social",
+  "hullPoints": 5,
+  "attackPoints": 3,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+//changes
+{
+  "_id": {
+    "$oid": "667409060aa4dfdfe1ea0671"
+  },
+  "shipName": "Medium Pleasure Yacht",
+  "description": "",
+  "image": "ships/medium_pleasure_yacht.png",
+  "image_url": "ships/medium_pleasure_yacht.png",
+  "nftSlots": 6,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 1500
+    },
+    {
+      "label": "GFMNR",
+      "amount": 1500
+    },
+        {
+      "label": "GFEXO",
+      "amount": 100
+    },
+    {
+      "label": "TETRA",
+      "amount": 100
+    },
+    {
+      "label": "GFCMP",
+      "amount": 500
+    },
+        {
+      "label": "GFAAC",
+      "amount": 15
+    },
+    {
+      "label": "GFAAR",
+      "amount": 5
+    },
+    {
+      "label": "GFAAA",
+      "amount": 1
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 10
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "social",
+  "hullPoints": 10,
+  "attackPoints": 6,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+
+//changes
+{
+  "_id": {
+    "$oid": "677b6f1272c0e36de2b47fd6"
+  },
+  "shipName": "LARGE PLEASURE YACHT",
+  "description": "",
+  "image": "ships/large_pleasure_yacht.png",
+  "image_url": "ships/large_pleasure_yacht.png",
+  "nftSlots": 9,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 5000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 5000
+    },
+    {
+      "label": "GFEXO",
+      "amount": 500
+    },
+    {
+      "label": "TETRA",
+      "amount": 500
+    },
+    {
+      "label": "GFCMP",
+      "amount": 1500
+    },
+    {
+      "label": "GFAAC",
+      "amount": 30
+    },
+    {
+      "label": "GFAAR",
+      "amount": 10
+    },
+    {
+      "label": "GFAAA",
+      "amount": 5
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 20
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "social",
+  "hullPoints": 20,
+  "attackPoints": 9,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+//changes
+{
+  "_id": {
+    "$oid": "677b6f0872c0e36de2b47fd5"
+  },
+  "shipName": "CAPITAL CLASS PLEASURE YACHT",
+  "description": "",
+  "image": "ships/large_mech.png",
+  "image_url": "ships/large_mech.png",
+  "nftSlots": 20,
+  "extraReward": 4,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 15000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 15000
+    },
+    {
+      "label": "GFEXO",
+      "amount": 2000
+    },
+    {
+      "label": "TETRA",
+      "amount": 2000
+    },
+    {
+      "label": "GFCMP",
+      "amount": 10000
+    },
+    {
+      "label": "AMRIT",
+      "amount": 1000
+    },
+    {
+      "label": "GFAAC",
+      "amount": 75
+    },
+    {
+      "label": "GFAAR",
+      "amount": 25
+    },
+    {
+      "label": "GFAAA",
+      "amount": 10
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 100
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "+4 on social missions",
+  "allowMission": "social",
+  "hullPoints": 100,
+  "attackPoints": 40,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+//changes
+{
+  "_id": {
+    "$oid": "677b6b1872c0e36de2b47fd1"
+  },
+  "shipName": "SMALL MECH",
+  "description": "",
+  "image": "ships/small_mech.png",
+  "image_url": "ships/small_mech.png",
+  "nftSlots": 3,
+  "extraReward": 1,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 750
+    },
+    {
+      "label": "GFMNR",
+      "amount": 750
+    },
+    {
+      "label": "GFEXO",
+      "amount": 100
+    },
+    {
+      "label": "TETRA",
+      "amount": 100
+    },
+    {
+      "label": "GFCMP",
+      "amount": 150
+    },
+    {
+      "label": "AMRIT",
+      "amount": 100
+    },
+    {
+      "label": "GFAAC",
+      "amount": 5
+    },
+    {
+      "label": "GFAAR",
+      "amount": 2
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 10
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "1 ON ALL MISSION TYPES",
+  "allowMission": "all",
+  "hullPoints": 5,
+  "attackPoints": 5,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+
+//changes
+{
+  "_id": {
+    "$oid": "677b6b2772c0e36de2b47fd2"
+  },
+  "shipName": "MEDIUM MECH",
+  "description": "",
+  "image": "ships/medium_mech.png",
+  "image_url": "ships/medium_mech.png",
+  "nftSlots": 6,
+  "extraReward": 2,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 2000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 2000
+    },
+    {
+      "label": "GFEXO",
+      "amount": 150
+    },
+    {
+      "label": "TETRA",
+      "amount": 150
+    },
+    {
+      "label": "GFCMP",
+      "amount": 750
+    },
+    {
+      "label": "AMRIT",
+      "amount": 300
+    },
+    {
+      "label": "GFAAC",
+      "amount": 28
+    },
+    {
+      "label": "GFAAR",
+      "amount": 10
+    },
+    {
+      "label": "GFAAA",
+      "amount": 3
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 20
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "2 ON ALL MISSION TYPES",
+  "allowMission": "all",
+  "hullPoints": 10,
+  "attackPoints": 10,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+//changes
+{
+  "_id": {
+    "$oid": "677b6b3272c0e36de2b47fd3"
+  },
+  "shipName": "LARGE MECH",
+  "description": "",
+  "image": "ships/large_mech.png",
+  "image_url": "ships/large_mech.png",
+  "nftSlots": 9,
+  "extraReward": 3,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 8000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 8000
+    },
+    {
+      "label": "GFEXO",
+      "amount": 1000
+    },
+    {
+      "label": "TETRA",
+      "amount": 1000
+    },
+    {
+      "label": "GFCMP",
+      "amount": 3000
+    },
+    {
+      "label": "AMRIT",
+      "amount": 600
+    },
+    {
+      "label": "GFAAC",
+      "amount": 55
+    },
+    {
+      "label": "GFAAR",
+      "amount": 20
+    },
+    {
+      "label": "GFAAA",
+      "amount": 10
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 40
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "3 ON ALL MISSION TYPES",
+  "allowMission": "all",
+  "hullPoints": 20,
+  "attackPoints": 20,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+
+//changes
+{
+  "_id": {
+    "$oid": "677b6b0a72c0e36de2b47fd0"
+  },
+  "shipName": "CAPITAL CLASS MECH",
+  "description": "",
+  "image": "ships/capital_class_mech.png",
+  "image_url": "ships/capital_class_mech.png",
+  "nftSlots": 20,
+  "extraReward": 4,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 20000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 20000
+    },
+    {
+      "label": "GFEXO",
+      "amount": 3000
+    },
+    {
+      "label": "TETRA",
+      "amount": 3000
+    },
+    {
+      "label": "GFCMP",
+      "amount": 15000
+    },
+    {
+      "label": "AMRIT",
+      "amount": 2000
+    },
+    {
+      "label": "GFAAC",
+      "amount": 140
+    },
+    {
+      "label": "GFAAR",
+      "amount": 50
+    },
+    {
+      "label": "GFAAA",
+      "amount": 20
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 200
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "4 ON ALL MISSION TYPES ",
+  "allowMission": "all",
+  "hullPoints": 100,
+  "attackPoints": 100,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+
+
+
+{
+  "_id": {
+    "$oid": "677b6efb72c0e36de2b47fd4"
+  },
+  "shipName": "COLONY SHIP",
+  "description": "",
+  "image": "ships/colony_ship.png",
+  "image_url": "ships/colony_ship.png",
+  "nftSlots": 1,
+  "extraReward": 0,
+  "price": [
+    {
+      "label": "GFORE",
+      "amount": 5000
+    },
+    {
+      "label": "GFMNR",
+      "amount": 5000
+    },
+    {
+      "label": "GFCMP",
+      "amount": 100
+    }
+  ],
+  "capacity": [
+    {
+      "label": "GFRCE",
+      "amount": 50
+    }
+  ],
+  "shipType": "galfiship",
+  "specialConditions": "None",
+  "allowMission": "all",
+  "hullPoints": 50,
+  "attackPoints": 20,
+  "collection": {
+    "$oid": "667e91c21ea449904060390a"
+  },
+  "canBuylimit": 0,
+  "createdAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "updatedAt": {
+    "$date": "2024-06-18T00:00:00.000Z"
+  },
+  "__v": 0
+}
+

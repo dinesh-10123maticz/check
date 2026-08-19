@@ -1,0 +1,1313 @@
+colonyhq _lvl_1 : building/1730269961183.png
+"building/colony_hq/1.png",
+ "imageKey": "building/colony_hq/2.png",
+  "imageKey": "building/colony_hq/3.png",
+-------------------------------------------------------------------
+// orbiyal shipyard
+
+
+-------------------------------------------------------
+// minaral mine
+lvl1_  "building/1730270169375.png"
+  "imageKey": "building/mineral_mine/3.png",
+  "imageKey": "building/mineral_mine/2.png",
+  "imageKey": "building/mineral_mine/1.png",
+
+// alien zoo
+
+{
+    "imageKey": "building/1730273004429.png" ,
+    "name": "Alien Zoo",
+    "quote" :
+    {
+    "quote": "We all know interspecies romance is weird",
+    "author": "Tim Burton"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": "Needed to build ships" ,
+    "Blocks": 0,
+    "reward": [
+              {
+            "label" : "GALFI,",
+            "amount" : 0.25
+        },
+           {
+            "label" : "XENOS,,",
+            "amount" : 1
+        },
+              {
+            "label" : "GFOOD",
+            "amount" : 2
+        }
+    ],
+    "cost": [
+      {
+            "label" : "GFORE",
+            "amount" : 500
+        },
+        {
+            "label" : "GFMNR",
+            "amount" : 500
+        },
+        {
+            "label" : "XENOS",
+            "amount" : 100
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 1
+    },
+    {
+        "label" : "GFOOD",
+        "amount" : 1
+    }
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 150
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 12,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "any"
+}
+
+
+
+
+lvl1 : building/1730273004429.png
+lvlv2 : building/1730273719971.png
+lvl3 : building/1730274262275.png
+
+// amrite mine
+{
+    "imageKey": "building/1730277466300.png" ,
+    "name": "Amrita Mine",
+    "quote" :
+    {
+    "quote": "He who controls the spice controls the universe",
+    "author": "Frank Herbert"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": "Needed to build ships" ,
+    "Blocks": 0,
+    "reward": [
+              {
+            "label" : "AMRIT,",
+            "amount" : 1
+        }
+
+    ],
+    "cost": [
+      {
+            "label" : "GFORE",
+            "amount" : 1000
+        },
+        {
+            "label" : "GFMNR",
+            "amount" : 1000
+        },
+        {
+            "label" : "GFAAC",
+            "amount" : 25
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 1
+    }
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 500
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "amrita"
+}
+----------------------------------------------------------------------
+lvl1 : building/1730277466300.png
+lvl2 : building/1730277766682.png
+lvl3 : building/1730277847134.png
+
+
+// astrid minaral
+{
+    "imageKey": "building/1730278040572.png" ,
+    "name": "Asteroid Mineral Mine",
+    "quote" :
+    {
+    "quote": "Only via continuing to probe every nook and cranny of the universe that is accessible to us will we truly build a useful appreciation of our own place in the cosmos."
+
+,
+    "author": "Lawrence M. Krauss"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": "Can only be built on asteroids" ,
+    "Blocks": 0,
+    "reward": [
+              {
+            "label" : "GFMNR",
+            "amount" : 6
+        }
+
+    ],
+    "cost": [
+      {
+            "label" : "GFORE",
+            "amount" : 500
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 1
+    },
+      {
+        "label" : "GFOOD",
+        "amount" : 1
+    }
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 100
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "asteroids"
+}
+
+lvl1 : "building/1730278040572.png"
+lev2 : building/1730278361512.png
+l3 : building/1730278379591.png
+
+// Barracks
+
+1 : "imageKey": "building/barracks/1730695015668.png",
+ "imageKey": "building/barracks/1730695042008.png",
+  "imageKey": "building/barracks/1730695058493.png",
+
+
+//building/componentfactory
+
+ "imageKey": "building/componentfactory/1730695231143.png",
+  "imageKey": "building/componentfactory/1730695247764.png",
+  "imageKey": "building/componentfactory/1730695262958.png",
+
+      "imageKey": "building/componentfactory/1.png",
+   "imageKey": "building/componentfactory/2.png",
+"imageKey":  "building/componentfactory/3.png",
+
+ "assetId": "67286153b493bed78be7afe6",
+{
+    "imageKey": "building/1730278040572.png" ,
+    "name": "Components Factory",
+    "quote" :
+    {
+    "quote": "To think that the new economy is over is like somebody in London in 1830 saying the entire industrial revolution is over because some textile manufacturers in Manchester went broke."
+
+,
+    "author": "Alvin Toffler"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": null ,
+    "Blocks": 0,
+    "reward": [
+              {
+            "label" : "GFCMP",
+            "amount" : 2
+        }
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 500
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 500
+        },
+             {
+            "label" : "AMRIT",
+            "amount" : 100
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 1
+    },
+      {
+        "label" : "GFOOD",
+        "amount" : 1
+    }
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 250
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "all"
+}
+
+
+
+-------------------------------------------------------------
+
+  //
+
+   "imageKey": "building/colonyhq/1.png",
+
+      "imageKey": "building/colonyhq/2.png",
+          "imageKey": "building/colonyhq/3.png",
+
+
+----------------------------------------------------------
+//-- > FARM
+        "assetId": "672862dbb493bed78be7b2ef",
+          "imageKey": "building/farm/3.png",
+
+          " ",
+          "building/farm/1.png",
+
+
+{
+    "imageKey": "building/farm/1.png" ,
+    "name": "farm",
+    "quote" :
+    {
+    "quote": "We Didn't Run Out Of Television Screens And Planes, We Ran Out Of Food."
+
+,
+    "author": "Interstellar"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": null ,
+    "Blocks": 0,
+    "reward": [
+              {
+            "label" : "GFOOD",
+            "amount" : 5
+        }
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 200
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 200
+        },
+             {
+            "label" : "XENOS",
+            "amount" : 25
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 1
+    }
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 100
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "all"
+}
+
+----------------------------------------------------------------------
+
+
+            //  GALATIC ARENA
+            "building/galatic_arena/1.png",
+            "imageKey": "building/galatic_arena/2.png",
+            "imageKey": "building/galatic_arena/3.png",
+     "assetId": "67286cc6b493bed78be7bf9b",
+{
+    "imageKey": "building/galatic_arena/1.png" ,
+    "name": "Galactic Arena",
+    "quote" :
+    {
+    "quote": "Are you not entertained?"
+
+,
+    "author": "Gladiator"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": null ,
+    "Blocks": 0,
+    "reward": [
+              {
+            "label" : "XENOS",
+            "amount" : 1
+        }       ,
+                     {
+            "label" : "GFOOD",
+            "amount" : 2
+        }
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 750
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 750
+        },
+             {
+            "label" : "XENOS",
+            "amount" : 100
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 1
+    },
+       {
+        "label" : "GF00G",
+        "amount" : 1
+    }
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 350
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "all"
+}
+
+
+
+--------------------------------------------------------------
+
+//galatic_museum
+  "imageKey": "building/galatic_museum/1.png",
+
+  "imageKey": "building/galatic_museum/2.png",
+       "imageKey": "building/galatic_museum/3.png",
+   "assetId": "672871b0b493bed78be7cd31",
+{
+    "imageKey": "building/galatic_museum/1.png" ,
+    "name": "Galactic Museum",
+    "quote" :
+    {
+    "quote": "I have spent most of my life unlearning things that were proved not to be true"
+
+,
+    "author": "R. Buckminster Fuller"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": null ,
+    "Blocks": 0,
+    "reward": [
+    {
+        "label" : "GFAAC",
+        "amount" : 1
+    },
+       {
+        "label" : "GFAAR",
+        "amount" : 0.2
+    },
+      {
+        "label" : "GFAAA",
+        "amount" : 0.1
+    }
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 1500
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 1500
+        },
+             {
+            "label" : "GFAAR",
+            "amount" : 15
+        },
+        {
+            "label" : "GFAAC",
+            "amount" : 25
+        },
+           {
+            "label" : "GFAAA",
+            "amount" : 10
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFOOD",
+        "amount" : 1
+    },
+
+      {
+        "label" : "GFNRG",
+        "amount" : 1
+    }
+
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 500
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "all"
+}
+
+
+
+--------------------------------------------------------------
+
+
+//--> matter_converters
+
+"building/matter_converters/1.png",
+"building/matter_converters/2.png",
+"building/matter_converters/3.png",
+ "assetId": "6728747bb493bed78be7d102",
+{
+    "imageKey": "building/matter_converters/1.png" ,
+    "name": "Matter Converters",
+    "quote" :
+    {
+    "quote": "You may find that having is not so pleasing a thing as wanting. This is not logical, but it is often true."
+
+,
+    "author": "Mr. Spock, Amok Time"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": null ,
+    "Blocks": 0,
+    "reward": [
+    {
+        "label" : "GFNRG",
+        "amount" : 2
+    }
+
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 1000
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 1000
+        },
+             {
+            "label" : "GFCMP",
+            "amount" : 100
+        },
+        {
+            "label" : "GFAAA",
+            "amount" : 12
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 2
+    }
+
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 500
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "all"
+}
+
+
+
+----------------------------------------------------------------
+
+// --> Orbital Power Array
+"imageKey": "building/opa/1.png",
+"imageKey": "building/opa/2.png",
+"imageKey": "building/opa/3.png",
+ "assetId": "672872f5b493bed78be7d0b9",
+
+{
+    "imageKey": "building/opa/1.png" ,
+    "name": "Orbital Power Array",
+    "quote" :
+    {
+    "quote": "Real wealth is ideas plus energy."
+
+,
+    "author": "R. Buckminster Fuller"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": "Must be built in orbital build slot" ,
+    "Blocks": 0,
+    "reward": [
+    {
+        "label" : "GFNRG",
+        "amount" : 10
+    }
+
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 450
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 450
+        },
+             {
+            "label" : "TETRA",
+            "amount" : 50
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFOOD",
+        "amount" : 1
+    }
+
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 250
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "orbital"
+}
+
+
+------------------------------------------------
+
+        // private_cidel
+        "imageKey": "building/private_cidel/1.png",
+        "imageKey": "building/private_cidel/2.png",
+        "imageKey": "building/private_cidel/3.png",
+ "assetId": "67286e9ab493bed78be7c536",
+{
+    "imageKey": "building/private_cidel/1.png" ,
+    "name": "Private Citadel",
+    "quote" :
+    {
+    "quote": "Are you not entertained?"
+
+,
+    "author": "Gladiator"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": null ,
+    "Blocks": 0,
+    "reward": [
+    {
+        "label" : "GALFI",
+        "amount" : 1
+    },
+       {
+        "label" : "GFEXO",
+        "amount" : 1
+    },
+      {
+        "label" : "GFNRG",
+        "amount" : 1
+    },
+       {
+        "label" : "GFRCE",
+        "amount" : 1
+    },
+         {
+        "label" : "HYPER",
+        "amount" : 0.01
+    }
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 1500
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 1500
+        },
+             {
+            "label" : "GFCMP",
+            "amount" : 50
+        },
+        {
+            "label" : "GFAAC",
+            "amount" : 50
+        },
+           {
+            "label" : "GFAAA",
+            "amount" : 5
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFOOD",
+        "amount" : 1
+    },
+
+      {
+        "label" : "GFNRG",
+        "amount" : 1
+    }
+
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 600
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "all"
+}
+
+-------------------------------------------------------------
+
+
+        //--- > ring_world
+             "imageKey": "building/ring_world/3.png",
+              "imageKey": "building/ring_world/2.png",
+              "imageKey": "building/ring_world/1.png",
+
+        "assetId": "67289497af6bc3c1aa80daa9",
+              {
+    "imageKey": "building/ring_world/1.png" ,
+    "name": "Ringworld - Megastructure",
+    "quote" :
+    {
+    "says": "The perversity of the Universe tends towards a maximum"
+
+,
+    "author": "Larry Niven"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": "Provides 5 new build slots on its structure" ,
+    "Blocks": 5,
+    "reward": [
+    {
+        "label" : "GALFI",
+        "amount" : 20
+    },
+        {
+        "label" : "GFEXO",
+        "amount" : 2.5
+    },
+     {
+        "label" : "GFOOD",
+        "amount" : 70
+    },
+     {
+        "label" : "HYPER",
+        "amount" : 20
+    }
+
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 10000
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 10000
+        },
+                 {
+            "label" : "GFCMP",
+            "amount" : 500
+        },
+        {
+            "label" : "TETRA",
+            "amount" : 100
+        },      {
+            "label" : "AMRIT",
+            "amount" : 100
+        },
+              {
+            "label" : "GFAAA",
+            "amount" : 20
+        },{
+            "label" : "HYPER",
+            "amount" : 20
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 20
+    },
+       {
+        "label" : "GFOOD",
+        "amount" : 20
+    }
+
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 5500
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "all"
+}
+
+
+
+____________________________________________________________
+
+        //space_arcology
+
+        "imageKey": "building/space_arcology/1.png",
+        "imageKey": "building/space_arcology/2.png",
+        "imageKey": "building/space_arcology/3.png",
+
+  "assetId": "6728929eaf6bc3c1aa80da26",
+
+        {
+    "imageKey": "building/space_arcology/1.png" ,
+    "name": "Space Arcology",
+    "quote" :
+    {
+    "says": "it is clear that the early settlers in space will be exciting people: restless, inquiring, independent; quite possibly more hard-driving and possessed by more 'creative discontent' than their kin in the Old World."
+
+,
+    "author": "Gerard K. O'Neill"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": null ,
+    "Blocks": 0,
+    "reward": [
+    {
+        "label" : "GALFI",
+        "amount" : 1
+    },
+        {
+        "label" : "GFCMP",
+        "amount" : 1
+    },
+     {
+        "label" : "GFOOD",
+        "amount" : 2
+    },
+     {
+        "label" : "GFNRG",
+        "amount" : 2
+    }
+
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 750
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 750
+        },
+                 {
+            "label" : "GFCMP",
+            "amount" : 50
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 1
+    },
+       {
+        "label" : "GFOOD",
+        "amount" : 1
+    }
+
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 250
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "all"
+}
+
+
+
+
+
+--------------------------------------------------------------
+        //space_elevator
+
+        "imageKey": "building/space_elevator/3.png",
+        "imageKey": "building/space_elevator/2.png",
+        "imageKey": "building/space_elevator/1.png",
+
+67289171af6bc3c1aa80d2d9
+
+
+{
+    "imageKey": "building/space_elevator/1.png" ,
+    "name": "Space Elevator",
+    "quote" :
+    {
+    "says": "The only way to define your limits is by going beyond them."
+
+,
+    "author": "Arthur C. Clarke"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": null ,
+    "Blocks": 0,
+    "reward": [
+    {
+        "label" : "GALFI",
+        "amount" : 2.5
+    },
+        {
+        "label" : "GFNRG",
+        "amount" : 2
+    }
+
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 1000
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 1000
+        },
+                 {
+            "label" : "GFCMP",
+            "amount" : 50
+        },
+             {
+            "label" : "TETRA",
+            "amount" : 100
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 1
+    },
+       {
+        "label" : "GFOOD",
+        "amount" : 1
+    }
+
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 500
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "all"
+}
+
+
+
+
+------------------------------------------------------
+        //Tetra Mine
+
+        "imageKey": "building/tetra_mine/1.png",
+        "imageKey": "building/tetra_mine/2.png",
+        "imageKey": "building/tetra_mine/3.png",
+             "assetId": "672877d0b493bed78be7d605",
+        {
+    "imageKey": "building/tetra_mine/1.png" ,
+    "name": "Tetra Mine",
+    "quote" :
+    {
+    "says": "He who controls the spice controls the universe"
+
+,
+    "author": "Frank Herbert"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": "Must be built on a Tetra deposit" ,
+    "Blocks": 0,
+    "reward": [
+    {
+        "label" : "TETRA",
+        "amount" : 1
+    }
+
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 250
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 250
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 1
+    },
+       {
+        "label" : "GFOOD",
+        "amount" : 1
+    }
+
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 100
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "tetra"
+}
+
+
+
+--------------------------------------------------------
+        // -- > Xeno Research Facility
+
+          "imageKey": "building/xeno_research_facility/3.png",
+          "imageKey": "building/xeno_research_facility/2.png",
+          "imageKey": "building/xeno_research_facility/1.png",
+        "assetId": "6728763bb493bed78be7d5b4",
+         {
+    "imageKey": "building/xeno_research_facility/1.png" ,
+    "name": "Xeno Research Facility",
+    "quote" :
+    {
+    "says": "In the deepest sense the search for extraterrestrial intelligence is a search for ourselves."
+
+,
+    "author": "Carl Sagan"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": null ,
+    "specialConditions": null ,
+    "Blocks": 0,
+    "reward": [
+    {
+        "label" : "XENOS",
+        "amount" : 1
+    }
+
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 600
+        },
+             {
+            "label" : "GFMNR",
+            "amount" : 600
+        },
+             {
+            "label" : "XENOS",
+            "amount" : 100
+        }
+      ],
+    "dailyConsumption": [
+    {
+        "label" : "GFNRG",
+        "amount" : 1
+    },
+       {
+        "label" : "GFOOD",
+        "amount" : 1
+    }
+
+
+    ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 300
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "all"
+}
+
+NOV 12 KAMESH
+--------------------------------------------------------------------
+
+// --> ASTEROID MINERAL MINE
+"imageKey": "building/opa/1.png",
+"imageKey": "building/opa/2.png",
+"imageKey": "building/opa/3.png",
+ "assetId": "672872f5b493bed78be7d0b9",
+
+{
+    "imageKey": "building/planet_mineral_mine/" ,
+    "name": "PLANET MINERAL MINE",
+    "quote" : {
+    "says": "There are no wastelands in our landscape quite like those we’ve created ourselves",
+    "author": "Tim Winton"
+    },
+    "rows": 5,
+    "columns": 5,
+    "description": "MUST BE BUILT ON Planet GFMNR Slot" ,
+    "specialConditions": "Must be built in orbital build slot" ,
+    "Blocks": 0,
+    "reward": [
+    {
+        "label" : "GFMNR",
+        "amount" : 5
+    },
+       {
+        "label" : "GALFI",
+        "amount" : 0.50
+    }
+    ],
+
+    "dailyConsumption": [
+    {
+        "label" : "GFOOD",
+        "amount" : 1
+    },
+      {
+        "label" : "GFNRG",
+        "amount" : 1
+    },
+      {
+        "label" : "GALFI",
+        "amount" : 0.02
+    }
+
+
+    ],
+    "cost": [
+        {
+            "label" : "GFORE",
+            "amount" : 500
+        }
+      ],
+    "optionalCost": [
+             {
+            "label" : "GALFI",
+            "amount" : 60
+        }
+      ],
+    "HullPoints": 0,
+    "AttackPoints": 0,
+    "build_time_min": 2,
+    "commonPlanetBuildLimit": 1,
+  "unCommonPlanetBuildLimit": 1,
+  "rarePlanetBuildLimit": 1,
+  "commonAsteroidBuildLimit": 1,
+  "unCommonAsteroidBuildLimit": 1,
+  "rareAsteroidBuildLimit": 1,
+  "buildSlotType": "orbital",
+  "buildLandType" : ["L"],
+  buildOnTypeSlot : ["GFMNR"]
+}
+
+
+________

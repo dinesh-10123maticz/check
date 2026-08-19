@@ -1,0 +1,964 @@
+{
+    "NFTProperties" : [],
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+           {
+            "label" : "GFMNR" ,
+            "amount" : 1
+        },
+           {
+            "label" : "GFORE" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "AMRIT" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "TETRA" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "HYPER" ,
+            "amount" : 0.5
+        }
+        ,
+        {
+            "label" : "GFNRG" ,
+            "amount" : 4
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "collectionId" : "6683e6aabdadba956a039102",
+    "profession" : "quantum_physicist",
+    "from" : 1,
+    "to" : 50
+}
+
+
+{
+    "NFTProperties" : [],
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 2
+        },
+
+           {
+            "label" : "GFEXO" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "XENOS" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "GFAAA" ,
+            "amount" : 0.1
+        }
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "collectionId" : "6683e6aabdadba956a039102",
+    "profession" : "XENOBIOLOGIST",
+    "from" : 1,
+    "to" : 50
+}
+
+
+
+
+
+
+{
+    "NFTProperties" : [],
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 1
+        },
+
+           {
+            "label" : "HYPER" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "XENOS" ,
+            "amount" : 0.5
+        }
+        ,
+           {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "GFAAA" ,
+            "amount" : 0.25
+        }
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "collectionId" : "6683e6aabdadba956a039102",
+    "profession" : "XENOANTHROPOLOGIST",
+    "from" : 1,
+    "to" : 50
+}
+
+
+
+{
+    "NFTProperties" : [],
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 2
+        },
+
+           {
+            "label" : "GFEXO" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "XENOS" ,
+            "amount" : 1
+        }
+
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "collectionId" : "6683e6aabdadba956a039102",
+    "profession" : "COMBAT SPECIALIST",
+    "from" : 1,
+    "to" : 50
+}
+
+
+
+
+,
+
+
+
+{
+    "NFTProperties" : [],
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 2
+        },
+
+           {
+            "label" : "GFEXO" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "XENOS" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "GFAAA" ,
+            "amount" : 0.25
+        }
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "collectionId" : "6683e6aabdadba956a039102",
+    "profession" : "EXPLORER",
+    "from" : 1,
+    "to" : 50
+}
+
+,
+
+
+{
+    "NFTProperties" : [],
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+
+           {
+            "label" : "GFEXO" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "XENOS" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "GFAAA" ,
+            "amount" : 0.25
+        }
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "collectionId" : "6683e6aabdadba956a039102",
+    "profession" : "MAD SCIENTIST",
+    "from" : 1,
+    "to" : 50
+}
+
+
+{
+    "NFTProperties" : [],
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+
+           {
+            "label" : "AMRIT" ,
+            "amount" : 0.5
+        }    ,
+           {
+            "label" : "TETRA" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "GFEXO" ,
+            "amount" : 0.5
+        }
+        ,
+           {
+            "label" : "XENOS" ,
+            "amount" : 9.5
+        }
+
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "collectionId" : "6683e6aabdadba956a039102",
+    "profession" : "MECH PILOT",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "NFTProperties" : [],
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+           {
+            "label" : "TETRA" ,
+            "amount" : 1
+        }
+        ,
+           {
+            "label" : "HYPER" ,
+            "amount" : 0.5
+        }
+        ,
+           {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        }
+
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "collectionId" : "6683e6aabdadba956a039102",
+    "profession" : "CAPITAL CLASS PILOT",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : "GOVERNOR",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 5
+        },
+
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : "FOREMAN",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : "ENGINEER ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : "MINER",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 2
+        },
+                {
+            "label" : "GFMNR" ,
+            "amount" : 3
+        },
+                {
+            "label" : "GFORE" ,
+            "amount" : 3
+        },
+
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+
+{
+    "profession" : "ASTROENGINEER ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 4
+        },
+                {
+            "label" : "TETRA" ,
+            "amount" : 1
+        },
+                {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        },
+        {
+            "label" : "GFAAA" ,
+            "amount" : 0.5
+        },
+
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+
+{
+    "profession" : "MEGASTRUCTURE ENGINEER  ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 4
+        },
+                {
+            "label" : "TETRA" ,
+            "amount" : 1
+        },
+          {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        },
+        {
+            "label" : "GFAAA" ,
+            "amount" : 0.5
+        },
+
+
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+
+{
+    "profession" : " VISIONARY  ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 4
+        },
+                {
+            "label" : "TETRA" ,
+            "amount" : 1
+        },
+          {
+            "label" : "HYPER" ,
+            "amount" : 0.5
+        },
+         {
+            "label" : "XENOS" ,
+            "amount" : 1
+        },
+         {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        },
+        {
+            "label" : "GFAAA" ,
+            "amount" : 0.5
+        },
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+
+{
+    "profession" : " SOCIALITE  ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+                {
+            "label" : "AMRIT" ,
+            "amount" : 1
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+
+{
+    "profession" : " POET  ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 1
+        },
+                {
+            "label" : "XENOS" ,
+            "amount" : 1
+        }
+        ,
+        {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        },
+                {
+            "label" : "GFAAA" ,
+            "amount" : 0.5
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : " ARTIST  ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+                {
+            "label" : "HYPER" ,
+            "amount" : 0.5
+        }
+        ,
+        {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        },
+                {
+            "label" : "GFAAA" ,
+            "amount" : 0.5
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+
+{
+    "profession" : " XENOARCHEOLOGIST  ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 2
+        },
+                {
+            "label" : "TETRA" ,
+            "amount" : 1
+        },
+        {
+            "label" : "XENOS" ,
+            "amount" : 1
+        }
+        ,
+        {
+            "label" : "GFAAC" ,
+            "amount" : 2
+        },
+                {
+            "label" : "GFAAA" ,
+            "amount" : 1
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : " XENOHISTORIAN  ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 2
+        },
+                {
+            "label" : "HYPER" ,
+            "amount" : 0.5
+        },
+
+        {
+            "label" : "GFAAC" ,
+            "amount" : 3
+        },
+                {
+            "label" : "GFAAA" ,
+            "amount" : 1
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+{
+    "profession" : " XENOBIOLOGIST  ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 2
+        },
+
+        {
+            "label" : "XENOS" ,
+            "amount" : 2
+        }
+        ,
+        {
+            "label" : "GFAAC" ,
+            "amount" : 2
+        },
+                {
+            "label" : "GFAAA" ,
+            "amount" : 1
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+
+{
+    "profession" : " ENTREPRENEUR   ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 8
+        },
+    {
+            "label" : "AMRIT" ,
+            "amount" : 1
+        },
+           {
+            "label" : "HYPER" ,
+            "amount" : 0.5
+        },
+
+        {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        },
+                {
+            "label" : "GFAAA" ,
+            "amount" : 0.5
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : " INVESTOR   ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 10
+        },
+    {
+            "label" : "AMRIT" ,
+            "amount" : 1
+        },
+           {
+            "label" : "HYPER" ,
+            "amount" : 0.5
+        },
+    {
+            "label" : "GFEXO" ,
+            "amount" : 1
+        },
+        {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        },
+                {
+            "label" : "GFAAA" ,
+            "amount" : 0.5
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : " PSYCHIATRIST   ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+        {
+            "label" : "TETRA" ,
+            "amount" : 1
+        },
+        {
+            "label" : "GFAAA" ,
+            "amount" : 1
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : " SHIP GUNNER    ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },       {
+            "label" : "AMRIT" ,
+            "amount" : 1
+        },
+        {
+            "label" : "TETRA" ,
+            "amount" : 1
+        },
+        {
+            "label" : "XENOS" ,
+            "amount" : 1
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : "AI TECHNICIAN ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+        {
+            "label" : "GFNRG" ,
+            "amount" : 4
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+{
+    "profession" : "AUTHOR ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 2
+        },
+        {
+            "label" : "HYPER" ,
+            "amount" : 0.5
+        }
+        ,
+        {
+            "label" : "GFEXO" ,
+            "amount" : 1
+        }
+        ,
+        {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        },
+          {
+            "label" : "GFAAA" ,
+            "amount" : 0.5
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+
+
+{
+    "profession" : "FARMER ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 4
+        },
+        {
+            "label" : "GFMNR" ,
+            "amount" : 2
+        }
+        ,
+        {
+            "label" : "GFORE" ,
+            "amount" : 2
+        }
+        ,
+        {
+            "label" : "GFOOD" ,
+            "amount" : 5
+        },
+          {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+{
+    "profession" : "QUANTUM PHYSICIST ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 3
+        },
+        {
+            "label" : "GFMNR" ,
+            "amount" : 1
+        }
+        ,
+        {
+            "label" : "GFORE" ,
+            "amount" : 1
+        }
+        ,
+        {
+            "label" : "GFOOD" ,
+            "amount" : 5
+        },
+          {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}
+{
+    "profession" : "SERGEANT MAJOR ",
+    "price" : [
+        {
+            "label" : "GALFI" ,
+            "amount" : 4
+        },
+        {
+            "label" : "GFMNR" ,
+            "amount" : 2
+        }
+        ,
+        {
+            "label" : "GFORE" ,
+            "amount" : 2
+        }
+        ,
+        {
+            "label" : "GFOOD" ,
+            "amount" : 5
+        },
+          {
+            "label" : "GFAAC" ,
+            "amount" : 1
+        }
+
+    ],
+    "gender" : "male",
+    "rarity" : "rare",
+    "NFTProperties" : [],
+    "collectionId" : "6683e6aabdadba956a039102",
+    "from" : 1,
+    "to" : 50
+}

@@ -1,0 +1,15 @@
+
+public/
+node_modules/
+
+public/
+node_modules/
+
+.env
+.env.*
+/env/*
+
+#zip files
+
+.zip
+*.zip
