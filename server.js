@@ -9,6 +9,7 @@ import compression from 'compression';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import routers from './router/routes';
+import serveSwagger from './swagger';
 import chatSocket from './app/chat/chat.socket';
 import TRADEABI from './config/ABI/trade.abi.json';
 import withdrawABI from './config/ABI/reward.json';
@@ -96,6 +97,10 @@ app.get('/', (req, res) => {
 });
 
 app.use('/v1', routers);
+
+/* -------------------------------- SWAGGER -------------------------------- */
+
+serveSwagger(app);
 
 /* -------------------------------- SOCKET -------------------------------- */
 
