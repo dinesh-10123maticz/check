@@ -1,7 +1,8 @@
 
-public/*
-!public/api-docs/
-!public/api-docs/*
+public/
+node_modules/
+
+public/
 node_modules/
 
 .env
