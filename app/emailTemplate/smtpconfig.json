@@ -1,1 +1,1 @@
-{"fromMail":"support@maticz.in","nodemailer":{"host":"smtp.zeptomail.com","port":465,"secure":true,"auth":{"user":"support@maticz.in","pass":"wSsVR60k+kH1Bvx1mT2tJehrnl5TAFPxEBkojlKiuX75Gq+R/ccyk0LLAAKiT6VKR2BrEWRBor99mk8AhmYJiYkkmVAAACiF9mqRe1U4J3x17qnvhDzOXG1VlReJJIoPwQ1skmBnG84m+g=="}}}
+{"fromMail":"","nodemailer":{"host":"","port":465,"secure":true,"auth":{"user":"","pass":""}}}
