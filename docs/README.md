@@ -19,7 +19,8 @@ For **each endpoint** the spec documents:
 
 | File | Purpose |
 |---|---|
-| `app/<module>/swagger.yaml` | Standalone Swagger file stored inside each routed module folder |
+| `app/<module>/swagger.js` | Module-local Swagger catalog entry point |
+| `app/<module>/swagger.yaml` | Generated standalone Swagger file stored inside each routed module folder |
 | `app/admin/{adminlogin,cms}/swagger.yaml` | Standalone files for the two nested admin modules |
 | `docs/openapi.yaml` | Master Swagger spec containing all modules — import into Postman, Stoplight, SwaggerHub, etc. |
 | `docs/build-openapi.js` | Generator that creates the master, module, and Swagger UI YAML files from `docs/catalog/*.js` |
