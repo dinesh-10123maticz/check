@@ -11,20 +11,27 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
+// Keep the catalog next to the code it documents in the generated output.  The
+// source catalogs stay here so the generator has one implementation of the
+// shared response/error conventions; every module receives a standalone,
+// importable swagger.yaml file.
+const nftEndpoints = require('./catalog/nft');
+const isSyncRoute = ({ path: apiPath }) => /^\/v1\/nft\/sync\/(planets|asteroids|ships|crews)$/.test(apiPath);
 const catalogs = [
-  ['User', require('./catalog/user')],
-  ['NFT', require('./catalog/nft')],
-  ['Admin', require('./catalog/admin')],
-  ['CMS', require('./catalog/cms')],
-  ['Category', require('./catalog/category')],
-  ['Game', require('./catalog/game')],
-  ['Exchange', require('./catalog/exchange')],
-  ['Mission', require('./catalog/mission')],
-  ['Shop', require('./catalog/shop')],
-  ['Profession', require('./catalog/profession')],
-  ['Promo', require('./catalog/promo')],
-  ['Conversion', require('./catalog/conversion')],
-  ['Scripts (dev)', require('./catalog/scripts')],
+  { tag: 'User', endpoints: require('./catalog/user'), output: '../app/user/swagger.yaml' },
+  { tag: 'NFT', endpoints: nftEndpoints.filter((endpoint) => !isSyncRoute(endpoint)), output: '../app/nft/swagger.yaml' },
+  { tag: 'Sync', endpoints: nftEndpoints.filter(isSyncRoute), output: '../app/sync/swagger.yaml' },
+  { tag: 'Admin', endpoints: require('./catalog/admin'), output: '../app/admin/adminlogin/swagger.yaml' },
+  { tag: 'CMS', endpoints: require('./catalog/cms'), output: '../app/admin/cms/swagger.yaml' },
+  { tag: 'Category', endpoints: require('./catalog/category'), output: '../app/category/swagger.yaml' },
+  { tag: 'Game', endpoints: require('./catalog/game'), output: '../app/game/swagger.yaml' },
+  { tag: 'Exchange', endpoints: require('./catalog/exchange'), output: '../app/exchange/swagger.yaml' },
+  { tag: 'Mission', endpoints: require('./catalog/mission'), output: '../app/missions/swagger.yaml' },
+  { tag: 'Shop', endpoints: require('./catalog/shop'), output: '../app/shop/swagger.yaml' },
+  { tag: 'Profession', endpoints: require('./catalog/profession'), output: '../app/profession/swagger.yaml' },
+  { tag: 'Promo', endpoints: require('./catalog/promo'), output: '../app/promotion/swagger.yaml' },
+  { tag: 'Conversion', endpoints: require('./catalog/conversion'), output: '../app/amountConvertion/swagger.yaml' },
+  { tag: 'Scripts (dev)', endpoints: require('./catalog/scripts'), output: '../app/scripts/swagger.yaml' },
 ];
 
 const { AUTH, ENCRYPT } = require('./catalog/common');
@@ -252,28 +259,33 @@ const ERROR_REF_MAP = {
 };
 
 /**
- * Some catalog entries put the full response envelope inside `example`.
- * If the example already looks like an envelope, extract just the `data` payload
- * so it doesn't get double-nested by the generator.
+ * Some catalog entries put the full controller response envelope in `example`,
+ * while others provide only the data payload. Preserve exact envelopes and wrap
+ * payload-only examples in the standard response shape.
  */
-function extractPayload(example) {
-  if (
-    example &&
-    typeof example === 'object' &&
-    typeof example.status === 'boolean' &&
-    example.message !== undefined &&
-    example.statusCode !== undefined
-  ) {
-    return example.data !== undefined ? example.data : {};
+function buildSuccessExample(success) {
+  const example = success.example;
+
+  // Catalog entries copied from controllers already contain the exact response
+  // envelope. Preserve those verbatim (including token/usercurrency fields and
+  // the older response style which intentionally has no statusCode).
+  if (example && typeof example === 'object' && typeof example.status === 'boolean') {
+    return example;
   }
-  return example;
+
+  return {
+    statusCode: success.code,
+    status: true,
+    message: success.message,
+    data: example === undefined ? {} : example,
+  };
 }
 
 function buildResponses(op) {
   const responses = {};
   // Success response (with example)
   const s = op.success || { code: 200, message: 'success', example: {} };
-  const successExample = { statusCode: s.code, status: true, message: s.message, data: extractPayload(s.example) };
+  const successExample = buildSuccessExample(s);
   responses[s.code] = {
     description: `Success — ${s.message}`,
     content: {
@@ -321,7 +333,7 @@ function buildParameters(params) {
 const paths = {};
 const tags = [];
 
-for (const [tagName, endpoints] of catalogs) {
+for (const { tag: tagName, endpoints } of catalogs) {
   tags.push({ name: tagName });
   for (const op of endpoints) {
     const auth = AUTH[op.auth] || AUTH.none;
@@ -390,7 +402,9 @@ const doc = {
       'Validation failures return `400` (or `409` on some NFT/promo routes) with an `error` field listing the failed fields.',
     ].join('\n'),
   },
-  servers: [{ url: '/v1', description: 'API v1 (relative to this host)' }],
+  // Paths already include /v1. Using /v1 here would make Swagger UI call
+  // /v1/v1/... when "Try it out" is used.
+  servers: [{ url: '/', description: 'Current API host' }],
   tags,
   paths,
   components: {
@@ -419,12 +433,42 @@ const doc = {
 /* ────────────────────────────────────────────────────────────
  * Emit
  * ──────────────────────────────────────────────────────────── */
+const yamlOptions = { lineWidth: 120, noRefs: true };
 const outDir = __dirname;
 const yamlOut = path.join(outDir, 'openapi.yaml');
-fs.writeFileSync(yamlOut, yaml.dump(doc, { lineWidth: 120, noRefs: true }), 'utf8');
+const publicOut = path.join(__dirname, '../public/api-docs/openapi.yaml');
+const masterYaml = yaml.dump(doc, yamlOptions);
+fs.writeFileSync(yamlOut, masterYaml, 'utf8');
+fs.writeFileSync(publicOut, masterYaml, 'utf8');
+
+// Generate one complete, standalone OpenAPI document in every routed module.
+// Keeping full /v1 paths means each file can be imported into Swagger UI,
+// Postman or SwaggerHub without being combined with the master document.
+for (const { tag, endpoints, output } of catalogs) {
+  const modulePaths = {};
+  for (const endpoint of endpoints) {
+    modulePaths[endpoint.path] = modulePaths[endpoint.path] || {};
+    modulePaths[endpoint.path][endpoint.method] = paths[endpoint.path][endpoint.method];
+  }
+
+  const moduleDoc = {
+    ...doc,
+    info: {
+      ...doc.info,
+      title: `GALFI ${tag} API`,
+      description: `${doc.info.description}\n\nThis standalone file documents the **${tag}** module.`,
+    },
+    tags: [{ name: tag }],
+    paths: modulePaths,
+  };
+  const moduleOut = path.resolve(__dirname, output);
+  fs.mkdirSync(path.dirname(moduleOut), { recursive: true });
+  fs.writeFileSync(moduleOut, yaml.dump(moduleDoc, yamlOptions), 'utf8');
+  console.log(`   ${tag}: ${endpoints.length} operations -> ${path.relative(process.cwd(), moduleOut)}`);
+}
 
 // Sanity counts
 let ops = 0;
 for (const p of Object.values(paths)) ops += Object.keys(p).length;
-console.log(`✅ Generated ${yamlOut}`);
+console.log(`✅ Generated master docs: ${path.relative(process.cwd(), yamlOut)} and ${path.relative(process.cwd(), publicOut)}`);
 console.log(`   Paths: ${Object.keys(paths).length}   Operations: ${ops}`);

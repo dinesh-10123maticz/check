@@ -19,7 +19,7 @@ const professionProps = {
 };
 
 module.exports = [
-  ep('post', '/v1/profession/', {
+  ep('post', '/v1/profession', {
     tag: 'Profession',
     summary: 'Create a profession',
     desc: 'Validated with `createProfessionSchema` (yup). `appliesTo` ∈ mission|combat|building|resource|ship|global; `valueType` ∈ PERCENT|FLAT.',
@@ -39,7 +39,7 @@ module.exports = [
     errors: ['400', '500'],
   }),
 
-  ep('get', '/v1/profession/', {
+  ep('get', '/v1/profession', {
     tag: 'Profession',
     summary: 'Get all professions',
     auth: 'none',

@@ -1,0 +1,1570 @@
+openapi: 3.0.3
+info:
+  title: GALFI Admin API
+  version: 1.0.0
+  description: >-
+    Complete API documentation for the **GALFI** backend (game NFT marketplace) — automatically generated from the
+    actual Express routes, controllers and yup validation schemas.
+
+
+    ## Base URL
+
+    All endpoints are mounted under **`/v1`** (e.g. `POST /v1/user/connect`).
+
+
+    ## Authentication
+
+    Most endpoints require `Authorization: Bearer <JWT>` in the request header.
+
+
+    | Token | Where it comes from | Used by |
+
+    |---|---|---|
+
+    | User JWT | `POST /v1/user/connect` · `POST /v1/user/create` · `POST /v1/user/gameconnect` | User & Game endpoints
+    |
+
+    | Admin JWT | `POST /v1/admin/adminlogin` | Admin/CMS endpoints |
+
+
+    ## Payload encryption
+
+    Several endpoints run through `DecryptDatas` / `decryptGameRequest` middleware:
+
+
+    - `DecryptDatas` — the request body must be `{"data": "<base64(AES-encrypted JSON)>"}` (or the same value in the
+    `data` query parameter).
+
+    - `decryptGameRequest` — the request body must be `{"token": "<base64(AES-encrypted JSON)>"}`.
+
+    - Some of these endpoints also **encrypt their responses** (the raw HTTP body is a base64 AES string). Examples in
+    this spec are shown **decrypted** for readability.
+
+
+    ## Response envelope
+
+    Two envelope styles are used:
+
+
+    ```json
+
+    // sendRes style (plain)
+
+    { "statusCode": 200, "status": true, "message": "fetched", "data": { } }
+
+    // sendResponse style (may be AES-encrypted at transport level)
+
+    { "status": true, "message": "fetched", "data": { } }
+
+    ```
+
+
+    Validation failures return `400` (or `409` on some NFT/promo routes) with an `error` field listing the failed
+    fields.
+
+
+    This standalone file documents the **Admin** module.
+servers:
+  - url: /
+    description: Current API host
+tags:
+  - name: Admin
+paths:
+  /v1/admin/adminlogin:
+    post:
+      tags:
+        - Admin
+      summary: Admin login
+      description: >-
+        Returns a JWT used as `Authorization: Bearer <token>` for all other admin endpoints. Body is AES-encrypted
+        (`data`).
+
+
+        **Encrypted payload**: the request body (or `?data=` query param) must be `{"data": "<base64(AES-encrypted
+        JSON)>"}`. Responses from this endpoint may also be AES-encrypted (base64 string); examples below are shown
+        decrypted for readability.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — successfully logged in
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: successfully logged in
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: successfully logged in
+                data: true
+                token: <JWT>
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Admin email
+                  example: admin@galfi.com
+                password:
+                  type: string
+                  description: Admin password
+                  example: ••••••••
+              required:
+                - email
+                - password
+            example:
+              email: admin@galfi.com
+              password: secret123
+  /v1/admin/getForgotPasswordOTP:
+    post:
+      tags:
+        - Admin
+      summary: Request a forgot-password OTP
+      description: >-
+        **Encrypted payload**: the request body (or `?data=` query param) must be `{"data": "<base64(AES-encrypted
+        JSON)>"}`. Responses from this endpoint may also be AES-encrypted (base64 string); examples below are shown
+        decrypted for readability.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — OTP sent
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: OTP sent
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: OTP sent to your email
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Admin email
+                  example: admin@galfi.com
+              required:
+                - email
+            example:
+              email: admin@galfi.com
+    put:
+      tags:
+        - Admin
+      summary: Reset admin password with OTP
+      description: >-
+        **Encrypted payload**: the request body (or `?data=` query param) must be `{"data": "<base64(AES-encrypted
+        JSON)>"}`. Responses from this endpoint may also be AES-encrypted (base64 string); examples below are shown
+        decrypted for readability.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — password updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: password updated
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: password updated
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Admin email
+                otp:
+                  type: string
+                  description: OTP received by email
+                newPassword:
+                  type: string
+                  description: New password
+                confirmNewPassword:
+                  type: string
+                  description: Must match newPassword
+              required:
+                - email
+                - otp
+                - newPassword
+                - confirmNewPassword
+            example:
+              email: admin@galfi.com
+              otp: '123456'
+              newPassword: newsecret
+              confirmNewPassword: newsecret
+  /v1/admin/userlist:
+    get:
+      tags:
+        - Admin
+      summary: List all users (paginated)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      parameters:
+        - name: page
+          in: query
+          required: false
+          description: ''
+          schema:
+            type: integer
+            example: 1
+        - name: limit
+          in: query
+          required: false
+          description: ''
+          schema:
+            type: integer
+            example: 10
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: fetched
+                data:
+                  - _id: 665f1a...
+                    DisplayName: Player1
+                    WalletAddress: 0x1a...
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/admin/updateuserstatus:
+    post:
+      tags:
+        - Admin
+      summary: Update user status (active / blocked)
+      description: >-
+        `blockedStatus` must be one of: active, blocked.
+
+
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Encrypted payload**: the request body (or `?data=` query param) must be `{"data": "<base64(AES-encrypted
+        JSON)>"}`. Responses from this endpoint may also be AES-encrypted (base64 string); examples below are shown
+        decrypted for readability.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: user status updated
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: string
+                  description: User _id
+                blockedStatus:
+                  type: string
+                  description: active | blocked
+                  enum:
+                    - active
+                    - blocked
+                  example: blocked
+              required:
+                - userId
+                - blockedStatus
+            example:
+              userId: 665f1a...
+              blockedStatus: blocked
+  /v1/admin/userdetail:
+    post:
+      tags:
+        - Admin
+      summary: Get detailed user info
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: fetched
+                data:
+                  _id: 665f1a...
+                  DisplayName: Player1
+                  EmailId: p@x.com
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: User _id
+              required:
+                - _id
+            example:
+              _id: 665f1a...
+  /v1/admin/banuser:
+    put:
+      tags:
+        - Admin
+      summary: Ban / unban a user
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — user banned
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: user banned
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: user banned
+                data:
+                  _id: 665f1a...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: User _id
+                status:
+                  type: boolean
+                  description: true = banned
+                  example: true
+              required:
+                - _id
+                - status
+            example:
+              _id: 665f1a...
+              status: true
+  /v1/admin/gamevalue:
+    put:
+      tags:
+        - Admin
+      summary: Update game values (economy tuning)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rewardTimes:
+                  type: number
+                  description: Reward time multiplier
+                  example: 2
+                costTimes:
+                  type: number
+                  description: Cost multiplier
+                  example: 1
+                consumabelTimes:
+                  type: number
+                  description: Consumable multiplier
+                  example: 1
+              required:
+                - rewardTimes
+            example:
+              rewardTimes: 2
+              costTimes: 1
+    get:
+      tags:
+        - Admin
+      summary: Get current game values
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  rewardTimes: 2
+                  costTimes: 1
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/admin/buildings:
+    get:
+      tags:
+        - Admin
+      summary: Get all building assets
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - _id: 66e...
+                    asset_Name: House
+                    levelLimit: 5
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/admin/build_time:
+    put:
+      tags:
+        - Admin
+      summary: Edit building build time / level limit / slot
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Building asset _id
+                build_Time_in_min:
+                  type: number
+                  description: New build time in minutes
+                levelLimit:
+                  type: integer
+                  description: New max level
+                buildLocationType:
+                  type: string
+                  description: Building slot type
+              required:
+                - id
+            example:
+              id: 66e...
+              build_Time_in_min: 120
+              levelLimit: 6
+  /v1/admin/creategamevalue:
+    post:
+      tags:
+        - Admin
+      summary: Create game values document
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: created
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: created
+                data:
+                  _id: 66f...
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rewardTimes:
+                  type: number
+                  description: Reward multiplier
+                costTimes:
+                  type: number
+                  description: Cost multiplier
+                consumabelTimes:
+                  type: number
+                  description: Consumable multiplier
+                missionPlanetsLimit:
+                  type: array
+                  items: {}
+                  description: Per-rarity planet limits
+                missionReward:
+                  type: array
+                  items: {}
+                  description: Mission reward definitions
+              required:
+                - rewardTimes
+            example:
+              rewardTimes: 1
+              costTimes: 1
+              consumabelTimes: 1
+  /v1/admin/missionplanet-limit:
+    put:
+      tags:
+        - Admin
+      summary: Update mission planet limit by rarity
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rarity:
+                  type: string
+                  description: 'Rarity: common | uncommon | rare'
+                  example: rare
+                limit:
+                  type: integer
+                  description: Max planets
+                  example: 10
+              required:
+                - rarity
+                - limit
+            example:
+              rarity: rare
+              limit: 10
+  /v1/admin/gamesetting-mission-time:
+    put:
+      tags:
+        - Admin
+      summary: Update mission time settings (reward entry)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: missionReward entry _id
+                mission_min:
+                  type: number
+                  description: Mission duration in minutes
+                rewardTimes:
+                  type: number
+                  description: Reward multiplier
+                xpmin:
+                  type: number
+                  description: Min XP
+                xpmax:
+                  type: number
+                  description: Max XP
+              required:
+                - _id
+            example:
+              _id: 66f...
+              mission_min: 30
+              rewardTimes: 2
+              xpmin: 10
+              xpmax: 50
+  /v1/admin/gamesetting:
+    put:
+      tags:
+        - Admin
+      summary: Update game settings
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rewardTimes:
+                  type: number
+                  description: Reward multiplier
+                costTimes:
+                  type: number
+                  description: Cost multiplier
+                consumabelTimes:
+                  type: number
+                  description: Consumable multiplier
+            example:
+              rewardTimes: 3
+  /v1/admin/updategamesetting:
+    put:
+      tags:
+        - Admin
+      summary: Update game settings (partial)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rewardTimes:
+                  type: number
+                  description: Reward multiplier
+                costTimes:
+                  type: number
+                  description: Cost multiplier
+                consumabelTimes:
+                  type: number
+                  description: Consumable multiplier
+            example:
+              costTimes: 1.5
+  /v1/admin/addMissionRewards:
+    put:
+      tags:
+        - Admin
+      summary: Add mission reward on game settings
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — added
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: added
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: added
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                missionReward:
+                  type: array
+                  items: {}
+                  description: Mission reward entries
+                  example:
+                    - mission_min: 30
+                      rewardTimes: 2
+                      xpmin: 10
+                      xpmax: 50
+              required:
+                - missionReward
+            example:
+              missionReward:
+                - mission_min: 30
+                  rewardTimes: 2
+                  xpmin: 10
+                  xpmax: 50
+  /v1/admin/deleteMissionRewards:
+    delete:
+      tags:
+        - Admin
+      summary: Delete a mission reward from game settings
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: deleted
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: deleted
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                missionRewardId:
+                  type: string
+                  description: missionReward entry _id
+              required:
+                - missionRewardId
+            example:
+              missionRewardId: 66f...
+  /v1/admin/getMissionRewards:
+    get:
+      tags:
+        - Admin
+      summary: Get mission rewards from game settings
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  missionReward:
+                    - _id: 66f...
+                      mission_min: 30
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/admin/changeairdropnft:
+    put:
+      tags:
+        - Admin
+      summary: '[REMOVED] Change airdrop NFT'
+      description: >-
+        This endpoint is removed. Always returns HTTP 410 Gone.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '410':
+          description: Success — no more
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 410
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: no more
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: no more
+  /v1/admin/getairdropnft:
+    get:
+      tags:
+        - Admin
+      summary: '[REMOVED] Get airdrop NFT'
+      description: >-
+        This endpoint is removed (no handler).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '410':
+          description: Success — no more
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 410
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: no more
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 410
+                status: true
+                message: no more
+                data: {}
+  /v1/admin/updateCrewCost:
+    put:
+      tags:
+        - Admin
+      summary: Update crew NFT cost
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nftCost:
+                  type: number
+                  description: New crew NFT cost
+                  example: 250
+              required:
+                - nftCost
+            example:
+              nftCost: 250
+  /v1/admin/getDashboardData:
+    get:
+      tags:
+        - Admin
+      summary: Admin dashboard statistics
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  totalUsers: 1200
+                  totalNfts: 50000
+                  totalVolume: 250000
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token. Use the token returned by the connect/login endpoints.
+  responses:
+    BadRequest400:
+      description: Validation error — one or more required fields are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 400
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: validation error
+              error:
+                type: string
+                description: Comma-separated validation messages (sometimes an array of errors)
+                example: WalletAddress is required, amount must be a positive number
+          examples:
+            yupValidation:
+              summary: Yup validation failure
+              value:
+                statusCode: 400
+                status: false
+                message: validation error
+                error: nearByPlanetId is required, missiontype is required
+            plainMissingField:
+              summary: Missing required field (controller check)
+              value:
+                statusCode: 400
+                status: false
+                message: walletAddress, tokenName, amount and transactionHash are required
+    Unauthorized401:
+      description: 'Authentication failed — missing, expired or invalid JWT in `Authorization: Bearer <token>`.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: please authenticate
+          example:
+            status: false
+            message: please authenticate
+    Forbidden403:
+      description: Forbidden — endpoint is restricted (dev-only route called in production, or insufficient role).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Access restricted to production environment only
+          example:
+            error: Access restricted to production environment only
+    NotFound404:
+      description: Resource not found (user, NFT, pool, mission stat, etc.).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: user not found
+          example:
+            status: false
+            message: user not found
+    Conflict409:
+      description: Conflict — duplicate entry or business-rule violation (e.g. display name already exists, token already listed).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 409
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: displayname already exist
+          example:
+            statusCode: 409
+            status: false
+            message: displayname already exist
+    Gone410:
+      description: Gone — the endpoint has been removed.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: no more
+          example:
+            status: true
+            message: no more
+    Unprocessable422:
+      description: Unprocessable entity — semantic validation failure (e.g. wallet address does not match, missionStatsId missing).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 422
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Please give valid address
+          example:
+            statusCode: 422
+            status: false
+            message: Please give valid address
+    Conflict209:
+      description: Conflict (custom status) — category/subcategory already exists.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: category already exist
+          example:
+            status: false
+            message: category already exist
+    ServerError500:
+      description: Internal server error — unhandled exception, blockchain/RPC failure, DB error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Something went wrong
+          example:
+            status: false
+            message: Something went wrong

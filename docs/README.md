@@ -19,9 +19,12 @@ For **each endpoint** the spec documents:
 
 | File | Purpose |
 |---|---|
-| `docs/openapi.yaml` | The master Swagger spec (main deliverable — import it into Postman, Stoplight, SwaggerHub, etc.) |
-| `docs/build-openapi.js` | Generator script that builds the YAML from `docs/catalog/*.js` |
-| `docs/catalog/*.js` | Per-module endpoint catalogs (User, NFT, Admin, CMS, Category, Game, Exchange, Mission, Shop, Profession, Promo, Conversion, Scripts) |
+| `app/<module>/swagger.yaml` | Standalone Swagger file stored inside each routed module folder |
+| `app/admin/{adminlogin,cms}/swagger.yaml` | Standalone files for the two nested admin modules |
+| `docs/openapi.yaml` | Master Swagger spec containing all modules — import into Postman, Stoplight, SwaggerHub, etc. |
+| `docs/build-openapi.js` | Generator that creates the master, module, and Swagger UI YAML files from `docs/catalog/*.js` |
+| `docs/check-openapi.js` | Checks every live Express route is present and has success/error examples |
+| `docs/catalog/*.js` | Per-module endpoint definitions (User, NFT/Sync, Admin, CMS, Category, Game, Exchange, Mission, Shop, Profession, Promo, Conversion, Scripts) |
 | `public/api-docs/` | Self-contained Swagger UI viewer (no CDN needed) |
 
 ## How to view the docs
@@ -46,10 +49,12 @@ file(s) in `docs/catalog/` and run:
 npm run docs
 ```
 
-Then copy the fresh spec to the viewer:
+This command updates the master spec, the Swagger UI copy, and every
+`app/<module>/swagger.yaml` automatically. To regenerate and verify that every
+Express API is covered, run:
 
 ```bash
-cp docs/openapi.yaml public/api-docs/openapi.yaml
+npm run docs:check
 ```
 
 ## Notes / conventions found in the codebase
