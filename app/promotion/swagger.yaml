@@ -1,0 +1,1715 @@
+openapi: 3.0.3
+info:
+  title: GALFI Promo API
+  version: 1.0.0
+  description: >-
+    Complete API documentation for the **GALFI** backend (game NFT marketplace) — automatically generated from the
+    actual Express routes, controllers and yup validation schemas.
+
+
+    ## Base URL
+
+    All endpoints are mounted under **`/v1`** (e.g. `POST /v1/user/connect`).
+
+
+    ## Authentication
+
+    Most endpoints require `Authorization: Bearer <JWT>` in the request header.
+
+
+    | Token | Where it comes from | Used by |
+
+    |---|---|---|
+
+    | User JWT | `POST /v1/user/connect` · `POST /v1/user/create` · `POST /v1/user/gameconnect` | User & Game endpoints
+    |
+
+    | Admin JWT | `POST /v1/admin/adminlogin` | Admin/CMS endpoints |
+
+
+    ## Payload encryption
+
+    Several endpoints run through `DecryptDatas` / `decryptGameRequest` middleware:
+
+
+    - `DecryptDatas` — the request body must be `{"data": "<base64(AES-encrypted JSON)>"}` (or the same value in the
+    `data` query parameter).
+
+    - `decryptGameRequest` — the request body must be `{"token": "<base64(AES-encrypted JSON)>"}`.
+
+    - Some of these endpoints also **encrypt their responses** (the raw HTTP body is a base64 AES string). Examples in
+    this spec are shown **decrypted** for readability.
+
+
+    ## Response envelope
+
+    Two envelope styles are used:
+
+
+    ```json
+
+    // sendRes style (plain)
+
+    { "statusCode": 200, "status": true, "message": "fetched", "data": { } }
+
+    // sendResponse style (may be AES-encrypted at transport level)
+
+    { "status": true, "message": "fetched", "data": { } }
+
+    ```
+
+
+    Validation failures return `400` (or `409` on some NFT/promo routes) with an `error` field listing the failed
+    fields.
+
+
+    This standalone file documents the **Promo** module.
+servers:
+  - url: /
+    description: Current API host
+tags:
+  - name: Promo
+paths:
+  /v1/promo/news/:id:
+    get:
+      tags:
+        - Promo
+      summary: Get a news article by id
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: News _id
+          schema:
+            type: string
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  _id: 66a...
+                  heading: New planet pack!
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/promo/createnews:
+    post:
+      tags:
+        - Promo
+      summary: Create a news article (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: created
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: created
+                data:
+                  _id: 66a...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                imageUrl:
+                  type: string
+                  description: Cover image URL
+                heading:
+                  type: string
+                  description: Headline
+                description:
+                  type: string
+                  description: Article body
+              required:
+                - imageUrl
+                - heading
+                - description
+            example:
+              imageUrl: https://cdn.galfi.com/news/1.png
+              heading: New planet pack!
+              description: '...'
+  /v1/promo/updatenews:
+    put:
+      tags:
+        - Promo
+      summary: Update a news article (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+                data:
+                  _id: 66a...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: News _id
+                imageUrl:
+                  type: string
+                  description: Cover image URL
+                heading:
+                  type: string
+                  description: Headline
+                description:
+                  type: string
+                  description: Article body
+              required:
+                - _id
+            example:
+              _id: 66a...
+              heading: Updated headline
+  /v1/promo/newslist:
+    get:
+      tags:
+        - Promo
+      summary: List published news
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - _id: 66a...
+                    heading: New planet pack!
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/promo/adminnewslist:
+    get:
+      tags:
+        - Promo
+      summary: List all news (incl. drafts, admin)
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - _id: 66a...
+                    heading: Draft
+                    status: draft
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/promo/news:
+    delete:
+      tags:
+        - Promo
+      summary: Delete a news article (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: deleted
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: News _id
+              required:
+                - _id
+            example:
+              _id: 66a...
+  /v1/promo/newsstatus:
+    put:
+      tags:
+        - Promo
+      summary: Change news publish status
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — status changed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: status changed
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: status changed
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: News _id
+                status:
+                  type: boolean
+                  description: Published flag
+              required:
+                - _id
+            example:
+              _id: 66a...
+              status: true
+  /v1/promo/blog/:id:
+    get:
+      tags:
+        - Promo
+      summary: Get a blog post by id
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Blog _id
+          schema:
+            type: string
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  _id: 66b...
+                  heading: How to stake
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/promo/createblog:
+    post:
+      tags:
+        - Promo
+      summary: Create a blog post (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: created
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: created
+                data:
+                  _id: 66b...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                imageUrl:
+                  type: string
+                  description: Cover image URL
+                videoUrl:
+                  type: string
+                  description: Embed video URL
+                heading:
+                  type: string
+                  description: Headline
+                description:
+                  type: string
+                  description: Post body
+                navLink:
+                  type: string
+                  description: Navigation link
+              required:
+                - imageUrl
+                - heading
+                - description
+            example:
+              imageUrl: https://cdn.galfi.com/blog/1.png
+              heading: How to stake
+              description: '...'
+  /v1/promo/updateblog:
+    put:
+      tags:
+        - Promo
+      summary: Update a blog post (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+                data:
+                  _id: 66b...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: Blog _id
+                imageUrl:
+                  type: string
+                  description: Cover image URL
+                videoUrl:
+                  type: string
+                  description: Embed video URL
+                heading:
+                  type: string
+                  description: Headline
+                description:
+                  type: string
+                  description: Post body
+                navLink:
+                  type: string
+                  description: Navigation link
+              required:
+                - _id
+            example:
+              _id: 66b...
+              heading: Updated post
+  /v1/promo/bloglist:
+    get:
+      tags:
+        - Promo
+      summary: List published blog posts
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - _id: 66b...
+                    heading: How to stake
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/promo/bloglists:
+    get:
+      tags:
+        - Promo
+      summary: List blog posts for the site (published only)
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - _id: 66b...
+                    heading: How to stake
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/promo/adminbloglist:
+    get:
+      tags:
+        - Promo
+      summary: List all blog posts (incl. drafts)
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - _id: 66b...
+                    heading: Draft
+                    status: draft
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/promo/blog:
+    delete:
+      tags:
+        - Promo
+      summary: Delete a blog post (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: deleted
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: Blog _id
+              required:
+                - _id
+            example:
+              _id: 66b...
+  /v1/promo/blogstatus:
+    put:
+      tags:
+        - Promo
+      summary: Change blog publish status
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — status changed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: status changed
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: status changed
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: Blog _id
+                status:
+                  type: boolean
+                  description: Published flag
+              required:
+                - _id
+            example:
+              _id: 66b...
+              status: true
+  /v1/promo/partnerlist:
+    get:
+      tags:
+        - Promo
+      summary: List partners
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - _id: 66c...
+                    name: Partner Co
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/promo/partner:
+    post:
+      tags:
+        - Promo
+      summary: Create a partner (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: created
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: created
+                data:
+                  _id: 66c...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Partner name
+                imageUrl:
+                  type: string
+                  description: Logo URL
+                link:
+                  type: string
+                  description: External link
+              required:
+                - name
+            example:
+              name: Partner Co
+              imageUrl: https://cdn.galfi.com/partners/1.png
+              link: https://partner.com
+    delete:
+      tags:
+        - Promo
+      summary: Delete a partner (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: deleted
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: Partner _id
+              required:
+                - _id
+            example:
+              _id: 66c...
+  /v1/promo/promocms:
+    get:
+      tags:
+        - Promo
+      summary: Get promo CMS content
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data: {}
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/promo/promobuild:
+    get:
+      tags:
+        - Promo
+      summary: List promo buildings
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - _id: 66d...
+                    buildingName: Event Tower
+        '500':
+          $ref: '#/components/responses/ServerError500'
+    post:
+      tags:
+        - Promo
+      summary: Create a promo building (admin)
+      description: >-
+        Yup validation: `buildingName`, `description`, `image` are required. Validation error returns 409.
+
+
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: created
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: created
+                data:
+                  _id: 66d...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '409':
+          $ref: '#/components/responses/Conflict409'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                buildingName:
+                  type: string
+                  description: Building name
+                description:
+                  type: string
+                  description: Description
+                image:
+                  type: string
+                  description: Image URL/key
+              required:
+                - buildingName
+                - description
+                - image
+            example:
+              buildingName: Event Tower
+              description: Limited edition
+              image: https://cdn.galfi.com/promo/tower.png
+    put:
+      tags:
+        - Promo
+      summary: Update a promo building (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+                data:
+                  _id: 66d...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: Promo building _id
+                buildingName:
+                  type: string
+                  description: Building name
+                description:
+                  type: string
+                  description: Description
+                image:
+                  type: string
+                  description: Image URL/key
+              required:
+                - _id
+            example:
+              _id: 66d...
+              description: Updated
+    delete:
+      tags:
+        - Promo
+      summary: Delete a promo building (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: deleted
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: Promo building _id
+              required:
+                - _id
+            example:
+              _id: 66d...
+  /v1/promo/publish:
+    get:
+      tags:
+        - Promo
+      summary: List publish entries
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — publish list fetched successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: publish list fetched successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: publish list fetched successfully
+                data:
+                  - _id: 66e...
+                    navLink: /blog
+        '500':
+          $ref: '#/components/responses/ServerError500'
+    post:
+      tags:
+        - Promo
+      summary: Create a publish entry (admin)
+      description: >-
+        `navLink` is trimmed server-side.
+
+
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: created successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: created successfully
+                data:
+                  _id: 66e...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                navLink:
+                  type: string
+                  description: Navigation link
+                  example: /blog
+                title:
+                  type: string
+                  description: Title
+                description:
+                  type: string
+                  description: Description
+                imageUrl:
+                  type: string
+                  description: Image URL
+              required:
+                - navLink
+            example:
+              navLink: /blog
+              title: Blog
+    put:
+      tags:
+        - Promo
+      summary: Update a publish entry (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated successfully
+                data:
+                  _id: 66e...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: Publish _id
+                navLink:
+                  type: string
+                  description: Navigation link
+                title:
+                  type: string
+                  description: Title
+                description:
+                  type: string
+                  description: Description
+                imageUrl:
+                  type: string
+                  description: Image URL
+              required:
+                - _id
+            example:
+              _id: 66e...
+              navLink: /news
+    delete:
+      tags:
+        - Promo
+      summary: Delete a publish entry (admin)
+      description: >-
+        Requires **admin JWT**: `Authorization: Bearer <token>` (from /admin/adminlogin).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: deleted successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: deleted successfully
+                data:
+                  _id: 66e...
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _id:
+                  type: string
+                  description: Publish _id
+              required:
+                - _id
+            example:
+              _id: 66e...
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token. Use the token returned by the connect/login endpoints.
+  responses:
+    BadRequest400:
+      description: Validation error — one or more required fields are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 400
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: validation error
+              error:
+                type: string
+                description: Comma-separated validation messages (sometimes an array of errors)
+                example: WalletAddress is required, amount must be a positive number
+          examples:
+            yupValidation:
+              summary: Yup validation failure
+              value:
+                statusCode: 400
+                status: false
+                message: validation error
+                error: nearByPlanetId is required, missiontype is required
+            plainMissingField:
+              summary: Missing required field (controller check)
+              value:
+                statusCode: 400
+                status: false
+                message: walletAddress, tokenName, amount and transactionHash are required
+    Unauthorized401:
+      description: 'Authentication failed — missing, expired or invalid JWT in `Authorization: Bearer <token>`.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: please authenticate
+          example:
+            status: false
+            message: please authenticate
+    Forbidden403:
+      description: Forbidden — endpoint is restricted (dev-only route called in production, or insufficient role).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Access restricted to production environment only
+          example:
+            error: Access restricted to production environment only
+    NotFound404:
+      description: Resource not found (user, NFT, pool, mission stat, etc.).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: user not found
+          example:
+            status: false
+            message: user not found
+    Conflict409:
+      description: Conflict — duplicate entry or business-rule violation (e.g. display name already exists, token already listed).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 409
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: displayname already exist
+          example:
+            statusCode: 409
+            status: false
+            message: displayname already exist
+    Gone410:
+      description: Gone — the endpoint has been removed.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: no more
+          example:
+            status: true
+            message: no more
+    Unprocessable422:
+      description: Unprocessable entity — semantic validation failure (e.g. wallet address does not match, missionStatsId missing).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 422
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Please give valid address
+          example:
+            statusCode: 422
+            status: false
+            message: Please give valid address
+    Conflict209:
+      description: Conflict (custom status) — category/subcategory already exists.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: category already exist
+          example:
+            status: false
+            message: category already exist
+    ServerError500:
+      description: Internal server error — unhandled exception, blockchain/RPC failure, DB error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Something went wrong
+          example:
+            status: false
+            message: Something went wrong

@@ -1,0 +1,490 @@
+openapi: 3.0.3
+info:
+  title: GALFI Sync API
+  version: 1.0.0
+  description: >-
+    Complete API documentation for the **GALFI** backend (game NFT marketplace) — automatically generated from the
+    actual Express routes, controllers and yup validation schemas.
+
+
+    ## Base URL
+
+    All endpoints are mounted under **`/v1`** (e.g. `POST /v1/user/connect`).
+
+
+    ## Authentication
+
+    Most endpoints require `Authorization: Bearer <JWT>` in the request header.
+
+
+    | Token | Where it comes from | Used by |
+
+    |---|---|---|
+
+    | User JWT | `POST /v1/user/connect` · `POST /v1/user/create` · `POST /v1/user/gameconnect` | User & Game endpoints
+    |
+
+    | Admin JWT | `POST /v1/admin/adminlogin` | Admin/CMS endpoints |
+
+
+    ## Payload encryption
+
+    Several endpoints run through `DecryptDatas` / `decryptGameRequest` middleware:
+
+
+    - `DecryptDatas` — the request body must be `{"data": "<base64(AES-encrypted JSON)>"}` (or the same value in the
+    `data` query parameter).
+
+    - `decryptGameRequest` — the request body must be `{"token": "<base64(AES-encrypted JSON)>"}`.
+
+    - Some of these endpoints also **encrypt their responses** (the raw HTTP body is a base64 AES string). Examples in
+    this spec are shown **decrypted** for readability.
+
+
+    ## Response envelope
+
+    Two envelope styles are used:
+
+
+    ```json
+
+    // sendRes style (plain)
+
+    { "statusCode": 200, "status": true, "message": "fetched", "data": { } }
+
+    // sendResponse style (may be AES-encrypted at transport level)
+
+    { "status": true, "message": "fetched", "data": { } }
+
+    ```
+
+
+    Validation failures return `400` (or `409` on some NFT/promo routes) with an `error` field listing the failed
+    fields.
+
+
+    This standalone file documents the **Sync** module.
+servers:
+  - url: /
+    description: Current API host
+tags:
+  - name: Sync
+paths:
+  /v1/nft/sync/planets:
+    post:
+      tags:
+        - Sync
+      summary: Sync planets with metadata (game engine)
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — Planets synchronized successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Planets synchronized successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: Planets synchronized successfully
+                data:
+                  synced: 10
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items: {}
+                  description: Planet sync payloads
+            example:
+              data:
+                - nftId: '1001'
+                  metaData:
+                    name: Earth
+  /v1/nft/sync/asteroids:
+    post:
+      tags:
+        - Sync
+      summary: Sync asteroids (game engine)
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — Asteroids synchronized successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Asteroids synchronized successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: Asteroids synchronized successfully
+                data:
+                  synced: 5
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items: {}
+                  description: Asteroid sync payloads
+            example:
+              data:
+                - nftId: '2001'
+                  metaData:
+                    name: Ceres
+  /v1/nft/sync/ships:
+    post:
+      tags:
+        - Sync
+      summary: Sync ships (game engine)
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — Ships synchronized successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Ships synchronized successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: Ships synchronized successfully
+                data:
+                  synced: 3
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items: {}
+                  description: Ship sync payloads
+            example:
+              data:
+                - nftId: '5001'
+                  metaData:
+                    name: Voyager
+  /v1/nft/sync/crews:
+    post:
+      tags:
+        - Sync
+      summary: Sync crews (game engine)
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — Crews synchronized successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Crews synchronized successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: Crews synchronized successfully
+                data:
+                  synced: 12
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: array
+                  items: {}
+                  description: Crew sync payloads
+            example:
+              data:
+                - nftId: '8001'
+                  metaData:
+                    name: Pilot
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token. Use the token returned by the connect/login endpoints.
+  responses:
+    BadRequest400:
+      description: Validation error — one or more required fields are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 400
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: validation error
+              error:
+                type: string
+                description: Comma-separated validation messages (sometimes an array of errors)
+                example: WalletAddress is required, amount must be a positive number
+          examples:
+            yupValidation:
+              summary: Yup validation failure
+              value:
+                statusCode: 400
+                status: false
+                message: validation error
+                error: nearByPlanetId is required, missiontype is required
+            plainMissingField:
+              summary: Missing required field (controller check)
+              value:
+                statusCode: 400
+                status: false
+                message: walletAddress, tokenName, amount and transactionHash are required
+    Unauthorized401:
+      description: 'Authentication failed — missing, expired or invalid JWT in `Authorization: Bearer <token>`.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: please authenticate
+          example:
+            status: false
+            message: please authenticate
+    Forbidden403:
+      description: Forbidden — endpoint is restricted (dev-only route called in production, or insufficient role).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Access restricted to production environment only
+          example:
+            error: Access restricted to production environment only
+    NotFound404:
+      description: Resource not found (user, NFT, pool, mission stat, etc.).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: user not found
+          example:
+            status: false
+            message: user not found
+    Conflict409:
+      description: Conflict — duplicate entry or business-rule violation (e.g. display name already exists, token already listed).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 409
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: displayname already exist
+          example:
+            statusCode: 409
+            status: false
+            message: displayname already exist
+    Gone410:
+      description: Gone — the endpoint has been removed.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: no more
+          example:
+            status: true
+            message: no more
+    Unprocessable422:
+      description: Unprocessable entity — semantic validation failure (e.g. wallet address does not match, missionStatsId missing).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 422
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Please give valid address
+          example:
+            statusCode: 422
+            status: false
+            message: Please give valid address
+    Conflict209:
+      description: Conflict (custom status) — category/subcategory already exists.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: category already exist
+          example:
+            status: false
+            message: category already exist
+    ServerError500:
+      description: Internal server error — unhandled exception, blockchain/RPC failure, DB error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Something went wrong
+          example:
+            status: false
+            message: Something went wrong

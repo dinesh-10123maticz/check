@@ -62,11 +62,12 @@ info:
     Validation failures return `400` (or `409` on some NFT/promo routes) with an `error` field listing the failed
     fields.
 servers:
-  - url: /v1
-    description: API v1 (relative to this host)
+  - url: /
+    description: Current API host
 tags:
   - name: User
   - name: NFT
+  - name: Sync
   - name: Admin
   - name: CMS
   - name: Category
@@ -118,24 +119,20 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 201
                 status: true
                 message: connected successfully
                 data:
-                  status: true
-                  message: connected successfully
-                  data:
-                    _id: 665f1a2b3c4d5e6f7a8b9c0d
-                    DisplayName: GalaxyExplorer
-                    CustomUrl: galaxyexplorer
-                    WalletAddress: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b'
-                    profile_url: https://cdn.galfi.com/user/0x.../profile/1712345678901.png
-                  token: <JWT>
-                  usercuurency:
-                    - label: GALFI
-                      balance: 0
-                      stacked: 0
-                      walletAddress: 0x1a...
+                  _id: 665f1a2b3c4d5e6f7a8b9c0d
+                  DisplayName: GalaxyExplorer
+                  CustomUrl: galaxyexplorer
+                  WalletAddress: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b'
+                  profile_url: https://cdn.galfi.com/user/0x.../profile/1712345678901.png
+                token: <JWT>
+                usercuurency:
+                  - label: GALFI
+                    balance: 0
+                    stacked: 0
+                    walletAddress: 0x1a...
         '400':
           $ref: '#/components/responses/BadRequest400'
         '409':
@@ -247,11 +244,12 @@ paths:
               example:
                 statusCode: 201
                 status: true
-                message: updated successfully
                 data:
                   _id: 665f1a2b3c4d5e6f7a8b9c0d
                   DisplayName: NewName
                   CustomUrl: newname
+                token: <JWT>
+                message: updated successfully
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -347,17 +345,13 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
-                message: Wallet connected successfully
                 data:
-                  status: true
-                  data:
-                    _id: 665f1a...
-                    DisplayName: 0x1a...
-                    WalletAddress: 0x1a...
-                  token: <JWT>
-                  message: Wallet connected successfully
+                  _id: 665f1a...
+                  DisplayName: 0x1a...
+                  WalletAddress: 0x1a...
+                token: <JWT>
+                message: Wallet connected successfully
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -560,18 +554,14 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 201
                 status: true
-                message: Created successfully
                 data:
-                  status: true
-                  data:
-                    _id: 665f1a...
-                    DisplayName: PlayerOne
-                    refferalCode: PLAYGAL1
-                    refferalByCode: PLAYGAL1
-                  token: <JWT>
-                  message: Created successfully
+                  _id: 665f1a...
+                  DisplayName: PlayerOne
+                  refferalCode: PLAYGAL1
+                  refferalByCode: PLAYGAL1
+                token: <JWT>
+                message: Created successfully
         '400':
           $ref: '#/components/responses/BadRequest400'
         '409':
@@ -673,10 +663,11 @@ paths:
               example:
                 statusCode: 201
                 status: true
-                message: updated successfully
                 data:
                   _id: 665f1a...
                   DisplayName: PlayerOne
+                token: <JWT>
+                message: updated successfully
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -760,18 +751,14 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    _id: 665f1a...
-                    DisplayName: GalaxyExplorer
-                    CustomUrl: galaxyexplorer
-                    profile_url: https://cdn.galfi.com/...
-                    Bio: NFT collector
+                  _id: 665f1a...
+                  DisplayName: GalaxyExplorer
+                  CustomUrl: galaxyexplorer
+                  profile_url: https://cdn.galfi.com/...
+                  Bio: NFT collector
         '400':
           $ref: '#/components/responses/BadRequest400'
         '404':
@@ -815,15 +802,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 201
                 status: true
                 message: Profile Image Updated Successfully
                 data:
-                  status: true
-                  message: Profile Image Updated Successfully
-                  data:
-                    _id: 665f1a...
-                    Profile: user/0x.../profile/1712345678901.png
+                  _id: 665f1a...
+                  Profile: user/0x.../profile/1712345678901.png
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -887,15 +870,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 201
                 status: true
                 message: cover image updated successfully
                 data:
-                  status: true
-                  message: cover image updated successfully
-                  data:
-                    _id: 665f1a...
-                    Cover: user/0x.../cover/1712345678901.png
+                  _id: 665f1a...
+                  Cover: user/0x.../cover/1712345678901.png
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -1169,14 +1148,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
-                message: follow | unfollow
+                message: follow
                 data:
-                  status: true
-                  message: follow
-                  data:
-                    followed: 0x2b...
+                  followed: 0x2b...
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -1290,12 +1265,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 201
                 status: true
                 message: subscribed
-                data:
-                  status: true
-                  message: subscribed
         '400':
           $ref: '#/components/responses/BadRequest400'
         '409':
@@ -1400,7 +1371,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '500':
@@ -1484,7 +1454,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: deleted
-                data: {}
         '404':
           $ref: '#/components/responses/NotFound404'
         '500':
@@ -1538,14 +1507,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    available: true
+                  available: true
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -1602,15 +1567,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: Success
                 data:
-                  status: true
-                  message: Success
-                  data:
-                    _id: 665f1a...
-                    NFTName: 'Galaxy #1001'
+                  _id: 665f1a...
+                  NFTName: 'Galaxy #1001'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '409':
@@ -1847,16 +1808,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66a...
-                      NFTName: 'Galaxy #1001'
-                      NFTPrice: 100
+                  - _id: 66a...
+                    NFTName: 'Galaxy #1001'
+                    NFTPrice: 100
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -1931,15 +1888,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66a...
-                      CollectionName: Galaxy Planets
+                  - _id: 66a...
+                    CollectionName: Galaxy Planets
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -2013,16 +1966,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66a...
-                      NFTName: 'Galaxy #1001'
-                      EndClockTime: 1725000000000
+                  - _id: 66a...
+                    NFTName: 'Galaxy #1001'
+                    EndClockTime: 1725000000000
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -2091,15 +2040,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66a...
-                      NFTName: 'Galaxy #1001'
+                  - _id: 66a...
+                    NFTName: 'Galaxy #1001'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -2134,15 +2079,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66a...
-                      NFTName: 'Galaxy #1001'
+                  - _id: 66a...
+                    NFTName: 'Galaxy #1001'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -2246,15 +2187,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - NFTOwner: 0x1a...
-                      NFTBalance: 1
+                  - NFTOwner: 0x1a...
+                    NFTBalance: 1
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -2302,16 +2239,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    _id: 66a...
-                    NFTName: 'Galaxy #1001'
-                    NFTPrice: 100
+                  _id: 66a...
+                  NFTName: 'Galaxy #1001'
+                  NFTPrice: 100
         '400':
           $ref: '#/components/responses/BadRequest400'
         '404':
@@ -2353,14 +2286,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    NFTBalance: 1
+                  NFTBalance: 1
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -2424,15 +2353,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: Success
                 data:
-                  status: true
-                  message: Success
-                  data:
-                    _id: 66b...
-                    TokenBidAmt: 150
+                  _id: 66b...
+                  TokenBidAmt: 150
         '400':
           $ref: '#/components/responses/BadRequest400'
         '409':
@@ -2542,14 +2467,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: Success
                 data:
-                  status: true
-                  message: Success
-                  data:
-                    status: completed
+                  status: completed
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -2653,15 +2574,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: Success
                 data:
-                  status: true
-                  message: Success
-                  data:
-                    _id: 66b...
-                    TokenBidAmt: 200
+                  _id: 66b...
+                  TokenBidAmt: 200
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -2789,17 +2706,13 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66c...
-                      type: bid
-                      NFTId: 66a...
-                      amount: 150
+                  - _id: 66c...
+                    type: bid
+                    NFTId: 66a...
+                    amount: 150
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -2837,15 +2750,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: created
                 data:
-                  status: true
-                  message: created
-                  data:
-                    _id: 66d...
-                    CollectionName: Galaxy Planets
+                  _id: 66d...
+                  CollectionName: Galaxy Planets
         '400':
           $ref: '#/components/responses/BadRequest400'
         '409':
@@ -2940,15 +2849,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66d...
-                      CollectionName: Galaxy Planets
+                  - _id: 66d...
+                    CollectionName: Galaxy Planets
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -3028,15 +2933,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66d...
-                      CollectionName: Galaxy Planets
+                  - _id: 66d...
+                    CollectionName: Galaxy Planets
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -3079,15 +2980,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    _id: 66d...
-                    CollectionSymbol: GALAXY
+                  _id: 66d...
+                  CollectionSymbol: GALAXY
         '400':
           $ref: '#/components/responses/BadRequest400'
         '404':
@@ -3129,12 +3026,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: status changed
-                data:
-                  status: true
-                  message: status changed
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -3192,12 +3085,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: updated
-                data:
-                  status: true
-                  message: updated
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -3259,15 +3148,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66a...
-                      NFTName: 'Galaxy #1001'
+                  - _id: 66a...
+                    NFTName: 'Galaxy #1001'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -3327,15 +3212,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    _id: 66a...
-                    NFTName: 'Galaxy #1001'
+                  _id: 66a...
+                  NFTName: 'Galaxy #1001'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '404':
@@ -3392,15 +3273,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: created
                 data:
-                  status: true
-                  message: created
-                  data:
-                    nftIds:
-                      - '1001'
+                  nftIds:
+                    - '1001'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -3479,15 +3356,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: created
                 data:
-                  status: true
-                  message: created
-                  data:
-                    nftIds:
-                      - '501'
+                  nftIds:
+                    - '501'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -3566,15 +3439,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: created
                 data:
-                  status: true
-                  message: created
-                  data:
-                    nftIds:
-                      - '8001'
+                  nftIds:
+                    - '8001'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -3653,12 +3522,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: stored
-                data:
-                  status: true
-                  message: stored
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -3721,15 +3586,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66a...
-                      NFTName: 'Crew #8001'
+                  - _id: 66a...
+                    NFTName: 'Crew #8001'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -3787,15 +3648,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66d...
-                      CollectionName: Galaxy Crew
+                  - _id: 66d...
+                    CollectionName: Galaxy Crew
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -3857,15 +3714,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 66a...
-                      NFTName: 'Crew #8001'
+                  - _id: 66a...
+                    NFTName: 'Crew #8001'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -3921,14 +3774,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: synced
                 data:
-                  status: true
-                  message: synced
-                  data:
-                    synced: 5
+                  synced: 5
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -4001,14 +3850,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: updated
                 data:
-                  status: true
-                  message: updated
-                  data:
-                    updated: 3
+                  updated: 3
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -4085,15 +3930,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: signed
                 data:
-                  status: true
-                  message: signed
-                  data:
-                    signature: 0x...
-                    hash: 0x...
+                  signature: 0x...
+                  hash: 0x...
         '400':
           $ref: '#/components/responses/BadRequest400'
         '409':
@@ -4167,14 +4008,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: signed
                 data:
-                  status: true
-                  message: signed
-                  data:
-                    signature: 0x...
+                  signature: 0x...
         '400':
           $ref: '#/components/responses/BadRequest400'
         '409':
@@ -4213,7 +4050,7 @@ paths:
   /v1/nft/sync/planets:
     post:
       tags:
-        - NFT
+        - Sync
       summary: Sync planets with metadata (game engine)
       description: >-
         Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
@@ -4274,7 +4111,7 @@ paths:
   /v1/nft/sync/asteroids:
     post:
       tags:
-        - NFT
+        - Sync
       summary: Sync asteroids (game engine)
       description: >-
         Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
@@ -4335,7 +4172,7 @@ paths:
   /v1/nft/sync/ships:
     post:
       tags:
-        - NFT
+        - Sync
       summary: Sync ships (game engine)
       description: >-
         Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
@@ -4396,7 +4233,7 @@ paths:
   /v1/nft/sync/crews:
     post:
       tags:
-        - NFT
+        - Sync
       summary: Sync crews (game engine)
       description: >-
         Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
@@ -4493,14 +4330,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: successfully logged in
-                data:
-                  status: true
-                  message: successfully logged in
-                  data: true
-                  token: <JWT>
+                data: true
+                token: <JWT>
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -4561,12 +4394,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
-                message: OTP sent
-                data:
-                  status: true
-                  message: OTP sent to your email
+                message: OTP sent to your email
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -4620,12 +4449,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: password updated
-                data:
-                  status: true
-                  message: password updated
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -4708,16 +4533,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    - _id: 665f1a...
-                      DisplayName: Player1
-                      WalletAddress: 0x1a...
+                  - _id: 665f1a...
+                    DisplayName: Player1
+                    WalletAddress: 0x1a...
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '500':
@@ -4764,12 +4585,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
-                message: updated
-                data:
-                  status: true
-                  message: user status updated
+                message: user status updated
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -4835,16 +4652,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: fetched
                 data:
-                  status: true
-                  message: fetched
-                  data:
-                    _id: 665f1a...
-                    DisplayName: Player1
-                    EmailId: p@x.com
+                  _id: 665f1a...
+                  DisplayName: Player1
+                  EmailId: p@x.com
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '404':
@@ -4899,14 +4712,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: user banned
                 data:
-                  status: true
-                  message: user banned
-                  data:
-                    _id: 665f1a...
+                  _id: 665f1a...
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -4970,7 +4779,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '500':
@@ -5114,7 +4922,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -5248,7 +5055,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -5313,7 +5119,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '500':
@@ -5385,7 +5190,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '500':
@@ -5445,7 +5249,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '500':
@@ -5505,7 +5308,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: added
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -5573,7 +5375,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: deleted
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -5672,12 +5473,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 410
                 status: true
                 message: no more
-                data:
-                  status: true
-                  message: no more
   /v1/admin/getairdropnft:
     get:
       tags:
@@ -5752,7 +5549,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -5852,14 +5648,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: uploaded
                 data:
-                  status: true
-                  message: uploaded
-                  data:
-                    videoKey: promo/videos/1712345678901.mp4
+                  videoKey: promo/videos/1712345678901.mp4
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -5913,16 +5705,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 66a...
-                      question: What is GALFI?
-                      answer: A game NFT marketplace
+                  - _id: 66a...
+                    question: What is GALFI?
+                    answer: A game NFT marketplace
         '500':
           $ref: '#/components/responses/ServerError500'
   /v1/cms/updatefaq:
@@ -5964,14 +5752,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    _id: 66a...
+                  _id: 66a...
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -6041,15 +5825,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    _id: 66a...
-                    question: How do I stake?
+                  _id: 66a...
+                  question: How do I stake?
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -6119,12 +5899,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: deleted
-                data:
-                  status: true
-                  message: deleted
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '404':
@@ -6174,16 +5950,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    key: terms
-                    heading: Terms & Conditions
-                    description: '...'
+                  key: terms
+                  heading: Terms & Conditions
+                  description: '...'
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -6223,14 +5995,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    _id: 66b...
+                  _id: 66b...
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -6295,16 +6063,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 66c...
-                      question: Q3 2026
-                      answer: Ship battles
+                  - _id: 66c...
+                    question: Q3 2026
+                    answer: Ship battles
         '500':
           $ref: '#/components/responses/ServerError500'
   /v1/cms/roadmapupdate:
@@ -6346,14 +6110,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    _id: 66c...
+                  _id: 66c...
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -6412,15 +6172,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 66d...
-                      email: user@example.com
+                  - _id: 66d...
+                    email: user@example.com
         '500':
           $ref: '#/components/responses/ServerError500'
   /v1/cms/planetlist:
@@ -6453,15 +6209,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 66e...
-                      name: Earth
+                  - _id: 66e...
+                    name: Earth
         '500':
           $ref: '#/components/responses/ServerError500'
   /v1/cms/planetupdate:
@@ -6494,12 +6246,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: updated
-                data:
-                  status: true
-                  message: updated
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -6559,15 +6307,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 66b...
-                      key: terms
+                  - _id: 66b...
+                    key: terms
         '500':
           $ref: '#/components/responses/ServerError500'
   /v1/cms/currencylist:
@@ -6600,16 +6344,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 664a...
-                      label: GALFI
-                      name: GALFI Token
+                  - _id: 664a...
+                    label: GALFI
+                    name: GALFI Token
         '500':
           $ref: '#/components/responses/ServerError500'
   /v1/cms/createcurrency:
@@ -6642,14 +6382,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: created
                 data:
-                  status: true
-                  message: created
-                  data:
-                    _id: 664a...
+                  _id: 664a...
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -6721,12 +6457,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: status changed
-                data:
-                  status: true
-                  message: status changed
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -6779,16 +6511,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 66f...
-                      type: planet
-                      imageUrl: '...'
+                  - _id: 66f...
+                    type: planet
+                    imageUrl: '...'
         '500':
           $ref: '#/components/responses/ServerError500'
   /v1/cms/createcollectiontype:
@@ -6821,14 +6549,10 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: created
                 data:
-                  status: true
-                  message: created
-                  data:
-                    _id: 66f...
+                  _id: 66f...
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -6882,16 +6606,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 66g...
-                      platform: twitter
-                      url: https://x.com/galfi
+                  - _id: 66g...
+                    platform: twitter
+                    url: https://x.com/galfi
         '500':
           $ref: '#/components/responses/ServerError500'
   /v1/cms/updatesocial:
@@ -6924,12 +6644,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: updated
-                data:
-                  status: true
-                  message: updated
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -6985,16 +6701,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 66a...
-                      name: Planets
-                      isActive: true
+                  - _id: 66a...
+                    name: Planets
+                    isActive: true
         '500':
           $ref: '#/components/responses/ServerError500'
   /v1/category/addclass:
@@ -7036,15 +6748,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: created successfully
                 data:
-                  status: true
-                  message: created successfully
-                  data:
-                    _id: 66a...
-                    name: Ships
+                  _id: 66a...
+                  name: Ships
         '209':
           $ref: '#/components/responses/Conflict209'
         '400':
@@ -7107,12 +6815,8 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: status changed
-                data:
-                  status: true
-                  message: status changed
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -7172,15 +6876,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: subcategory added
                 data:
-                  status: true
-                  message: subcategory added
-                  data:
-                    _id: 66b...
-                    key: Fighters
+                  _id: 66b...
+                  key: Fighters
         '209':
           $ref: '#/components/responses/Conflict209'
         '400':
@@ -7242,16 +6942,12 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: subcategory added
                 data:
-                  status: true
-                  message: subcategory added
-                  data:
-                    _id: 66b...
-                    key: Fighters
-                    value: []
+                  _id: 66b...
+                  key: Fighters
+                  value: []
         '209':
           $ref: '#/components/responses/Conflict209'
         '400':
@@ -7313,15 +7009,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 66b...
-                      key: Fighters
+                  - _id: 66b...
+                    key: Fighters
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -7375,17 +7067,13 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    _id: 66b...
-                    value:
-                      - Interceptor
-                      - Bomber
+                  _id: 66b...
+                  value:
+                    - Interceptor
+                    - Bomber
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -7439,15 +7127,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: added
                 data:
-                  status: true
-                  message: added
-                  data:
-                    value:
-                      - Interceptor
+                  value:
+                    - Interceptor
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -7502,15 +7186,11 @@ paths:
                   data:
                     description: Response payload
               example:
-                statusCode: 200
                 status: true
                 message: success
                 data:
-                  status: true
-                  message: success
-                  data:
-                    - _id: 66a...
-                      name: Planets
+                  - _id: 66a...
+                    name: Planets
         '500':
           $ref: '#/components/responses/ServerError500'
   /v1/game/uploadimage:
@@ -8688,7 +8368,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: used
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -9087,7 +8766,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: equipped
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -9168,7 +8846,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: unequipped
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -9611,7 +9288,7 @@ paths:
               packNumber: 1
               ids:
                 - 66e...
-  /v1/game/crew/crewlist:
+  /v1/gamecrew/crewlist:
     get:
       tags:
         - Game
@@ -9906,7 +9583,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: moved
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -9968,7 +9644,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -10084,7 +9759,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -10198,7 +9872,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -10311,7 +9984,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -10383,7 +10055,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -10460,7 +10131,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: generated
-                data: {}
         '403':
           $ref: '#/components/responses/Forbidden403'
         '500':
@@ -10828,7 +10498,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '403':
@@ -11003,7 +10672,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: inserted
-                data: {}
         '403':
           $ref: '#/components/responses/Forbidden403'
         '500':
@@ -11060,7 +10728,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: deleted
-                data: {}
         '403':
           $ref: '#/components/responses/Forbidden403'
         '500':
@@ -11115,7 +10782,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: deleted
-                data: {}
         '403':
           $ref: '#/components/responses/Forbidden403'
         '500':
@@ -11170,7 +10836,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: pack updated for the planets
-                data: {}
         '403':
           $ref: '#/components/responses/Forbidden403'
         '409':
@@ -11447,7 +11112,7 @@ paths:
               example:
                 statusCode: 200
                 status: true
-                message: change to visible/hidden
+                message: change to visible
                 data:
                   _id: 66a...
                   isActive: true
@@ -12212,7 +11877,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -12286,7 +11950,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: deleted
-                data: {}
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '404':
@@ -12417,7 +12080,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '401':
@@ -14328,7 +13990,7 @@ paths:
               price:
                 - label: GALFI
                   amount: 600
-  /v1/profession/:
+  /v1/profession:
     post:
       tags:
         - Profession
@@ -14706,7 +14368,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: deleted
-                data: {}
         '404':
           $ref: '#/components/responses/NotFound404'
         '500':
@@ -15010,7 +14671,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: deleted
-                data: {}
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '404':
@@ -15064,7 +14724,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: status changed
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -15436,7 +15095,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: deleted
-                data: {}
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '404':
@@ -15490,7 +15148,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: status changed
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':
@@ -15654,7 +15311,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: deleted
-                data: {}
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '404':
@@ -15926,7 +15582,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: deleted
-                data: {}
         '401':
           $ref: '#/components/responses/Unauthorized401'
         '404':
@@ -16574,7 +16229,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: inserted
-                data: {}
         '403':
           $ref: '#/components/responses/Forbidden403'
         '500':
@@ -16620,7 +16274,6 @@ paths:
                 statusCode: 200
                 status: true
                 message: updated
-                data: {}
         '400':
           $ref: '#/components/responses/BadRequest400'
         '500':

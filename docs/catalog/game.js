@@ -504,7 +504,7 @@ module.exports = [
   }),
 
   // ── Crews ─────────────────────────────────────────────────
-  ep('get', '/v1/game/crew/crewlist', {
+  ep('get', '/v1/gamecrew/crewlist', {
     tag: 'Game',
     summary: 'Get crew list',
     auth: 'none',

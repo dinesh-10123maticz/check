@@ -1,0 +1,628 @@
+openapi: 3.0.3
+info:
+  title: GALFI Profession API
+  version: 1.0.0
+  description: >-
+    Complete API documentation for the **GALFI** backend (game NFT marketplace) — automatically generated from the
+    actual Express routes, controllers and yup validation schemas.
+
+
+    ## Base URL
+
+    All endpoints are mounted under **`/v1`** (e.g. `POST /v1/user/connect`).
+
+
+    ## Authentication
+
+    Most endpoints require `Authorization: Bearer <JWT>` in the request header.
+
+
+    | Token | Where it comes from | Used by |
+
+    |---|---|---|
+
+    | User JWT | `POST /v1/user/connect` · `POST /v1/user/create` · `POST /v1/user/gameconnect` | User & Game endpoints
+    |
+
+    | Admin JWT | `POST /v1/admin/adminlogin` | Admin/CMS endpoints |
+
+
+    ## Payload encryption
+
+    Several endpoints run through `DecryptDatas` / `decryptGameRequest` middleware:
+
+
+    - `DecryptDatas` — the request body must be `{"data": "<base64(AES-encrypted JSON)>"}` (or the same value in the
+    `data` query parameter).
+
+    - `decryptGameRequest` — the request body must be `{"token": "<base64(AES-encrypted JSON)>"}`.
+
+    - Some of these endpoints also **encrypt their responses** (the raw HTTP body is a base64 AES string). Examples in
+    this spec are shown **decrypted** for readability.
+
+
+    ## Response envelope
+
+    Two envelope styles are used:
+
+
+    ```json
+
+    // sendRes style (plain)
+
+    { "statusCode": 200, "status": true, "message": "fetched", "data": { } }
+
+    // sendResponse style (may be AES-encrypted at transport level)
+
+    { "status": true, "message": "fetched", "data": { } }
+
+    ```
+
+
+    Validation failures return `400` (or `409` on some NFT/promo routes) with an `error` field listing the failed
+    fields.
+
+
+    This standalone file documents the **Profession** module.
+servers:
+  - url: /
+    description: Current API host
+tags:
+  - name: Profession
+paths:
+  /v1/profession:
+    post:
+      tags:
+        - Profession
+      summary: Create a profession
+      description: >-
+        Validated with `createProfessionSchema` (yup). `appliesTo` ∈ mission|combat|building|resource|ship|global;
+        `valueType` ∈ PERCENT|FLAT.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: created
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: created
+                data:
+                  _id: 66a...
+                  symbol: PILOT
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                symbol:
+                  type: string
+                  description: Unique uppercase symbol (e.g. PILOT)
+                  example: PILOT
+                profession:
+                  type: string
+                  description: Profession name
+                  example: Pilot
+                baseContribution:
+                  type: object
+                  description: Base contribution stats
+                  example:
+                    exploration: 10
+                    science: 5
+                    social: 0
+                    combat: 20
+                baseCost:
+                  type: number
+                  description: Base cost
+                  example: 100
+                rewardModifiers:
+                  type: array
+                  items: {}
+                  description: Reward modifier rules
+                  example:
+                    - appliesTo: combat
+                      target: all
+                      condition: level>5
+                      valueType: PERCENT
+                      value: 10
+                notes:
+                  type: string
+                  description: Free text notes
+                isActive:
+                  type: boolean
+                  description: Active flag
+                  example: true
+              required:
+                - symbol
+                - profession
+                - baseCost
+            example:
+              symbol: PILOT
+              profession: Pilot
+              baseContribution:
+                exploration: 10
+                science: 5
+                social: 0
+                combat: 20
+              baseCost: 100
+              rewardModifiers:
+                - appliesTo: combat
+                  target: all
+                  condition: level>5
+                  valueType: PERCENT
+                  value: 10
+    get:
+      tags:
+        - Profession
+      summary: Get all professions
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - _id: 66a...
+                    symbol: PILOT
+                    profession: Pilot
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/profession/id/:id:
+    get:
+      tags:
+        - Profession
+      summary: Get a profession by _id
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Profession _id
+          schema:
+            type: string
+            example: 66a...
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  _id: 66a...
+                  symbol: PILOT
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/profession/key/:key:
+    get:
+      tags:
+        - Profession
+      summary: Get a profession by key (game engine)
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      parameters:
+        - name: key
+          in: path
+          required: true
+          description: Profession key (symbol)
+          schema:
+            type: string
+            example: PILOT
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  _id: 66a...
+                  symbol: PILOT
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/profession/:id:
+    put:
+      tags:
+        - Profession
+      summary: Update a profession (partial)
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Profession _id
+          schema:
+            type: string
+            example: 66a...
+      security: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+                data:
+                  _id: 66a...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                symbol:
+                  type: string
+                  description: Unique uppercase symbol (e.g. PILOT)
+                  example: PILOT
+                profession:
+                  type: string
+                  description: Profession name
+                  example: Pilot
+                baseContribution:
+                  type: object
+                  description: Base contribution stats
+                  example:
+                    exploration: 10
+                    science: 5
+                    social: 0
+                    combat: 20
+                baseCost:
+                  type: number
+                  description: Base cost
+                  example: 100
+                rewardModifiers:
+                  type: array
+                  items: {}
+                  description: Reward modifier rules
+                  example:
+                    - appliesTo: combat
+                      target: all
+                      condition: level>5
+                      valueType: PERCENT
+                      value: 10
+                notes:
+                  type: string
+                  description: Free text notes
+                isActive:
+                  type: boolean
+                  description: Active flag
+                  example: true
+            example:
+              baseCost: 150
+              isActive: false
+  /v1/profession/:key:
+    delete:
+      tags:
+        - Profession
+      summary: Soft-delete a profession by key
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      parameters:
+        - name: key
+          in: path
+          required: true
+          description: Profession key (symbol)
+          schema:
+            type: string
+            example: PILOT
+      security: []
+      responses:
+        '200':
+          description: Success — deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: deleted
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: deleted
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token. Use the token returned by the connect/login endpoints.
+  responses:
+    BadRequest400:
+      description: Validation error — one or more required fields are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 400
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: validation error
+              error:
+                type: string
+                description: Comma-separated validation messages (sometimes an array of errors)
+                example: WalletAddress is required, amount must be a positive number
+          examples:
+            yupValidation:
+              summary: Yup validation failure
+              value:
+                statusCode: 400
+                status: false
+                message: validation error
+                error: nearByPlanetId is required, missiontype is required
+            plainMissingField:
+              summary: Missing required field (controller check)
+              value:
+                statusCode: 400
+                status: false
+                message: walletAddress, tokenName, amount and transactionHash are required
+    Unauthorized401:
+      description: 'Authentication failed — missing, expired or invalid JWT in `Authorization: Bearer <token>`.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: please authenticate
+          example:
+            status: false
+            message: please authenticate
+    Forbidden403:
+      description: Forbidden — endpoint is restricted (dev-only route called in production, or insufficient role).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Access restricted to production environment only
+          example:
+            error: Access restricted to production environment only
+    NotFound404:
+      description: Resource not found (user, NFT, pool, mission stat, etc.).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: user not found
+          example:
+            status: false
+            message: user not found
+    Conflict409:
+      description: Conflict — duplicate entry or business-rule violation (e.g. display name already exists, token already listed).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 409
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: displayname already exist
+          example:
+            statusCode: 409
+            status: false
+            message: displayname already exist
+    Gone410:
+      description: Gone — the endpoint has been removed.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: no more
+          example:
+            status: true
+            message: no more
+    Unprocessable422:
+      description: Unprocessable entity — semantic validation failure (e.g. wallet address does not match, missionStatsId missing).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 422
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Please give valid address
+          example:
+            statusCode: 422
+            status: false
+            message: Please give valid address
+    Conflict209:
+      description: Conflict (custom status) — category/subcategory already exists.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: category already exist
+          example:
+            status: false
+            message: category already exist
+    ServerError500:
+      description: Internal server error — unhandled exception, blockchain/RPC failure, DB error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Something went wrong
+          example:
+            status: false
+            message: Something went wrong

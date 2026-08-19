@@ -1,0 +1,1639 @@
+openapi: 3.0.3
+info:
+  title: GALFI User API
+  version: 1.0.0
+  description: >-
+    Complete API documentation for the **GALFI** backend (game NFT marketplace) — automatically generated from the
+    actual Express routes, controllers and yup validation schemas.
+
+
+    ## Base URL
+
+    All endpoints are mounted under **`/v1`** (e.g. `POST /v1/user/connect`).
+
+
+    ## Authentication
+
+    Most endpoints require `Authorization: Bearer <JWT>` in the request header.
+
+
+    | Token | Where it comes from | Used by |
+
+    |---|---|---|
+
+    | User JWT | `POST /v1/user/connect` · `POST /v1/user/create` · `POST /v1/user/gameconnect` | User & Game endpoints
+    |
+
+    | Admin JWT | `POST /v1/admin/adminlogin` | Admin/CMS endpoints |
+
+
+    ## Payload encryption
+
+    Several endpoints run through `DecryptDatas` / `decryptGameRequest` middleware:
+
+
+    - `DecryptDatas` — the request body must be `{"data": "<base64(AES-encrypted JSON)>"}` (or the same value in the
+    `data` query parameter).
+
+    - `decryptGameRequest` — the request body must be `{"token": "<base64(AES-encrypted JSON)>"}`.
+
+    - Some of these endpoints also **encrypt their responses** (the raw HTTP body is a base64 AES string). Examples in
+    this spec are shown **decrypted** for readability.
+
+
+    ## Response envelope
+
+    Two envelope styles are used:
+
+
+    ```json
+
+    // sendRes style (plain)
+
+    { "statusCode": 200, "status": true, "message": "fetched", "data": { } }
+
+    // sendResponse style (may be AES-encrypted at transport level)
+
+    { "status": true, "message": "fetched", "data": { } }
+
+    ```
+
+
+    Validation failures return `400` (or `409` on some NFT/promo routes) with an `error` field listing the failed
+    fields.
+
+
+    This standalone file documents the **User** module.
+servers:
+  - url: /
+    description: Current API host
+tags:
+  - name: User
+paths:
+  /v1/user/create:
+    post:
+      tags:
+        - User
+      summary: Register a new user profile (marketplace)
+      description: >-
+        Creates a marketplace user profile with social links, display name and custom URL. Body is AES-encrypted
+        (`data`).
+
+
+        **Encrypted payload**: the request body (or `?data=` query param) must be `{"data": "<base64(AES-encrypted
+        JSON)>"}`. Responses from this endpoint may also be AES-encrypted (base64 string); examples below are shown
+        decrypted for readability.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '201':
+          description: Success — connected successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 201
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: connected successfully
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: connected successfully
+                data:
+                  _id: 665f1a2b3c4d5e6f7a8b9c0d
+                  DisplayName: GalaxyExplorer
+                  CustomUrl: galaxyexplorer
+                  WalletAddress: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b'
+                  profile_url: https://cdn.galfi.com/user/0x.../profile/1712345678901.png
+                token: <JWT>
+                usercuurency:
+                  - label: GALFI
+                    balance: 0
+                    stacked: 0
+                    walletAddress: 0x1a...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '409':
+          $ref: '#/components/responses/Conflict409'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                WalletAddress:
+                  type: string
+                  description: Wallet address of the user
+                  example: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b'
+                WalletType:
+                  type: string
+                  description: Wallet provider type (e.g. metamask, walletconnect)
+                  example: metamask
+                EmailId:
+                  type: string
+                  description: Email address (optional)
+                  example: user@example.com
+                DisplayName:
+                  type: string
+                  description: Display name (falls back to WalletAddress if empty)
+                  example: GalaxyExplorer
+                Youtube:
+                  type: string
+                  description: YouTube profile URL
+                  example: https://youtube.com/@user
+                Facebook:
+                  type: string
+                  description: Facebook profile URL
+                  example: https://facebook.com/user
+                Twitter:
+                  type: string
+                  description: Twitter/X profile URL
+                  example: https://x.com/user
+                Instagram:
+                  type: string
+                  description: Instagram profile URL
+                  example: https://instagram.com/user
+                Bio:
+                  type: string
+                  description: Short biography
+                  example: NFT collector and gamer
+                CustomUrl:
+                  type: string
+                  description: Custom profile URL slug (falls back to WalletAddress)
+                  example: galaxyexplorer
+                image_key:
+                  type: string
+                  description: S3 key of the profile image (optional)
+                  example: user/0x.../profile/1712345678901.png
+              required:
+                - WalletAddress
+                - WalletType
+            example:
+              WalletAddress: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b'
+              WalletType: metamask
+              DisplayName: GalaxyExplorer
+              EmailId: user@example.com
+              CustomUrl: galaxyexplorer
+              Bio: NFT collector and gamer
+  /v1/user/edit:
+    post:
+      tags:
+        - User
+      summary: Edit the logged-in user profile
+      description: >-
+        Updates profile fields for the authenticated user. Body is AES-encrypted (`data`).
+
+
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/connect, /user/create or /user/gameconnect).
+
+
+        **Encrypted payload**: the request body (or `?data=` query param) must be `{"data": "<base64(AES-encrypted
+        JSON)>"}`. Responses from this endpoint may also be AES-encrypted (base64 string); examples below are shown
+        decrypted for readability.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '201':
+          description: Success — updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 201
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 201
+                status: true
+                data:
+                  _id: 665f1a2b3c4d5e6f7a8b9c0d
+                  DisplayName: NewName
+                  CustomUrl: newname
+                token: <JWT>
+                message: updated successfully
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '409':
+          $ref: '#/components/responses/Conflict409'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                WalletAddress:
+                  type: string
+                  description: Wallet address
+                  example: 0x1a...
+                EmailId:
+                  type: string
+                  description: Email address
+                  example: user@example.com
+                DisplayName:
+                  type: string
+                  description: New display name
+                  example: NewName
+                Youtube:
+                  type: string
+                  description: YouTube URL
+                Facebook:
+                  type: string
+                  description: Facebook URL
+                Twitter:
+                  type: string
+                  description: Twitter URL
+                Instagram:
+                  type: string
+                  description: Instagram URL
+                Bio:
+                  type: string
+                  description: Biography
+                CustomUrl:
+                  type: string
+                  description: Custom URL slug
+                Profile:
+                  type: string
+                  description: Profile image key/URL
+                Cover:
+                  type: string
+                  description: Cover image key/URL
+            example:
+              WalletAddress: 0x1a...
+              DisplayName: NewName
+              Bio: Updated bio
+              CustomUrl: newname
+  /v1/user/connect:
+    post:
+      tags:
+        - User
+      summary: Connect wallet (marketplace)
+      description: >-
+        Checks if the wallet exists; returns the user + JWT, or creates a placeholder account. Body is AES-encrypted
+        (`data`).
+
+
+        **Encrypted payload**: the request body (or `?data=` query param) must be `{"data": "<base64(AES-encrypted
+        JSON)>"}`. Responses from this endpoint may also be AES-encrypted (base64 string); examples below are shown
+        decrypted for readability.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — Wallet connected successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Wallet connected successfully
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                data:
+                  _id: 665f1a...
+                  DisplayName: 0x1a...
+                  WalletAddress: 0x1a...
+                token: <JWT>
+                message: Wallet connected successfully
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                WalletAddress:
+                  type: string
+                  description: Wallet address
+                  example: 0x1a...
+              required:
+                - WalletAddress
+            example:
+              WalletAddress: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b'
+  /v1/user/gameconnect:
+    post:
+      tags:
+        - User
+      summary: Connect wallet to the game engine
+      description: >-
+        Game entry point. `time` must be a millisecond timestamp; session expires after 30 minutes. Returns user,
+        currencies, JWT and hex IDs.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — Wallet connected successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Wallet connected successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: Wallet connected successfully
+                data:
+                  user:
+                    _id: 665f1a...
+                    DisplayName: Player1
+                    WalletAddress: 0x1a...
+                  usercurrency:
+                    - label: GALFI
+                      balance: 1250
+                      stacked: 100
+                      currencyId: 664a...
+                  token: <JWT>
+                  hexIds:
+                    - '1'
+                    - '2'
+                    - '3'
+                  shipHexIds:
+                    - '4'
+                    - '5'
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                WalletAddress:
+                  type: string
+                  description: Wallet address
+                  example: 0x1a...
+                time:
+                  type: integer
+                  description: Current timestamp (ms). Rejected if older than 30 minutes
+                  example: 1724000000000
+              required:
+                - WalletAddress
+                - time
+            example:
+              WalletAddress: '0x1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b'
+              time: 1724000000000
+  /v1/user/v2/gameconnect:
+    post:
+      tags:
+        - User
+      summary: Connect wallet to the game engine (encrypted v2)
+      description: >-
+        Same as `/gameconnect` but the payload is AES-encrypted in `token`.
+
+
+        **Encrypted payload**: the request body must be `{"token": "<base64(AES-encrypted JSON)>"}` where the encrypted
+        JSON holds the fields documented below.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — Wallet connected successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Wallet connected successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: Wallet connected successfully
+                data:
+                  user: {}
+                  usercurrency: []
+                  token: <JWT>
+                  hexIds: []
+                  shipHexIds: []
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                WalletAddress:
+                  type: string
+                  description: Wallet address
+                time:
+                  type: integer
+                  description: Timestamp (ms); must be within 30 minutes
+              required:
+                - WalletAddress
+                - time
+            example:
+              WalletAddress: 0x1a...
+              time: 1724000000000
+  /v1/user/creategameuser:
+    post:
+      tags:
+        - User
+      summary: Create a game user (register from game)
+      description: >-
+        Registers a game account. Returns JWT. Also handles referral codes. DisplayName must be longer than 4
+        characters.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '201':
+          description: Success — Created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 201
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Created successfully
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                data:
+                  _id: 665f1a...
+                  DisplayName: PlayerOne
+                  refferalCode: PLAYGAL1
+                  refferalByCode: PLAYGAL1
+                token: <JWT>
+                message: Created successfully
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '409':
+          $ref: '#/components/responses/Conflict409'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refferalByCode:
+                  type: string
+                  description: Referral code of another user (optional)
+                  example: PLAYGAL1
+                Type:
+                  type: string
+                  description: Account type
+                  example: game
+                WalletAddress:
+                  type: string
+                  description: Wallet address
+                  example: 0x1a...
+                WalletType:
+                  type: string
+                  description: Wallet type
+                  example: metamask
+                EmailId:
+                  type: string
+                  description: Email
+                  example: user@example.com
+                DisplayName:
+                  type: string
+                  description: Display name (min 5 chars)
+                  example: PlayerOne
+                imageKey:
+                  type: string
+                  description: S3 image key
+                Youtube:
+                  type: string
+                  description: YouTube URL
+                Facebook:
+                  type: string
+                  description: Facebook URL
+                Twitter:
+                  type: string
+                  description: Twitter URL
+                Instagram:
+                  type: string
+                  description: Instagram URL
+                Bio:
+                  type: string
+                  description: Bio
+                CustomUrl:
+                  type: string
+                  description: Custom URL
+              required:
+                - WalletAddress
+                - DisplayName
+            example:
+              WalletAddress: 0x1a...
+              DisplayName: PlayerOne
+              refferalByCode: PLAYGAL1
+  /v1/user/editgameuser:
+    post:
+      tags:
+        - User
+      summary: Edit the game user profile
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '201':
+          description: Success — updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 201
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated successfully
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 201
+                status: true
+                data:
+                  _id: 665f1a...
+                  DisplayName: PlayerOne
+                token: <JWT>
+                message: updated successfully
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '409':
+          $ref: '#/components/responses/Conflict409'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                EmailId:
+                  type: string
+                  description: Email
+                DisplayName:
+                  type: string
+                  description: Display name
+                Youtube:
+                  type: string
+                  description: YouTube URL
+                Facebook:
+                  type: string
+                  description: Facebook URL
+                Twitter:
+                  type: string
+                  description: Twitter URL
+                Instagram:
+                  type: string
+                  description: Instagram URL
+                Bio:
+                  type: string
+                  description: Bio
+                imageKey:
+                  type: string
+                  description: S3 image key
+                customUrl:
+                  type: string
+                  description: Custom URL
+            example:
+              DisplayName: PlayerOne
+              Bio: hello galaxy
+  /v1/user/getprofile/:CustomUrl:
+    get:
+      tags:
+        - User
+      summary: Get a public user profile by custom URL
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      parameters:
+        - name: CustomUrl
+          in: path
+          required: true
+          description: Custom URL slug of the profile
+          schema:
+            type: string
+            example: galaxyexplorer
+      security: []
+      responses:
+        '200':
+          description: Success — success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: success
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: success
+                data:
+                  _id: 665f1a...
+                  DisplayName: GalaxyExplorer
+                  CustomUrl: galaxyexplorer
+                  profile_url: https://cdn.galfi.com/...
+                  Bio: NFT collector
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/user/profileimage:
+    put:
+      tags:
+        - User
+      summary: Update profile image
+      description: >-
+        Updates the avatar. Body fields or multipart file upload.
+
+
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/connect, /user/create or /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '201':
+          description: Success — Profile Image Updated Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 201
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Profile Image Updated Successfully
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: Profile Image Updated Successfully
+                data:
+                  _id: 665f1a...
+                  Profile: user/0x.../profile/1712345678901.png
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '409':
+          $ref: '#/components/responses/Conflict409'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                WalletAddress:
+                  type: string
+                  description: Wallet address
+                Profile:
+                  type: string
+                  description: Profile image key/URL
+                Cover:
+                  type: string
+                  description: Cover image key/URL
+              required:
+                - WalletAddress
+            example:
+              WalletAddress: 0x1a...
+              Profile: user/0x.../profile/1712345678901.png
+  /v1/user/coverimage:
+    put:
+      tags:
+        - User
+      summary: Update cover image
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/connect, /user/create or /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '201':
+          description: Success — cover image updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 201
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: cover image updated successfully
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: cover image updated successfully
+                data:
+                  _id: 665f1a...
+                  Cover: user/0x.../cover/1712345678901.png
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '409':
+          $ref: '#/components/responses/Conflict409'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                WalletAddress:
+                  type: string
+                  description: Wallet address
+                Profile:
+                  type: string
+                  description: Profile image key/URL
+                Cover:
+                  type: string
+                  description: Cover image key/URL
+              required:
+                - WalletAddress
+            example:
+              WalletAddress: 0x1a...
+              Cover: user/0x.../cover/1712345678901.png
+  /v1/user/getbalance:
+    get:
+      tags:
+        - User
+      summary: Get on-chain + off-chain token balances
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      parameters:
+        - name: walletAddress
+          in: query
+          required: true
+          description: Wallet address
+          schema:
+            type: string
+            example: 0x1a...
+        - name: network
+          in: query
+          required: false
+          description: Blockchain network (e.g. polygon)
+          schema:
+            type: string
+            example: polygon
+      security: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - label: GALFI
+                    balance: 1250.5
+                    stacked: 100
+                    contractAddress: 0x...
+                    network: polygon
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/user/addbalance:
+    post:
+      tags:
+        - User
+      summary: Add balance to a user currency (admin/dev helper)
+      description: >-
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: Success
+                data:
+                  walletAddress: 0x1a...
+                  balance: 500
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                walletAddress:
+                  type: string
+                  description: Wallet address
+                stacked:
+                  type: number
+                  description: Amount to add to stacked balance
+                  example: 0
+                currencyId:
+                  type: string
+                  description: Currency _id
+                  example: 664a1b2c...
+                balance:
+                  type: number
+                  description: Amount to add to balance
+                  example: 500
+              required:
+                - walletAddress
+                - currencyId
+            example:
+              walletAddress: 0x1a...
+              currencyId: 664a1b2c...
+              balance: 500
+              stacked: 0
+  /v1/user/depositebalance:
+    post:
+      tags:
+        - User
+      summary: Deposit on-chain balance after a transaction (game)
+      description: >-
+        Validates the transaction hash on-chain, credits the user currency balance and records a DEPOSITE transaction.
+        All four fields are required.
+
+
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: Success
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: Success
+                data:
+                  balance:
+                    balance: 1350
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                walletAddress:
+                  type: string
+                  description: Wallet address
+                tokenName:
+                  type: string
+                  description: Token symbol (e.g. GALFI)
+                  example: GALFI
+                amount:
+                  type: number
+                  description: Amount deposited
+                  example: 100
+                transactionHash:
+                  type: string
+                  description: On-chain transaction hash
+                  example: 0xabc123...
+              required:
+                - walletAddress
+                - tokenName
+                - amount
+                - transactionHash
+            example:
+              walletAddress: 0x1a...
+              tokenName: GALFI
+              amount: 100
+              transactionHash: 0xabc123...
+  /v1/user/FollowUnFollow:
+    post:
+      tags:
+        - User
+      summary: Follow / unfollow a user
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/connect, /user/create or /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — follow | unfollow
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: follow | unfollow
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: follow
+                data:
+                  followed: 0x2b...
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                MyItemAddr:
+                  type: string
+                  description: The follower (own) wallet address
+                ClickAddr:
+                  type: string
+                  description: The profile being followed
+                MyItemCustomUrl:
+                  type: string
+                  description: Own custom URL
+                ClickCustomUrl:
+                  type: string
+                  description: Target profile custom URL
+              required:
+                - MyItemAddr
+                - ClickAddr
+            example:
+              MyItemAddr: 0x1a...
+              ClickAddr: 0x2b...
+              ClickCustomUrl: targetuser
+  /v1/user/notification:
+    get:
+      tags:
+        - User
+      summary: Get notifications for the logged-in user
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/connect, /user/create or /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  - _id: 66a1...
+                    type: bid
+                    text: New bid on your NFT
+                    read: false
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/user/newsletter:
+    post:
+      tags:
+        - User
+      summary: Subscribe to the newsletter
+      description: >-
+        **Encrypted payload**: the request body (or `?data=` query param) must be `{"data": "<base64(AES-encrypted
+        JSON)>"}`. Responses from this endpoint may also be AES-encrypted (base64 string); examples below are shown
+        decrypted for readability.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '201':
+          description: Success — subscribed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 201
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: subscribed
+                  data:
+                    description: Response payload
+              example:
+                status: true
+                message: subscribed
+        '400':
+          $ref: '#/components/responses/BadRequest400'
+        '409':
+          $ref: '#/components/responses/Conflict409'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email address
+                  example: user@example.com
+              required:
+                - email
+            example:
+              email: user@example.com
+  /v1/user/gameuserprofile:
+    get:
+      tags:
+        - User
+      summary: Get game user profile (game engine)
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — fetched
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: fetched
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: fetched
+                data:
+                  _id: 665f1a...
+                  DisplayName: PlayerOne
+                  WalletAddress: 0x1a...
+                  isTutorialPlayed: false
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/user/isTutorialPlayed:
+    put:
+      tags:
+        - User
+      summary: Mark tutorial as played
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: updated
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: updated
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/user/claimfreereward:
+    post:
+      tags:
+        - User
+      summary: Claim the free reward (game)
+      description: >-
+        Requires **user JWT**: `Authorization: Bearer <token>` (from /user/gameconnect).
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success — claimed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: claimed
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: claimed
+                data:
+                  balance: 100
+        '401':
+          $ref: '#/components/responses/Unauthorized401'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+  /v1/user/deletewithwalletaddress:
+    post:
+      tags:
+        - User
+      summary: '[DEV] Delete all data for a wallet address'
+      description: >-
+        Development-only endpoint. Deletes the user, their assets, planets, currency and transactions.
+
+
+        **Success & error responses:** every endpoint documents the success response with an example, plus the
+        validation error (400/409), authentication error (401), and internal server error (500) shapes. `data` in
+        success examples is illustrative — actual payloads depend on the resource.
+      security: []
+      responses:
+        '200':
+          description: Success — deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 200
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: deleted
+                  data:
+                    description: Response payload
+              example:
+                statusCode: 200
+                status: true
+                message: deleted
+        '404':
+          $ref: '#/components/responses/NotFound404'
+        '500':
+          $ref: '#/components/responses/ServerError500'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                walletAddress:
+                  type: string
+                  description: Wallet address to wipe
+                  example: 0x1a...
+              required:
+                - walletAddress
+            example:
+              walletAddress: 0x1a...
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT token. Use the token returned by the connect/login endpoints.
+  responses:
+    BadRequest400:
+      description: Validation error — one or more required fields are missing or invalid.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 400
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: validation error
+              error:
+                type: string
+                description: Comma-separated validation messages (sometimes an array of errors)
+                example: WalletAddress is required, amount must be a positive number
+          examples:
+            yupValidation:
+              summary: Yup validation failure
+              value:
+                statusCode: 400
+                status: false
+                message: validation error
+                error: nearByPlanetId is required, missiontype is required
+            plainMissingField:
+              summary: Missing required field (controller check)
+              value:
+                statusCode: 400
+                status: false
+                message: walletAddress, tokenName, amount and transactionHash are required
+    Unauthorized401:
+      description: 'Authentication failed — missing, expired or invalid JWT in `Authorization: Bearer <token>`.'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: please authenticate
+          example:
+            status: false
+            message: please authenticate
+    Forbidden403:
+      description: Forbidden — endpoint is restricted (dev-only route called in production, or insufficient role).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Access restricted to production environment only
+          example:
+            error: Access restricted to production environment only
+    NotFound404:
+      description: Resource not found (user, NFT, pool, mission stat, etc.).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: user not found
+          example:
+            status: false
+            message: user not found
+    Conflict409:
+      description: Conflict — duplicate entry or business-rule violation (e.g. display name already exists, token already listed).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 409
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: displayname already exist
+          example:
+            statusCode: 409
+            status: false
+            message: displayname already exist
+    Gone410:
+      description: Gone — the endpoint has been removed.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: true
+              message:
+                type: string
+                example: no more
+          example:
+            status: true
+            message: no more
+    Unprocessable422:
+      description: Unprocessable entity — semantic validation failure (e.g. wallet address does not match, missionStatsId missing).
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: integer
+                example: 422
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Please give valid address
+          example:
+            statusCode: 422
+            status: false
+            message: Please give valid address
+    Conflict209:
+      description: Conflict (custom status) — category/subcategory already exists.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: category already exist
+          example:
+            status: false
+            message: category already exist
+    ServerError500:
+      description: Internal server error — unhandled exception, blockchain/RPC failure, DB error.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+                example: false
+              message:
+                type: string
+                example: Something went wrong
+          example:
+            status: false
+            message: Something went wrong
